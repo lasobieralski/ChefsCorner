@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+/* HEAD */
 /* Here is a color palette based on the blues and greens from the logo:
 
 Deep Teal – #006D77
@@ -6,7 +6,7 @@ Sky Blue – #83C5BE
 Mint Green – #B2E5D6
 Soft Lime Green – #D4E157
 Cool White – #F0F8F7 */
-=======
+
 main {
   padding: 40px 20px;
   display: grid;
@@ -67,4 +67,4 @@ main {
   margin: 8px 0;
   color: var(--secondary-color);
 }
->>>>>>> 3b28c2195ec3c0497624195ceba445217514fce8
+/* >>>>>>> 3b28c2195ec3c0497624195ceba445217514fce8 */
