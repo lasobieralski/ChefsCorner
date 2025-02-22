@@ -18,6 +18,18 @@
   <script type="module" defer src="ccmain.js"></script>
 </head>
 <body>
+  <div id="signupModal" class="modal">
+    <div class="modal-content">
+      <h2>Create an Account</h2>
+      <form id="signupForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <input type="submit" value="Sign Up">
+      </form>
+    </div>
+  </div>
   <div class="content">
     <!-- Header -->
     <header>
