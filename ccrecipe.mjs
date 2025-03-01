@@ -37,7 +37,7 @@
 //         " "
 //     ],
 //     note: " ",
-//     instructions: [
+//     directions: [
 //         " ",
 //         " ",
 //         " ",
@@ -569,6 +569,166 @@ const recipes = [
             "Freezing Tip: to freeze, store in quart-sized Ziploc freezer bags. For a quick and easy breakfast, thaw overnight in the refrigerator or out on the kitchen counter."
         ]
     },
+    {
+        Author: [
+            "Taylor Ann Spencer", "Delish Test Kitchen"
+        ],
+        name: "Cheesy Frico Fried Egg Tostadas",
+        tags: ["Breakfast, Keto"],
+        image: "./images/keto-breakfast.jpg",
+        servings: "4",
+        prepTime: "20 minutes",
+        cookTime: "25 minutes",
+        ingredients: [
+            "1 large tomato, cored, finely chopped",
+            "1/2 jalapeno, seeded, finely chopped",
+            "1/4 red onion, finely chopped",
+            "2 Tbsp. fresh lime juice",
+            "1/2 tsp. kosher salt, plus more",
+            "2 oz. cheddar cheese, shredded (about 1/2 c.)",
+            "2 oz. pepper Jack cheese, shredded (about 1/2 c.)",
+            "4 large eggs",
+            "Freshly ground black pepper (optional)"
+        ],
+        note: "",
+        directions: [
+            "In a medium bowl, combine tomato, jalapeño, onion, cilantro, and lime juice; season with 1/2 teaspoon salt. Set aside until ready to serve.",
+            "Line a sheet pan with parchment. In a small bowl, toss cheddar and pepper Jack until combined.",
+            "In a small nonstick skillet, spread 1/4 cup cheese mixture in an even circular layer. Cook over medium heat, undisturbed, until cheese is melted and bubbling, 1 to 2 minutes.",
+            "Crack 1 egg into center of cheese; season with salt and pepper, if desired. Cook, undisturbed, until egg white is semi-set and frico is deep orange brown, about 2 minutes. Cover pan and continue to cook until egg white is set, about 1 minute. Uncover and continue to cook until frico is firm enough to lift, about 1 minute more.",
+            "Using a nonstick spatula, carefully transfer frico egg to prepared sheet. Let sit 2 minutes to let frico harden. Repeat with remaining cheese mixture and eggs.",
+            "Serve topped with pico de gallo.",
+        ]
+    },
+    {
+        Author: [
+            "Maya Krampf"
+        ],
+        name: "Burger Bowl",
+        tags: ["keto", "lunch"],
+        image: "./images/keto-lunch.jpg",
+        servings: "4",
+        prepTime: "10 minutes",
+        cookTime: "10 minutes",
+        ingredients: {
+            bowl: [
+            "1 lb ground beef",
+            "1 tsp sea salt",
+            "1/4 tsp black pepper",
+            "8 oz leaf lettuce (chopped)",
+            "1 cup cherry tomatoes (halved)",
+            "1/4 cup red onions (sliced thinly)",
+            "1/2 cup cheddar cheese (shredded)",
+            "1 medium avocado (sliced)"
+            ],
+            sauce: [
+            "6 tbsp mayonnaise",
+            "2 tbsp sugar-free ketchup",
+            "2 tbsp dill pickle juice",
+            "1 tsp dijon mustard",
+            "1/8 tsp sea salt",
+            "1/8 tsp black pepper",
+            ]
+        },
+        note: "Store: if you have leftover hamburger bowl, they don't really last if they're already combined. But you can meal prep ahead. Meal Prep: Cook up the ground beef, make the sauce, and cut the vegetables. Store in separate containers in the fridge until ready to assemble. Reheat: Just zap the ground beef in the microwave until warm, then assemble your bowls.",
+        directions: [
+            "In a large skillet over medium-high heat, season with sea salt and black pepper. Cook for 8-10 minutes, breaking up into pieces with a spatula, until the beef is browned.",
+            "Meanwhile, make the sauce. In a small to medium bowl, whisk together the mayo, ketchup, pickle juice, mustard, salt, and pepper. Set aside.",
+            "Divide the leave lettuce among 4 bowls. Top with tomatoes, onions, and cheese.",
+            "Add the cooked beef to the bowls. Fan out avocado slices over each.",
+            "Drizzle your burger bowls with the burger sauce."
+        ]
+    },
+    {
+            Author: [
+                "Maya Krampf"
+            ],
+            name: "Keto Chicken Soup",
+            tags: ["keto", "dinner"],
+            image: "./images/keto-dinner.jpg",
+            servings: "12",
+            prepTime: "10 minutes",
+            cookTime: "1 hour 5 minutes",
+            ingredients: [
+                "1 tbsp olive oil",
+                "2 medium carrotss (diced or sliced thinly; ~1 cup",
+                "2 stalks celery (sliced thinly; ~1 cup",
+                "1 medium onion (diced; ~1 cup",
+                "1 lb boneless skinless chicken breasts (or 2-3 cups shredded chicken",
+                "10 cups chicken broth, reduced sodium",
+                "1 tbsp italian seasoning",
+                "1 medium bay leaf (whole)",
+                "3/4 tsp seal salt (to taste)",
+                "1/4 tsp black pepper (to taste)",
+                "1 medium spaghetti squash (cook the whole thing, but the soup only needs half)"
+            ],
+            note: "Store: keep the soup in an airtight container in the fridge up to 5 days. Meal Prep: Roast the spaghetti squash ahead or make the whole soup. Reheat: Warm it up on the stove or in the microwave until hot. Freeze: Freeze in zip-top bags to save space or use souper cubes for easy portions. Nutrition Info: Calories 100; Fat 3.5g; Protein 12.4g; Total Carbs 5.9g; Net Carbs 4.9g; Fiber 1g; Sugar 1.7g",
+            instructions: [
+                "In a large Dutch oven or pot, heat the olive oil over medium heat. Add the carrots, celery, and onions. Saute for about 5 minutes, until the onions are translucent.",
+                "Add the chicken breasts (you can use either raw or precooked), chicken broth, Italian seasoning, and bay leaf. Increase heat to bring to a boil, then reduce heat, cover, and simmer for 1 hour. (If using raw chicken, remove it after 30 minutes, shred it, and return to the pot to continue simmering.)",
+                "Meanwhile, preheat the oven to 375 degrees F (191 degrees C). Poke holes in the spaghetti squash using a sharp knife. Place on a baking sheet and bake for 40-60 minutes, until you can easily pierce through the skin with only a little resistance when using a fork. (Don't overcook to the point where there's no resistance at all, or the noodles will be mushy.)",
+                "When the spaghetti squash is done cooking and cool enough to handle, slice it in half and use a fork to scoop out the strands (pull with the fork in the same direction as the strands, crosswise across the short side of the spaghetti squash).",
+                "Remove the bay leaf. Stir in the noodles from half of the spaghetti squash, or about 3 cups of spaghetti squash noodles. Add salt and pepper to taste."
+            ]
+        },
+        {
+            Author: [
+                "Katrin Nurnberger"
+            ],
+            name: "Keto Tortilla Chips",
+            tags: ["keto", "snacks"],
+            image: "./images/keto-snack.jpg",
+            servings: "8",
+            prepTime: "10 minutes",
+            cookTime: "7 minutes",
+            ingredients: [
+                "2 cups pre-shredded mozzarella",
+                "3/4 cup almond flour, ground almonds work well too",
+                "2 tbs psyllium husk or 2 tsp psyllium husk powder",
+                "pinch salt",
+                "optional: 1/4 tsp each garlic powder, onion powder, and paprika"
+            ],
+            note: "1.9g net carbs per portion. Substitute psyllium husk for 2 more tbs of almond flour.",
+            directions: [
+                "Melt the mozzarella cheese in a microwave-safe bowl. This takes between 90 seconds to 2 minutes, depending on the wattage of your microwave. Alternatively, melt it gently in a non-stick pot over low heat on the stove.",
+                "Add the almond flour or ground almonds and the psyllium husk plus the salt and spices, if using. Stir with a spatula or fork until combined.",
+                "Knead until you have a smooth dough. I used my hands for this.",
+                "Separate the dough into 2 balls and roll each ball out between 2 sheets of parchment paper. Roll out as thinly as possible with a rolling pin!",
+                "Cut the dough into triangles with a pizza cutter or knife. Spread out on a parchment paper lined baking sheet so the tortilla chips don't touch.",
+                "Bake the tortilla chips in the preheated oven until crispy and golden brown. Let them cool fully before eating - they crisp up as they cool.  "
+            ]
+        },
+        {
+            Author: [
+                "Katie"
+            ],
+            name: "Chocolate Keto Cake",
+            tags: ["Keto", "Dessert"],
+            image: "./images/keto-dessert.jpg",
+            servings: "8",
+            prepTime: "14 minutes",
+            cookTime: "14 minutes",
+            ingredients: [
+                "1 1/2 cups fine almond flour",
+                "1/4 cup cocoa powder",
+                "2 tbsp dutch cocoa",
+                "2 1/4 tsp baking powder",
+                "1/2 tsp salt",
+                "1/3 cup water or milk of choice",
+                "3 eggs",
+                "1/3 cup granulated erythritol",
+                "1 1/2 tsp pure vanilla extract"
+            ],
+            note: "",
+            instructions: [
+                "Preheat oven to 350 F",
+                "Grease an 8-inch pan and line with parchment",
+                "Stir all ingredients together very well then spread into pan",
+                "If needed, use a second sheet of parchment to smooth down",
+                "Bake 14 minutes on the center rack (some ovens require more baking time, so continue cooking until firm if needed).",
+                "Let cool completely before frosting."
+            ]
+        },
 ];
     
 export default recipes;
