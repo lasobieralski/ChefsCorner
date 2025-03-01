@@ -1,34 +1,59 @@
 header {
-  background-color: var(--background-color);
+  /* background-color: var(--background-color);
   padding: 20px 40px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
   border-bottom: 2px solid var(--primary-color);
-  color: var(--text-color);
+  color: var(--text-color); */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: var(--background-color);
+  text-align: center;
+  border-bottom: 2px solid var(--primary-color);
 }
 
 .logo-name {
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  justify-content: center;
+  text-align: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
 }
 
 .logo-name h1 {
   color: var(--primary-color);
+  margin-left: 10px;
 }
 
 .logo {
   height: 70px;
-  margin-right: 15px;
+  /* margin-right: 10px; */
+}
+
+.nav-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  /* margin-top: 50px; */
+  /* position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translate(-50%); */
+  /* flex-grow: 1;
+  display: flex;
+  justify-content: flex-end; */
 }
 
 .header-lower {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   width: 100%;
-  align-items: center;
+  /* align-items: center; */
 }
 
 .search-bar input[type="text"] {
@@ -42,17 +67,20 @@ header {
 .navigation {
   list-style: none;
   display: flex;
-  margin-right: 20px;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 0;
   padding: 0;
 }
 
 .navigation li {
   margin-left: 20px;
+  padding: 20px;
 }
 
 .navigation li a {
   text-decoration: none;
-  color: var(--text-color);
+  color: var(--primary-color);
   font-weight: 600;
   transition: color 0.3s;
 }
@@ -109,4 +137,29 @@ footer .social img:hover {
 footer .social {
   display: flex;
   gap: 10px;
+}
+
+@media (max-width: 768px) {
+  header {
+      flex-direction: column; /* Stack items */
+      text-align: center;
+  }
+
+  .logo-name {
+      flex-direction: column; /* Stack logo and name */
+  }
+
+  .nav-container {
+      justify-content: center; /* Keep nav centered */
+      margin-top: 10px;
+  }
+
+  .navigation {
+      flex-direction: column; /* Stack navigation links */
+      align-items: center;
+  }
+
+  .navigation li {
+      margin: 10px 0; /* Space out items when stacked */
+  }
 }

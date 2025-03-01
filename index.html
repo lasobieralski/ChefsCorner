@@ -18,6 +18,7 @@
   <script type="module" defer src="ccmain.js"></script>
 </head>
 <body>
+  <!-- Signup Modal -->
   <div id="signupModal" class="modal">
     <div class="modal-content">
       <h2>Create an Account</h2>
@@ -27,6 +28,8 @@
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required>
         <input type="submit" value="Sign Up">
+        <!-- Close Modal Button -->
+        <button id="closeSignupModal" class="close-button">&times;</button>
       </form>
     </div>
   </div>
@@ -37,9 +40,7 @@
         <img src="images/logo.jpg" alt="ChefsCorner Logo" class="logo">
         <h1>ChefsCorner</h1>
       </div>
-      <section class="nav-container">
-
-      
+      <section class="nav-container">     
         <div class="header-lower">
           <!-- <div class="search-bar">
             <input type="text" placeholder="Search recipes...">
@@ -55,11 +56,13 @@
       </section>
     </header>
     <!-- Welcome Banner -->
-    <div class="hero>">
-      <img src="images/calm_scene.jpg" alt="Three birds flying over the ocean with a sunset sky">
+    <div class="hero">
+      <img src="images/recipe-book.jpg" alt="Three birds flying over the ocean with a sunset sky">
       <div class="hero-content">
         <h1 id="welcome">Welcome to ChefsCorner</h1>
         <h2 id="guide">Your Recipe Manager</h2>
+        <!-- Open Modal Button -->
+        <button id="openSignupModal">Create an Account</button>
       </section>
     </div>
 

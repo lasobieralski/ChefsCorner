@@ -124,28 +124,71 @@ function init() {
 
     // Set up the navigation button to render a random recipe
     handleNavigationClick();
-}
-// Show the modal when the page loads
-window.onload = function() {
-    document.getElementById('signupModal').style.display = 'block';
-  };
 
-  // Handle the form submission
-  document.getElementById('signupForm').addEventListener('submit', function(e) {
+
+}
+
+// Get modal and button elements
+const signupModal = document.getElementById('signupModal');
+const openModalButton = document.getElementById('openSignupModal');
+const closeModalButton = document.getElementById('closeSignupModal'); // Assuming you have a close button in the modal
+
+// Function to open modal
+function openModal() {
+    signupModal.style.display = 'block';
+}
+
+// Function to close modal
+function closeModal() {
+    signupModal.style.display = 'none';
+}
+
+// Show modal when clicking the "Create an Account" button
+openModalButton.addEventListener('click', openModal);
+
+// Close modal when clicking the close button
+closeModalButton.addEventListener('click', closeModal);
+
+// Handle the form submission
+document.getElementById('signupForm').addEventListener('submit', function(e) {
     e.preventDefault();
+    
     // Get username and password values
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
-    
-    // For demonstration purposes, save the user data to localStorage
-    // NOTE: In a production environment, you should never store passwords in plain text
+
+    // Save user data to localStorage (for demo purposes)
     localStorage.setItem('user', JSON.stringify({ username, password }));
-    
+
     // Hide the modal after signup
-    document.getElementById('signupModal').style.display = 'none';
-    
-    // Notify the user or update the UI accordingly
+    closeModal();
+
+    // Notify the user
     alert('Account created successfully!');
-  });
+});
+
+// // Show the modal when the page loads
+// window.onload = function() {
+//     document.getElementById('signupModal').style.display = 'block';
+//   };
+
+//   // Handle the form submission
+//   document.getElementById('signupForm').addEventListener('submit', function(e) {
+//     e.preventDefault();
+//     // Get username and password values
+//     const username = document.getElementById('username').value;
+//     const password = document.getElementById('password').value;
+    
+//     // For demonstration purposes, save the user data to localStorage
+//     // NOTE: In a production environment, you should never store passwords in plain text
+//     localStorage.setItem('user', JSON.stringify({ username, password }));
+    
+//     // Hide the modal after signup
+//     document.getElementById('signupModal').style.display = 'none';
+    
+//     // Notify the user or update the UI accordingly
+//     alert('Account created successfully!');
+//   });
+
 // Call init to start the app
 document.addEventListener("DOMContentLoaded", init);

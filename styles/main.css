@@ -12,25 +12,28 @@ Cool White – #F0F8F7*/
   overflow: hidden;
 }
 
-img {
+.hero img {
   width: 100%;
-  height: auto;
+  /* height: auto; */
+  max-height: 500px;
+  max-width: 900px;
   /* display: block; */
   filter: brightness(100%);
   border-radius: 10px;
   border: 3px solid black;
   /* max-width: 600px; */
+  margin-top: 50px;
 }
 
 .hero-content {
   position: absolute;
-  /* padding-top: 10px; */
-  top: 40%;
+  padding: 20px;
+  top: 35%;
   left: 50%;
-  transform: translate(-5%, -50%);
-  color: deep teal;
-  /* background-color: rgba(0, 0, 0, 0.5);
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8); */
+  transform: translate(-50%, -50%);
+  color: #F0F8F7;
+  background-color: rgba(0, 0, 0, 0.5);
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
 }
 
 #welcome {
@@ -66,9 +69,10 @@ main {
 }
 /* Modal content box */
 .modal-content {
+  position: relative;
   background-color: #fefefe;
   margin: 15% auto;
-  padding: 20px;
+  padding: 50px;
   border: 1px solid #888;
   width: 300px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
@@ -94,6 +98,46 @@ input[type="submit"] {
 input[type="submit"]:hover {
   background-color: teal;
 }
+
+#openSignupModal {
+  font-size: 1rem;
+  font-weight: bold;
+  background: #ffffff;
+  color: #006D77; /* Deep teal from your color palette */
+  padding: 12px 24px;
+  border: 3px solid #006D77;
+  border-radius: 8px; /* Rounded corners */
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  text-transform: uppercase; /* Makes text stand out */
+}
+
+#closeSignupModal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+#closeSignupModal:hover {
+  color: #006D77;
+}
+
+#openSignupModal:hover {
+  background: #006D77;
+  color: white;
+  border: 3px solid white;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+  transform: scale(1.05); /* Slight increase in size */
+}
+
 
 /* h1 {
   font-size: 2.5em;
@@ -165,3 +209,6 @@ h2 {
   color: var(--secondary-color);
 }
 >>>>>>> 3b28c2195ec3c0497624195ceba445217514fce8 */
+
+@media (max-width: 768px) {
+}
