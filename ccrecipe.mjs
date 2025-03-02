@@ -54,7 +54,7 @@ const recipes = [
             "14 Days to New Vigor and Health"
             ],
         name: "Hash Brown Potatoes",
-        tags: ["Potatoes, Breakfast"],
+        tags: ["Potatoes", "Breakfast"],
         image: "./images/hashbrowns.jpg",
         servings: "1 (eat all you want)",
         prepTime: "3 minute",
@@ -80,8 +80,8 @@ const recipes = [
             "A Word of Wisdom",
             "14 Days to New Vigor and Health"
         ],
-        name: ": Apple Pie Waffles or Pancakes",
-        tags: ["Waffles, Pancakes, Breakfast"],
+        name: "Apple Pie Waffles or Pancakes",
+        tags: ["Waffles", "Pancakes", "Breakfast"],
         image: "#",
         servings: "makes 14 pancakes or 4 waffles",
         prepTime: "30 minutes",
@@ -123,7 +123,7 @@ const recipes = [
             "14 Days to New Vigor and Health"
         ],
         name: "Quick Blueberry Oatmeal",
-        tags: ["Oatmeal, Breakfast"],
+        tags: ["Oatmeal", "Breakfast"],
         image: "./images/blueberry_oatmeal.jpg",
         servings: "1",
         prepTime: "2 minutes",
@@ -151,7 +151,7 @@ const recipes = [
             "14 Days to New Vigor and Health"
         ],
         name: "Cold or Hot Rice—Cereal—Fruit Combo",
-        tags: ["Cereal, Rice, Breakfast"],
+        tags: ["Cereal", "Rice", "Breakfast"],
         image: "./images/cinnamon_rice_cereal.jpg",
         servings: "1",
         prepTime: "2-8 minutes",
@@ -178,7 +178,7 @@ const recipes = [
             "14 Days to New Vigor and Health"
         ],
         name: "Cold Cereal",
-        tags: ["Cereal, Breakfast"],
+        tags: ["Cereal", "Breakfast"],
         image: "./images/grapenuts_blueberries.jpg",
         servings: "1",
         prepTime: "2 minutes",
@@ -204,7 +204,7 @@ const recipes = [
             "14 Days to New Vigor and Health"
         ],
         name: "Wheatena Whole Wheat Hot Cereal",
-        tags: ["Cereal, Whole Wheat, Breakfast"],
+        tags: ["Cereal", "Whole Wheat", "Breakfast"],
         //image:
         servings: "1",
         prepTime: "1 minute",
@@ -228,7 +228,7 @@ const recipes = [
             "Amy Allen Johnson"
         ],
         name: "Slow Cooker Cracked Wheat Cereal",
-        tags: ["Cereal, Whole Wheat, Breakfast"],
+        tags: ["Cereal", "Whole Wheat", "Breakfast"],
         image:"./images/crackedwheatcereal.jpg",
         servings: "4 -- 1/2 cup serving size",
         prepTime: "",
@@ -254,7 +254,7 @@ const recipes = [
             "Lisaann Sobieralski",
         ],
         name: "Turkey Vegetable Soup",
-        tags: ["Soup, Turkey, Vegetable, Lunch, Dinner"],
+        tags: ["Soup", "Turkey", "Vegetable", "Lunch", "Dinner"],
         image: "./images/turkeyvegsoup.jpg",
         servings: "8-10",
         prepTime: "15 minutes",
@@ -278,7 +278,7 @@ const recipes = [
             "Lisaann Sobieralski",
         ],
         name: "Tuna Pita",
-        tags: ["Lunch, Tuna, Sandwich"],
+        tags: ["Lunch", "Tuna", "Sandwich"],
         image: "./images/pitatunasalad.jpg",
         servings: "5-6",
         prepTime: "5-10 minutes",
@@ -307,7 +307,7 @@ const recipes = [
             "14 Days to New Vigor and Health"
         ],
         name: "Lettuce, Tomato, Onion, and Cucumber Sandwich",
-        tags: ["Lunch, Sandwich"],
+        tags: ["Lunch", "Sandwich"],
         //image:
         servings: "1",
         prepTime: "",
@@ -339,8 +339,8 @@ const recipes = [
             "14 Days to New Vigor and Health"
         ],
         name: "Fantastic Spaghetti Sauce",
-        tags: ["Dinner, Spaghetti, Pasta"],
-        image:"./images/spaghetti.jpg",
+        tags: ["Dinner", "Spaghetti", "Pasta"],
+        image:"#",
         servings: "10-12",
         prepTime: "15 minutes",
         cookTime: "1 1/2 hours",
@@ -372,8 +372,8 @@ const recipes = [
             "14 Days to New Vigor and Health"
         ],
         name: "Spice Cake",
-        tags: ["Dessert, Cake"],
-        image:"./images/spicecake.jpg",
+        tags: ["Dessert", "Cake"],
+        image:"#",
         servings: "9-16",
         prepTime: "",
         cookTime: "30-45 minutes",
@@ -408,7 +408,7 @@ const recipes = [
                 ""
             ],
             name: "Holiday Chocolate Mousse",
-            tags: ["Dessert, Mousse"],
+            tags: ["Dessert", "Mousse"],
             image:"./images/holidaychocmousse.jpg",
             servings: "1",
             prepTime: "3 min",
@@ -435,7 +435,7 @@ const recipes = [
             "Virta"
         ],
         name: "Broccoli Cheddar Soup",
-        tags: ["Lunch, Dinner, Soup"],
+        tags: ["Lunch", "Dinner", "Soup"],
         image:"./images/broccolicheddarsoup.jpg",
         servings: "12",
         prepTime: "15 minutes",
@@ -471,7 +471,7 @@ const recipes = [
             "Lisaann Sobieralski"
         ],
         name: "Deviled Eggs",
-        tags: ["Lunch, Dinner, Breakfast"],
+        tags: ["Lunch", "Dinner", "Breakfast"],
         image:"./images/deviledeggs.jpg",
         servings: "12",
         prepTime: "10 minutes",
@@ -507,7 +507,7 @@ const recipes = [
             "Virta"
         ],
         name: "Burgoo Stew",
-        tags: ["Lunch, Dinner, Stew, Soup"],
+        tags: ["Lunch", "Dinner", "Stew", "Soup"],
         image:"./images/burgoostew.jpg",
         servings: "12",
         prepTime: "10 minutes",
@@ -540,7 +540,7 @@ const recipes = [
             "Tasty Freedom 2 Cookbook recipe created by Laurie Lundgren"
         ],
         name: "Banana Bread",
-        tags: ["Breakfast, Lunch, Bread"],
+        tags: ["Breakfast", "Lunch", "Bread"],
         image:"./images/banana_bread.jpg",
         servings: "4",
         prepTime: "10 minutes",
@@ -574,7 +574,7 @@ const recipes = [
             "Taylor Ann Spencer", "Delish Test Kitchen"
         ],
         name: "Cheesy Frico Fried Egg Tostadas",
-        tags: ["Breakfast, Keto"],
+        tags: ["Breakfast", "Keto"],
         image: "./images/keto-breakfast.jpg",
         servings: "4",
         prepTime: "20 minutes",
