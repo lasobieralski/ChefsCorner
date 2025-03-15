@@ -1,16 +1,10 @@
 /* HEAD */
-/* Here is a color palette based on the blues and greens from the logo:*/
-
-/*Deep Teal – #006D77
-Sky Blue – #83C5BE
-Mint Green – #B2E5D6
-Soft Lime Green – #D4E157
-Cool White – #F0F8F7*/ 
-.hero {
+/* .hero {
   position: relative;
   text-align: center;
-  overflow: hidden;
-}
+  width: 600px;
+  /* overflow: hidden; 
+} */
 
 img {
   width: 100%;
@@ -25,143 +19,31 @@ img {
 .hero-content {
   position: absolute;
   /* padding-top: 10px; */
-  top: 40%;
-  left: 50%;
+  top: 35%;
+  left: 10%;
   transform: translate(-5%, -50%);
-  color: deep teal;
+  color:  deep teal;
   /* background-color: rgba(0, 0, 0, 0.5);
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8); */
 }
 
 #welcome {
-  font-size: 2rem;
-  margin: 40px 0;
-  text-align: center;
+  font-family: "Amatic SC";
+  font-size:2rem;
+  /* margin: 40px 0; */
+  text-align: left;
 }
 
-#guide {
+/* #guide {
   font-family: "Amatic SC";
   font-size: 2.5rem;
   font-weight: bold;
   text-align: center;
   margin-top: 20px;
   columns: deep teal;
-}
-
-main {
-  padding: 20px;
-}
-
-/* Modal container */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.4); /* Black with opacity */
-}
-/* Modal content box */
-.modal-content {
-  background-color: #fefefe;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 300px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  border-radius: 4px;
-}
-/* Input fields */
-input[type="text"],
-input[type="password"] {
-  width: 100%;
-  padding: 8px;
-  margin: 8px 0;
-  box-sizing: border-box;
-}
-/* Submit button */
-input[type="submit"] {
-  background-color: teal;
-  color: white;
-  padding: 10px;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-}
-input[type="submit"]:hover {
-  background-color: teal;
-}
-
-/* h1 {
-  font-size: 2.5em;
-  margin-bottom: 10px;
-}
-
-h2 {
-  font-size: 2.5em;
-  margin-bottom: 20px;
 } */
+
 /* main {
-  padding: 40px 20px;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 30px;
-  background-color: var(--background-color);
-}
-
-.recipe-image,
-.recipe-info,
-.ingredients,
-.instructions {
-  background-color: var(background-color);
-  padding: 30px;
-  border-radius: 15px;
-  border: 1px solid var(--accent-color);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-  margin-bottom: 20px;
-}
-
-.recipe-image img {
-  width: 100%;
-  border-radius: 15px;
-  object-fit: cover;
-}
-
-.recipe-info {
-  text-align: center;
   padding: 20px;
-}
+} */
 
-.recipe-info h2 {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
-  font-family: "Amatic SC", cursive;
-  color: var(--primary-color);
-}
-
-.recipe-info p {
-  margin: 5px 0;
-  font-size: 1.1rem;
-  color: var(--text-color);
-}
-
-.ingredients h3,
-.instructions h3 {
-  font-size: 1.8rem;
-  margin-bottom: 20px;
-  border-bottom: 2px solid var(--accent-color);
-  display: inline-block;
-  padding-bottom: 5px;
-}
-
-.ingredients p,
-.instructions p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin: 8px 0;
-  color: var(--secondary-color);
-}
->>>>>>> 3b28c2195ec3c0497624195ceba445217514fce8 */

@@ -1,6 +1,6 @@
 <!-- main index.html page -->
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="en">
 <head>
   <meta name="description" content="ChefsCorner - Your Recipe Manager">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,24 +11,35 @@
   <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
   <!-- CSS Files -->
   <link rel="stylesheet" href="styles/global.css">
-  <link rel="stylesheet" href="styles/layout.css">
-  <link rel="stylesheet" href="styles/main.css">
-  <link rel="stylesheet" href="styles/recipe.css">
-  <link rel="stylesheet" href="styles/share.css">
-  <script type="module" defer src="ccmain.js"></script>
+  <link rel="stylesheet" href="styles/layout.css"> 
+  <!-- <link rel="stylesheet" href="styles/main.css"> -->
+  <!-- <link rel="stylesheet" href="styles/recipe.css"> -->
+  <!-- <link rel="stylesheet" href="styles/share.css"> -->
+  <link rel="stylesheet" href="styles/modal.css">
+  <link rel="stylesheet" href="styles/home.css">
+  <script type="module" src="ccmain.js"></script>
+  <script src="modal.js" defer></script>
 </head>
 <body>
-  <div id="signupModal" class="modal">
-    <div class="modal-content">
-      <h2>Create an Account</h2>
-      <form id="signupForm">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <input type="submit" value="Sign Up">
-      </form>
+  <div
+      id="modal"
+      class="modal"
+      role="dialog"
+      aria-labelledby="modal-title"
+      aria-modal="true"
+      aria-hidden="true"
+    >
+      <section class="modal-content">
+        <button class="close-button" aria-label="Close modal">&times;</button>
+        <h2 id="modal-title">Create Account</h2>
+        <input type="email" id="auth-email" placeholder="Email" required>
+        <input type="password" id="auth-password" placeholder="password" required>
+        <button id="auth-submit">Log In</button>
+        <p id="toggle-auth">Need an account? <a href="#">Sign Up</a></p> 
+
+      </section>
     </div>
+   
   </div>
   <div class="content">
     <!-- Header -->
@@ -38,9 +49,7 @@
         <h1>ChefsCorner</h1>
       </div>
       <section class="nav-container">
-
-      
-        <div class="header-lower">
+        <!-- <div class="header-lower"> -->
           <!-- <div class="search-bar">
             <input type="text" placeholder="Search recipes...">
           </div> -->
@@ -49,18 +58,24 @@
               <!-- <li><a href="ccindex.html">Home</a></li> -->
               <li><a href="ccrecipes.html">Recipes</a></li>
               <li><a href="sharerecipes.html">Share Recipes</a></li>
+              <li><button id="open-modal">Create Account</li>
+              <!-- <li><button id="logout-btn">Log Out</button></li> -->
             </ul>
           </nav>
+          
+          </div>
         </div>
       </section>
+
     </header>
+  
     <!-- Welcome Banner -->
-    <div class="hero>">
-      <img src="images/calm_scene.jpg" alt="Three birds flying over the ocean with a sunset sky">
+    <div class="hero">
+      <img id="hero-img" src="images/kitchen.jpg" alt="Kitchen scene of counters with a range between them prepared for cooking.">
       <div class="hero-content">
-        <h1 id="welcome">Welcome to ChefsCorner</h1>
-        <h2 id="guide">Your Recipe Manager</h2>
-      </section>
+        <h1 id="welcome">Welcome to ChefsCorner:      Your Recipe Manager</h1>
+        <!-- <h2 id="guide">Your Recipe Manager</h2> -->
+      </div>
     </div>
 
     <!-- Main Content -->
@@ -80,28 +95,10 @@
           skills, and enjoy a more organized kitchen.          
         </p>
       </div>
-      <!-- <div class="recipe-image">
-        <img src="images/recipe-placeholder.jpg" alt="Recipe Image">
-      </div>
-      <div class="recipe-info">
-        <h2>Recipe name</h2>
-        <p>Tags</p>
-        <p>Number of servings</p>
-        <p>Description</p>
-      </div>
-      <section class="ingredients">
-        <h3>Ingredients</h3>
-        <p>Ingredient 1</p>
-        <p>Ingredient 2</p>
-      </section>
-      <section class="directions">
-        <h3>Directions</h3>
-        <p>Step 1</p>
-        <p>Step 2</p>
-      </section> -->
+      
     </main>
     <!-- Footer -->
-    <footer>
+    <footer id="foot-container">
       <p>&copy; 2025 ChefsCorner - Lisaann Sobieralski, Tary-Denise Tupouata</p>
       <!-- <p><a href="site-plan.html">Site Plan</a></p> -->
       <p><a href="contactus.html">Contact Us</a></p>
@@ -109,6 +106,6 @@
         <img src="images/facebook.png" alt="Facebook Icon">
       </div>
     </footer>
-  </div>
+  
 </body>
 </html>

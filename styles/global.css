@@ -12,4 +12,32 @@ body {
   color: var(--text-color);
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-family: 'Amatic SC';
+    font-size: 3rem;
+    color: var(--primary-color); /* Customize as needed */
+    margin: 0;
+}
+
+/* Universal Styles */
+body {
+  font-family: var(--primary-font);
+  font-size: larger;
+  color: var(--primary-color);
+  
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  padding: auto;
+}
+
+.content {
+  max-width: 1200px;         /* Maximum width for the page */
+  margin: 0 auto;            /* Center the container horizontally */
+  padding: 20px;             /* Add padding inside the container */
 }
