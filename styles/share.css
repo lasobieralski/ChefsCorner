@@ -1,7 +1,6 @@
 /*share.css page */
 
 #main-share {
-  padding: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,11 +9,10 @@
 #sharerecipes-form {
   background-color: var(background-color);
   padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
   width: 90%;
-  max-width: 650px;
-  border: 2px solid var(--secondary-color);
+  max-width: 380px;
+  border: 3px solid black;
 }
 
 form label {
@@ -25,13 +23,13 @@ form label {
 
 form input,
 form textarea {
-  width: 100%;
+  width: 90%;
   margin-bottom: 15px;
   padding: 10px;
   border-radius: 8px;
-  border: 1px solid var(--secondary-color);
+  border: 2px solid var(--primary-color);
   font-family: "Poppins", sans-serif;
-  background-color: var(--background-color);
+  background-color: white;
 }
 
 form button {
@@ -43,13 +41,17 @@ form button {
   cursor: pointer;
   font-size: 1.1rem;
   font-weight: 600;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s, transform 0.2s;
-  display: block;
   margin: 0 auto;
 }
 
 form button:hover {
   background-color: var(--accent-color);
   transform: scale(1.05);
+}
+#footer-container {
+  width: 100%;
+  max-width: 90%;
+  border: 3px solid black;
+  border-radius: 8px;
+  margin-left: 20px;
 }
