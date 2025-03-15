@@ -1,24 +1,5 @@
 /*modal.css page*/
-nav {
-    background-color: var(--secondary-color);
-    padding: 10px;
-    border-radius: 8px;
-    border: 3px solid var(--text-color);
-}
-nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-nav ul li {
-    margin: 0 15px;
-}
-nav ul li button:hover, nav ul li a:hover {
-    text-decoration: underline;
-}
+
 .modal {
     display: none; /* hidden by default */
     /* display: block; */

@@ -43,7 +43,9 @@ header {
   flex-direction: column; /*this controls the display navigation*/
   
 }
-
+nav ul li {
+  margin: 0 15px; 
+}
 li a {
   color: white;
   padding: 8px 16px;
