@@ -13,6 +13,8 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-size: larger;
+  color: var(--primary-color);
 }
 
 h1 {
@@ -20,14 +22,6 @@ h1 {
     font-size: 3rem;
     color: var(--primary-color); /* Customize as needed */
     margin: 0;
-}
-
-/* Universal Styles */
-body {
-  font-family: var(--primary-font);
-  font-size: larger;
-  color: var(--primary-color);
-  
 }
 
 img {

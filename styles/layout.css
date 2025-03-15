@@ -57,8 +57,9 @@ li a:hover {
   background-color: white;
 }
 
-/* Footer */
-#foot-container {
+/* Footer (remember that you can add "!important" after css 
+for conflicting rules.*/
+#footer-container {
   max-width: 90%;
   border: 3px solid black;
   border-radius: 8px;

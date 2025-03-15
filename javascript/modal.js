@@ -1,6 +1,9 @@
 //modal.js file
 const modal = document.querySelector("#modal");
 const openModalButton = document.querySelector("#open-modal"); //assume you have a button to open the modal
+if (openModalButton) {
+    openModalButton.addEventListener("click", openModal);
+}
 const closeModalButton = document.querySelector(".close-button");
 
 function openModal() {

@@ -1,5 +1,5 @@
 //ccrecipe.js page
-import recipes from "./ccrecipe.mjs";
+import recipes from "./javascript/ccrecipe.mjs";
 
 // Convert tags from string to array for easier handling
 recipes.forEach((recipe) => {
