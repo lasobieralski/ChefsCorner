@@ -15,26 +15,12 @@
   <link rel="stylesheet" href="styles/media.css">
   <link rel="stylesheet" href="styles/modal.css">
   <link rel="stylesheet" href="styles/home.css">
+  <link rel="stylesheet" href="styles/loginmodal.css">
   <script type="module" src="javascript/ccmain.js"></script>
-  <script src="javascript/modal.js" defer></script>
+  
 </head>
 <body>
-  <!-- Signup Modal -->
-  <div id="signupModal" class="modal">
-    <div class="modal-content">
-      <h2>Create an Account</h2>
-      <form id="signupForm">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <input type="submit" value="Sign Up">
-        <!-- Close Modal Button -->
-        <!-- <button id="closeSignupModal" class="close-button">&times;</button> -->
-      </form>
-    </div>
-   
-  </div>
+  
   <div class="content">
     <!-- Header -->
     <header>
@@ -42,27 +28,57 @@
         <img src="images/logo.jpg" alt="ChefsCorner Logo" class="logo">
         <h1>ChefsCorner</h1>
       </div>
-      <section class="nav-container">
-        <!-- <div class="header-lower"> -->
-          <!-- <div class="search-bar">
-            <input type="text" placeholder="Search recipes...">
-          </div> -->
-          <nav>
-            <ul class="navigation">
-              <!-- <li><a href="ccindex.html">Home</a></li> -->
-              <li><a href="pages/ccrecipes.html">Recipes</a></li>
-              <li><a href="pages/sharerecipes.html">Share Recipes</a></li>
-              <!-- <li><button id="open-modal">Create Account</li> -->
-              <!-- <li><button id="logout-btn">Log Out</button></li> -->
-            </ul>
-          </nav>
-          
-          </div>
+    
+      <!-- Sign In Section (Button & Dropdown) -->
+      <div class="account-dropdown">
+        <button id="signInButton">Sign In</button>
+        <div id="signInDropdown" class="dropdown hidden">
+          <h3>Account</h3>
+          <hr>
+          <button id="loginBtn">Sign In</button>
+          <button id="signupBtn">Create Account</button>
         </div>
-      </section>
-
+      </div>
+    
+      <nav>
+        <ul class="navigation">
+          <li><a href="pages/ccrecipes.html">Recipes</a></li>
+          <li><a href="pages/sharerecipes.html">Share Recipes</a></li>
+        </ul>
+      </nav>
     </header>
-  
+      
+    <!-- Login Form (Hidden Initially) -->
+    <!-- <div id="loginFormContainer" class="hidden form-container">
+      <h2>Login</h2>
+      <form id="loginForm">
+        <label for="login-username">Username:</label>
+        <input type="text" id="login-username" name="username" required>
+
+        <label for="login-password">Password:</label>
+        <input type="password" id="login-password" name="password" required>
+
+        <button type="submit">Login</button>
+      </form>
+    </div> -->
+
+    <!-- Signup Form (Hidden Initially) -->
+    <!-- <div id="signupFormContainer" class="hidden form-container">
+      <h2>Create an Account</h2>
+      <form id="signupForm">
+        <label for="signup-username">Username:</label>
+        <input type="text" id="signup-username" name="username" required>
+
+        <label for="signup-email">Email:</label>
+        <input type="email" id="signup-email" name="email" required>
+
+        <label for="signup-password">Password:</label>
+        <input type="password" id="signup-password" name="password" required>
+
+        <button type="submit">Sign Up</button>
+      </form>
+    </div> -->
+
     <!-- Welcome Banner -->
     <div class="hero">
       <img id="hero-img" src="images/kitchen.jpg" alt="Kitchen scene of counters with a range between them prepared for cooking.">
@@ -91,6 +107,7 @@
       </div>
       
     </main>
+    
     <!-- Footer -->
     <footer id="footer-container">
       <p>&copy; 2025 ChefsCorner:</p> 
@@ -101,6 +118,8 @@
         <img src="images/facebook.png" alt="Facebook Icon">
       </div>
     </footer>
+    <script src="javascript/modal.js" defer></script>
+    <script src="javascript/login.js" defer></script>
   
 </body>
 </html>

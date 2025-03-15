@@ -1,0 +1,67 @@
+/*loginmodal.css*/
+/* Style the Sign In Button */
+#signInButton {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 10px 15px;
+  border: 3px solid dark teal;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 1.20rem;
+  /* font-weight: bold; */
+}
+
+#signInButton:hover {
+  background-color: white;
+  color: black;
+  font-weight: bold;
+}
+
+/* Dropdown Menu */
+.account-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Hidden by default */
+.dropdown {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  width: 180px;
+  text-align: center;
+  border-radius: 5px;
+  top: 40px;
+  right: 0;
+}
+
+/* Show dropdown when active */
+.dropdown.active {
+  display: block;
+}
+
+.dropdown h3 {
+  margin: 0;
+  padding-bottom: 5px;
+}
+
+.dropdown hr {
+  margin: 5px 0;
+}
+
+.dropdown button {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0;
+  background-color: #83c5be;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.dropdown button:hover {
+  background-color: #005662;
+  color: white;
+}
