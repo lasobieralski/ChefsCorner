@@ -1,5 +1,5 @@
 //ccmain.js
-import recipes from './javascript/ccrecipe.mjs';
+import recipes from '../javascript/ccrecipe.mjs';
  
 // function to generate a randome number between 0 and num-1
 function random(num) {
