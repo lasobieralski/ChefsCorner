@@ -1,5 +1,5 @@
 //ccrecipe.js page
-import recipes from "./javascript/ccrecipe.mjs";
+import recipes from "../javascript/ccrecipe.mjs";
 
 // Convert tags from string to array for easier handling
 recipes.forEach((recipe) => {
@@ -189,9 +189,13 @@ function init() {
     renderRecipes(recipes); // ✅ Ensure recipes are rendered first
 
     // ✅ Attach event listeners to recipe cards dynamically
-    document
-        .querySelector("#recipe-list")
-        .addEventListener("click", function (event) {
+    const recipeList = document.querySelector("#recipe-list");
+    if (!recipeList) {
+        console.error("❌ ERROR: Recipe list container not found!");
+    }
+
+            
+        document.addEventListener("click", function (event) {
         const card = event.target.closest(".recipe-card"); // Find the clicked recipe card
         if (card) {
             const index = card.getAttribute("data-index"); // Get the index from data attribute
