@@ -36,13 +36,17 @@
     <main>
         <form id="search-form">
           <div class="container">
-            <input id="search-bar" type="text" name="search" placeholder="Search for a recipe" required>
-            <button type="submit">
-              <img src="images/search.svg" alt="search icon" class="icon">
-            </button>
+            <input
+              id="search-bar"
+              type="text"
+              name="search"
+              placeholder="Search for a recipe"
+              required
+            />
+            <button type="submit" class="search-button">Search</button>
           </div>
         </form>
-        <hr class="divider">
+        <!-- <hr class="divider"> -->
         <div>
           <!-- <button id="generateButton">Random Recipe</button> -->
         </div>
@@ -50,13 +54,25 @@
           <!-- Recipes will be dynamically inserted here -->
         </div>
       </main>
-  <footer>
-    <p>&copy; 2025 ChefsCorner - Lisaann Sobieralski, Tary-Denise Tupouata</p>
-    <p><a href="contactus.html">Contact Us</a></p>
-    <div class="social">
-      <img src="images/facebook.png" alt="Facebook Icon">
     </div>
-  </footer>
-</div>
-</body>
+    <footer>
+      <p>&copy; 2025 ChefsCorner - Lisaann Sobieralski, Tary-Denise Tupouata</p>
+      <p><a href="contactus.html">Contact Us</a></p>
+      <div class="social">
+        <img src="images/facebook.png" alt="Facebook Icon" />
+      </div>
+    </footer>
+
+    <!-- Recipe Modal -->
+    <div id="recipe-modal" class="modal hidden">
+      <!-- ✅ Ensure "hidden" is here -->
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <div id="modal-recipe-content"></div>
+      </div>
+    </div>
+
+    <!-- Your script should be at the very end -->
+    <script type="module" src="ccrecipe.js"></script>
+  </body>
 </html>

@@ -21,23 +21,19 @@
   <script src="modal.js" defer></script>
 </head>
 <body>
-  <div
-      id="modal"
-      class="modal"
-      role="dialog"
-      aria-labelledby="modal-title"
-      aria-modal="true"
-      aria-hidden="true"
-    >
-      <section class="modal-content">
-        <button class="close-button" aria-label="Close modal">&times;</button>
-        <h2 id="modal-title">Create Account</h2>
-        <input type="email" id="auth-email" placeholder="Email" required>
-        <input type="password" id="auth-password" placeholder="password" required>
-        <button id="auth-submit">Log In</button>
-        <p id="toggle-auth">Need an account? <a href="#">Sign Up</a></p> 
-
-      </section>
+  <!-- Signup Modal -->
+  <div id="signupModal" class="modal">
+    <div class="modal-content">
+      <h2>Create an Account</h2>
+      <form id="signupForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <input type="submit" value="Sign Up">
+        <!-- Close Modal Button -->
+        <button id="closeSignupModal" class="close-button">&times;</button>
+      </form>
     </div>
    
   </div>

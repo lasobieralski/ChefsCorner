@@ -6,14 +6,17 @@
   /* overflow: hidden; 
 } */
 
-img {
+.hero img {
   width: 100%;
-  height: auto;
+  /* height: auto; */
+  max-height: 500px;
+  max-width: 900px;
   /* display: block; */
   filter: brightness(100%);
   border-radius: 10px;
   border: 3px solid black;
   /* max-width: 600px; */
+  margin-top: 50px;
 }
 
 .hero-content {
@@ -45,5 +48,35 @@ img {
 
 /* main {
   padding: 20px;
-} */
+}
 
+.recipe-info h2 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  font-family: "Amatic SC", cursive;
+  color: var(--primary-color);
+}
+
+.recipe-info p {
+  margin: 5px 0;
+  font-size: 1.1rem;
+  color: var(--text-color);
+}
+
+.ingredients h3,
+.instructions h3 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--accent-color);
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.ingredients p,
+.instructions p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 8px 0;
+  color: var(--secondary-color);
+}
+>>>>>>> 3b28c2195ec3c0497624195ceba445217514fce8 */
