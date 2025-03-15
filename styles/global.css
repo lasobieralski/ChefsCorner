@@ -37,7 +37,5 @@ img {
 }
 
 .content {
-  max-width: 1200px;         /* Maximum width for the page */
-  margin: 0 auto;            /* Center the container horizontally */
-  padding: 20px;             /* Add padding inside the container */
+  max-width: 90%;   /*set for small screen*/
 }
