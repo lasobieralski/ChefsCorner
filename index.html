@@ -29,54 +29,45 @@
         <h1>ChefsCorner</h1>
       </div>
     
-      <!-- Sign In Section (Button & Dropdown) -->
-      <!-- <div class="account-dropdown">
-        <button id="signInButton">Sign In</button>
-        <div id="signInDropdown" class="dropdown-hidden">
-          <h3>Account</h3>
-          <hr>
-          <button id="loginBtn">Sign In</button>
-          <button id="signupBtn">Create Account</button>
-        </div>
-      </div> -->
+      
       <!-- Sign In Button (This stays in the header) -->
-<button id="signInButton">Sign In</button>
+      <button id="signInButton">Sign In</button>
 
-<!-- MODAL (Hidden by default) -->
-<div id="signInModal" class="modal hidden">
-    <div class="modal-content">
-        <button class="close-button">&times;</button>
-        <h2>Sign In</h2>
-        <form id="loginForm">
-            <label for="login-username">Username:</label>
-            <input type="text" id="login-username" required>
-            
-            <label for="login-password">Password:</label>
-            <input type="password" id="login-password" required>
-            
-            <button type="submit">Login</button>
-        </form>
-        
-        <p>Don't have an account? <button id="openSignupForm">Create Account</button></p>
-        
-        <!-- Signup Form (Hidden by default) -->
-        <div id="signupFormContainer" class="hidden">
-            <h2>Create an Account</h2>
-            <form id="signupForm">
-                <label for="signup-username">Username:</label>
-                <input type="text" id="signup-username" required>
+      <!-- MODAL (Hidden by default) -->
+      <div id="signInModal" class="modal hidden">
+          <div class="modal-content">
+              <button class="close-button">&times;</button>
+              <h2>Sign In</h2>
+              <form id="loginForm">
+                  <label for="login-username">Username:</label>
+                  <input type="text" id="login-username" required>
+                  
+                  <label for="login-password">Password:</label>
+                  <input type="password" id="login-password" required>
+                  
+                  <button type="submit">Login</button>
+              </form>
+              
+              <p>Don't have an account? <button id="openSignupForm">Create Account</button></p>
+              
+              <!-- Signup Form (Hidden by default) -->
+              <div id="signupFormContainer" class="hidden">
+                  <h2>Create an Account</h2>
+                  <form id="signupForm">
+                      <label for="signup-username">Username:</label>
+                      <input type="text" id="signup-username" required>
 
-                <label for="signup-email">Email:</label>
-                <input type="email" id="signup-email" required>
+                      <label for="signup-email">Email:</label>
+                      <input type="email" id="signup-email" required>
 
-                <label for="signup-password">Password:</label>
-                <input type="password" id="signup-password" required>
+                      <label for="signup-password">Password:</label>
+                      <input type="password" id="signup-password" required>
 
-                <button type="submit">Sign Up</button>
-            </form>
-        </div>
-    </div>
-</div>
+                      <button type="submit">Sign Up</button>
+                  </form>
+              </div>
+          </div>
+      </div>
 
       <nav>
         <ul class="navigation">
@@ -85,55 +76,7 @@
         </ul>
       </nav>
     </header>
-      
-    <!-- Login Form (Hidden Initially)
-    <div id="loginFormContainer" class="hidden-form-container">
-      <h2>Login</h2>
-      <form id="loginForm">
-        <label for="login-username">Username:</label>
-        <input type="text" id="login-username" name="username" required>
-
-        <label for="login-password">Password:</label>
-        <input type="password" id="login-password" name="password" required>
-
-        <button type="submit">Login</button>
-      </form>
-    </div> -->
-
-    <!-- Signup Form (Hidden Initially) -->
-    <!-- <div id="signupFormContainer" class="hidden-form-container">
-      <h2>Create an Account</h2>
-      <form id="signupForm">
-        <label for="signup-username">Username:</label>
-        <input type="text" id="signup-username" name="username" required>
-
-        <label for="signup-email">Email:</label>
-        <input type="email" id="signup-email" name="email" required>
-
-        <label for="signup-password">Password:</label>
-        <input type="password" id="signup-password" name="password" required>
-
-        <button type="submit">Sign Up</button>
-      </form>
-    </div>
-    <div id="modal" class="modal" aria-hidden="true">
-      <div class="modal-content">
-          <button class="close-button">&times;</button>
-          <h2>Sign In</h2>
-          <p>Enter your details below:</p>
-          <form id="loginForm">
-              <label for="login-username">Username:</label>
-              <input type="text" id="login-username" name="username" required>
-              <label for="login-password">Password:</label>
-              <input type="password" id="login-password" name="password" required>
-              <button type="submit">Sign In</button>
-          </form>
-      </div>
-    </div>
-    <div>
-      <button id="open-modal">Open Modal</button>
-    </div> -->
-  
+    
     <!-- Welcome Banner -->
     <div class="hero">
       <img id="hero-img" src="images/kitchen.jpg" alt="Kitchen scene of counters with a range between them prepared for cooking.">
