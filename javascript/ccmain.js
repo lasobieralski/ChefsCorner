@@ -190,5 +190,19 @@ document.getElementById('signupForm').addEventListener('submit', function(e) {
 //     alert('Account created successfully!');
 //   });
 
+// Function to check login state on page load
+function checkUserLogin() {
+    const loggedInUser = localStorage.getItem("loggedInUser");
+    if (loggedInUser) {
+        console.log(`✅ Logged in as: ${loggedInUser}`);
+        document.getElementById("signInButton").textContent = `Welcome, ${loggedInUser}`;
+    } else {
+        console.log("🔹 User is browsing as guest.");
+    }
+}
+
+// Run the check on page load
+document.addEventListener("DOMContentLoaded", checkUserLogin);
+
 // Call init to start the app
 document.addEventListener("DOMContentLoaded", init);
