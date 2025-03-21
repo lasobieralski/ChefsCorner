@@ -7,29 +7,36 @@ document.addEventListener("DOMContentLoaded", () => {
     const signupFormContainer = document.getElementById("signupFormContainer");
 
     if (!signInButton || !signInModal) {
-        console.error("❌ Sign-in elements not found. Check HTML IDs.");
+        console.warn("❌ Sign-in elements not found. Skipping modal initialization.");
         return;
     }
 
-    // Open Sign-in Modal
-    signInButton.addEventListener("click", () => {
-        signInModal.classList.add("open");
-    });
+    // ✅ Open Sign-in Modal (Only if button exists)
+    if (signInButton) {
+        signInButton.addEventListener("click", () => {
+            signInModal.classList.add("open");
+        });
+    }
 
-    // Close Modal
-    closeModalButton.addEventListener("click", () => {
-        signInModal.classList.remove("open");
-    });
+    // ✅ Close Modal (Only if button exists)
+    if (closeModalButton) {
+        closeModalButton.addEventListener("click", () => {
+            signInModal.classList.remove("open");
+        });
+    }
 
-    // Close modal when clicking outside of modal-content
+    // ✅ Close modal when clicking outside of modal-content
     window.addEventListener("click", (event) => {
-        if (event.target === signInModal) {
+        if (signInModal && event.target === signInModal) {
             signInModal.classList.remove("open");
         }
     });
 
-    // Show Signup Form inside modal
-    openSignupButton.addEventListener("click", () => {
-        signupFormContainer.classList.toggle("hidden");
-    });
+    // ✅ Show Signup Form inside modal (Only if button exists)
+    if (openSignupButton && signupFormContainer) {
+        openSignupButton.addEventListener("click", () => {
+            signupFormContainer.classList.toggle("hidden");
+        });
+    }
 });
+
