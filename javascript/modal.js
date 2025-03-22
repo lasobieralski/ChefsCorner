@@ -39,11 +39,11 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
-// ✅ Close modal on Escape key press
-document.addEventListener("keydown", (event) => {
-    const signInModal = document.getElementById("signInModal");
-    if (event.key === "Escape" && signInModal.classList.contains("open")) {
-        signInModal.classList.remove("open");
-    }
-});
+// // ✅ Close modal on Escape key press
+// document.addEventListener("keydown", (event) => {
+//     const signInModal = document.getElementById("signInModal");
+//     if (event.key === "Escape" && signInModal.classList.contains("open")) {
+//         signInModal.classList.remove("open");
+//     }
+// });
 
