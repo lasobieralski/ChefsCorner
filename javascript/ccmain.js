@@ -88,3 +88,11 @@ function checkUserLogin() {
 // ✅ Run login check on page load
 document.addEventListener("DOMContentLoaded", checkUserLogin);
 document.addEventListener("DOMContentLoaded", init);
+document.addEventListener("DOMContentLoaded", function() {
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    menuToggle.addEventListener("click", function() {
+        navLinks.classList.toggle("active");
+    });
+});
