@@ -21,15 +21,23 @@
   <div class="content">
     <!-- Header -->
     <header>
-      <div class="logo-name">
-        <img src="../images/logo.jpg" alt="ChefsCorner Logo" class="logo">
-        <h1>ChefsCorner</h1>
-      </div>
-      <nav class="navigation-container">
-        <ul class="navigation">
+      <nav class="navbar">
+        <div class="nav-header">
+          <div class="logo-name">
+            <img src="../images/logo.jpg" alt="ChefsCorner Logo" class="logo">
+            <h1>ChefsCorner</h1>
+          </div>
+      
+          <div class="nav-buttons">
+            <!-- Sign In Button (This stays in the header) -->
+            <!-- <button id="signInButton">Sign In</button> -->
+            <button class="menu-toggle" aria-label="Toggle navigation">&#9776;</button>
+          </div>
+        </div>
+        <ul class="nav-links">
           <li><a href="../index.html">Home</a></li>
-          <li><a href="../pages/ccrecipes.html">Recipes</a></li>
-          <li><a href="../pages/sharerecipes.html">Share Recipes</a></li>
+          <li><a href="ccrecipes.html">Recipes</a></li>
+          <li><a href="sharerecipes.html">Share Recipes</a></li>
         </ul>
       </nav>
     </header>
@@ -73,11 +81,15 @@
     <p>&copy; 2025 ChefsCorner:</p> 
     <p>Lisaann Sobieralski</p>  
     <p>Tary-Denise Tupouata</p>
-    <p><a href="../pages/constactus.html">Contact Us</a></p>
+    <p><a href="contactus.html">Contact Us</a></p>
     <div class="social">
       <img src="../images/facebook.png" alt="Facebook Icon">
     </div>
   </footer>
-</div>
+  <!-- Your script should be at the very end -->
+  <script type="module" src="../javascript/recipe.js"></script>
+  <script src="../javascript/modal.js"></script>
+  <script src="../javascript/ccmain.js"></script>
+
 </body>
 </html>
