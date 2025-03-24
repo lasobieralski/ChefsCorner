@@ -21,32 +21,33 @@
     <link rel="stylesheet" href="../styles/modal.css">
     <link rel="stylesheet" href="../styles/recipe.css">
     <link rel="stylesheet" href="../styles/media.css">
-    <!-- <link rel="stylesheet" href="../styles/share.css"> -->
+    <link rel="stylesheet" href="../styles/loginmodal.css">
   </head>
   <body>
     <div class="content">
       <!-- Header -->
-      <header>
-        <nav class="navbar">
-          <div class="nav-header">
-            <div class="logo-name">
-              <img src="../images/logo.jpg" alt="ChefsCorner Logo" class="logo">
-              <h1>ChefsCorner</h1>
-            </div>
-        
-            <div class="nav-buttons">
-              <!-- Sign In Button (This stays in the header) -->
-              <!-- <button id="signInButton">Sign In</button> -->
-              <button class="menu-toggle" aria-label="Toggle navigation">&#9776;</button>
-            </div>
+    <header>
+      <nav class="navbar">
+        <div class="nav-header">
+          <div class="logo-name">
+            <img src="../images/logo.jpg" alt="ChefsCorner Logo" class="logo">
+            <h1>ChefsCorner</h1>
           </div>
-          <ul class="nav-links">
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="ccrecipes.html">Recipes</a></li>
-            <li><a href="sharerecipes.html">Share Recipes</a></li>
-          </ul>
-        </nav>
-      </header>
+      
+          <div class="nav-buttons">
+            <!-- Sign In Button (This stays in the header) -->
+            <button id="signInButton">Sign In</button>
+            <button class="menu-toggle" aria-label="Toggle navigation">&#9776;</button>
+          </div>
+        </div>
+        <ul class="nav-links">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="ccrecipes.html">Recipes</a></li>
+          <li><a href="sharerecipes.html">Share Recipes</a></li>
+        </ul>
+      </nav>
+      <div id="modal-container"></div>
+    </header>
       <main>
         <form id="search-form">
           <div class="container">
@@ -74,15 +75,50 @@
     <div id="recipe-modal" class="modal hidden">
       <!-- ✅ Ensure "hidden" is here -->
       <div class="modal-content">
-        <span class="close-button">&times;</span>
+        <!-- <span class="close-button">&times;</span> -->
         <div id="modal-recipe-content"></div>
       </div>
     </div>
-
-    <!-- Your script should be at the very end -->
-    <script type="module" src="../javascript/recipe.js"></script>
-    <script src="../javascript/modal.js"></script>
-    <script src="../javascript/ccmain.js"></script>
+    <!-- <div id="category-buttons"> -->
+      <!-- <button data-category="breakfast">Breakfast</button>
+      <button data-category="lunch">Lunch</button>
+      <button data-category="dinner">Dinner</button>
+      <button data-category="snacks">Snacks</button>
+      <button data-category="dessert">Desserts</button>
+      <button data-category="keto">Keto</button> -->
+    <div id="category-buttons" class="category-grid">
+      <div class="category-card" data-category="breakfast">
+        <img src="../images/icons/breakfast2.jpg" alt="Breakfast">
+        <span>Breakfast</span>
+      </div>
+      <div class="category-card" data-category="lunch">
+        <img src="../images/icons/lunch.jpg" alt="Lunch">
+        <span>Lunch</span>
+      </div>
+      <div class="category-card" data-category="dinner">
+        <img src="../images/icons/dinner2.jpg" alt="Dinner">
+        <span>Dinner</span>
+      </div>
+      <div class="category-card" data-category="snacks">
+        <img src="../images/icons/snack.jpg" alt="Snacks">
+        <span>Snacks</span>
+      </div>
+      <div class="category-card" data-category="dessert">
+        <img src="../images/icons/dessert.jpg" alt="Desserts">
+        <span>Desserts</span>
+      </div>
+      <div class="category-card" data-category="keto">
+        <img src="../images/icons/keto.jpg" alt="Keto">
+        <span>Keto</span>
+      </div>
+    </div>
+    <div id="rotation-control">
+      <button id="resume-rotation" class="hidden">Resume Rotation</button>
+    </div>
+    
+    <div id="recipe-container"></div>
+    <div id="recipe-list"></div>
+    
 
     <footer id="footer-container">
       <p>&copy; 2025 ChefsCorner:</p>
@@ -93,5 +129,10 @@
         <img src="../images/facebook.png" alt="Facebook Icon">
       </div>
     </footer>
+    <!-- Your script should be at the very end -->
+    <script type="module" src="../javascript/recipe.js"></script>
+
+    <!-- <script type="module" src="../javascript/login.js"></script> -->
+    <script type="module" src="../javascript/ccmain.js"></script> 
   </body>
 </html>

@@ -16,6 +16,8 @@
   <link rel="stylesheet" href="../styles/media.css">
   <!-- <link rel="stylesheet" href="styles/recipe.css"> -->
   <link rel="stylesheet" href="../styles/share.css">
+  <link rel="stylesheet" href="../styles/loginmodal.css">
+    
 </head>
 <body>
   <div class="content">
@@ -30,7 +32,7 @@
       
           <div class="nav-buttons">
             <!-- Sign In Button (This stays in the header) -->
-            <!-- <button id="signInButton">Sign In</button> -->
+            <button id="signInButton">Sign In</button>
             <button class="menu-toggle" aria-label="Toggle navigation">&#9776;</button>
           </div>
         </div>
@@ -40,6 +42,7 @@
           <li><a href="sharerecipes.html">Share Recipes</a></li>
         </ul>
       </nav>
+      <div id="modal-container"></div>    
     </header>
     <main id="main-share">
         <div id="sharerecipes-form">
@@ -88,8 +91,7 @@
   </footer>
   <!-- Your script should be at the very end -->
   <script type="module" src="../javascript/recipe.js"></script>
-  <script src="../javascript/modal.js"></script>
-  <script src="../javascript/ccmain.js"></script>
+  <script type="module" src="../javascript/ccmain.js"></script>
 
 </body>
 </html>

@@ -1,25 +1,23 @@
 <!-- main index.html page -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta name="description" content="ChefsCorner - Your Recipe Manager">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="utf-8">
-  <title>ChefsCorner</title>
-  <!-- Import Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
-  <!-- CSS Files -->
-  <link rel="stylesheet" href="styles/global.css">
-  <link rel="stylesheet" href="styles/layout.css"> 
-  <link rel="stylesheet" href="styles/media.css">
-  <link rel="stylesheet" href="styles/modal.css">
-  <link rel="stylesheet" href="styles/home.css">
-  <link rel="stylesheet" href="styles/loginmodal.css">
-  <!-- <script type="module" src="javascript/ccmain.js"></script> -->
-  <script src="javascript/login.js" defer></script>
-</head>
-<body>
+  <head>
+    <meta name="description" content="ChefsCorner - Your Recipe Manager">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>ChefsCorner</title>
+    <!-- Import Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="styles/global.css">
+    <link rel="stylesheet" href="styles/layout.css"> 
+    <link rel="stylesheet" href="styles/media.css">
+    <link rel="stylesheet" href="styles/modal.css">
+    <link rel="stylesheet" href="styles/home.css">
+    <link rel="stylesheet" href="styles/loginmodal.css">
+  </head>
+  <body>
   
   <div class="content">
     <!-- Header -->
@@ -43,53 +41,20 @@
           <li><a href="pages/sharerecipes.html">Share Recipes</a></li>
         </ul>
       </nav>
-      <!-- MODAL (Hidden by default) -->
-      <div id="signInModal" class="modal hidden">
-          <div class="modal-content">
-              <button class="close-button">&times;</button>
-              <h2>Sign In</h2>
-              <form id="loginForm">
-                  <label for="login-username">Username:</label>
-                  <input type="text" id="login-username" required>
-                  
-                  <label for="login-password">Password:</label>
-                  <input type="password" id="login-password" required>
-                  
-                  <button type="submit">Login</button>
-              </form>
-              
-              <p>Don't have an account? <button id="openSignupForm">Create Account</button></p>
-              
-              <!-- Signup Form (Hidden by default) -->
-              <div id="signupFormContainer" class="hidden">
-                  <h2>Create an Account</h2>
-                  <form id="signupForm">
-                      <label for="signup-username">Username:</label>
-                      <input type="text" id="signup-username" required>
-
-                      <label for="signup-email">Email:</label>
-                      <input type="email" id="signup-email" required>
-
-                      <label for="signup-password">Password:</label>
-                      <input type="password" id="signup-password" required>
-
-                      <button type="submit">Sign Up</button>
-                  </form>
-              </div>
-          </div>
-      </div>
-
-      
+    <!-- Container for modal -->
+    <div id="modal-container"></div>
     </header>
     
     <!-- Welcome Banner -->
     <div class="hero">
       <img id="hero-img" src="images/kitchen.jpg" alt="Kitchen scene of counters with a range between them prepared for cooking.">
       <div class="hero-content">
-        <h1 id="welcome">Welcome to ChefsCorner:      Your Recipe Manager</h1>
+        <h2 id="welcome">Welcome to ChefsCorner:      Your Recipe Manager</h2>
         <!-- <h2 id="guide">Your Recipe Manager</h2> -->
       </div>
     </div>
+  </div>    
+    
 
     <!-- Main Content -->
     <main>
@@ -121,8 +86,8 @@
         <img src="images/facebook.png" alt="Facebook Icon">
       </div>
     </footer>
-    <script src="javascript/modal.js" defer></script>
-    <script src="javascript/ccmain.js"></script>
-  
-</body>
+    <script type="module" src="javascript/login.js"></script>
+    <script type="module" src="javascript/ccmain.js"></script>
+
+  </body>
 </html>

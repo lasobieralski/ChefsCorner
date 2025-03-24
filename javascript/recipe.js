@@ -1,25 +1,88 @@
-//recipe.js page
-let recipes = []; // Store recipes globally
+//recipe.js file
+let recipes = [];
+let rotationInterval;
+let rotationPaused = false;
 
 async function fetchRecipes() {
     try {
-        const response = await fetch("../data/recipes.json"); // ✅ Fixed path
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
+        const response = await fetch("../data/recipes.json");
+        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
         recipes = await response.json();
-        renderRecipes(recipes); // ✅ Display recipes after fetching
+
+        const randomRecipe = getRandomRecipe(recipes);
+        renderRecipes([randomRecipe]);
+
+        setupCategoryFilters();
+        startRotation(); // ⏱ Start rotating random recipe
     } catch (error) {
         console.error("Error fetching recipes:", error);
     }
 }
 
-// ✅ Function to generate tags
+function getRandomRecipe(list) {
+    const index = Math.floor(Math.random() * list.length);
+    return list[index];
+}
+function pauseRotation() {
+    rotationPaused = true;
+    const resumeBtn = document.getElementById("resume-rotation");
+    if (resumeBtn) resumeBtn.classList.remove("hidden");
+}
+
+function resumeRotation() {
+    rotationPaused = false;
+    const resumeBtn = document.getElementById("resume-rotation");
+    if (resumeBtn) resumeBtn.classList.add("hidden");
+
+    const randomRecipe = getRandomRecipe(recipes);
+    renderRecipes([randomRecipe]);
+}
+
+// ⏱ Rotate random recipe every 30s
+function startRotation() {
+    rotationInterval = setInterval(() => {
+        if (!rotationPaused) {
+            const newRandom = getRandomRecipe(recipes);
+            fadeSwapRecipe(newRandom);
+        }
+    }, 30000);
+}
+
+function fadeSwapRecipe(recipe) {
+    const container = document.querySelector("#recipe-list");
+    if (!container) return;
+
+    container.classList.remove("fade-in");
+    container.classList.add("fade-out");
+
+    setTimeout(() => {
+        renderRecipes([recipe]);
+        container.classList.remove("fade-out");
+        container.classList.add("fade-in");
+    }, 1000); // wait for fade-out to finish
+}
+
+function setupCategoryFilters() {
+    // const buttons = document.querySelectorAll('#category-buttons button');
+    const buttons = document.querySelectorAll('#category-buttons .category-card');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            const category = button.dataset.category.toLowerCase();
+            const filtered = recipes.filter(recipe =>
+                recipe.tags.map(tag => tag.toLowerCase()).includes(category)
+            );
+            // rotationPaused = true;
+            pauseRotation();
+            renderRecipes(filtered);
+        });
+    });
+}
+
 function tagsTemplate(tags) {
     return `<p class="tag-list">${tags.join(", ")}</p>`;
 }
 
-// ✅ Function to render recipes on the page
 function renderRecipes(recipeList) {
     const outputElement = document.querySelector("#recipe-list");
 
@@ -38,8 +101,7 @@ function renderRecipes(recipeList) {
         </div>
     `).join("");
 
-    // ✅ Attach event listeners to open modal
-    document.querySelectorAll(".recipe-card").forEach((card) => {
+    document.querySelectorAll(".recipe-card").forEach(card => {
         card.addEventListener("click", function () {
             const index = this.getAttribute("data-index");
             openRecipeModal(index, recipeList);
@@ -47,10 +109,8 @@ function renderRecipes(recipeList) {
     });
 }
 
-// ✅ Function to filter recipes
 function filterRecipes(query) {
     query = query.toLowerCase().trim();
-
     return recipes.filter(recipe =>
         recipe.name.toLowerCase().includes(query) ||
         recipe.tags.some(tag => tag.toLowerCase().includes(query)) ||
@@ -58,21 +118,23 @@ function filterRecipes(query) {
     );
 }
 
-// ✅ Search event listener
 function searchHandler(event) {
     event.preventDefault();
     const searchInput = document.querySelector("#search-bar").value.toLowerCase().trim();
-    
+
     if (!searchInput) {
-        renderRecipes(recipes); // Show all if input is empty
+        rotationPaused = false;
+        const randomRecipe = getRandomRecipe(recipes);
+        renderRecipes([randomRecipe]);
         return;
     }
 
-    const filteredRecipes = filterRecipes(searchInput);
-    renderRecipes(filteredRecipes);
+    const filtered = filterRecipes(searchInput);
+    pauseRotation();
+    // rotationPaused = true;
+    renderRecipes(filtered);
 }
 
-// ✅ Function to open modal
 function openRecipeModal(index, recipeList) {
     index = Number(index);
     if (isNaN(index) || index < 0 || index >= recipeList.length) {
@@ -89,23 +151,43 @@ function openRecipeModal(index, recipeList) {
         return;
     }
 
+    // modalContent.innerHTML = `
+    //     <h2>${recipe.name}</h2>
+    //     <img src="${recipe.image}" alt="Image of ${recipe.name}">
+    //     <div class="recipe-tags">${tagsTemplate(recipe.tags)}</div>
+    //     <p><strong>Servings:</strong> ${recipe.servings}</p>
+    //     <p><strong>Prep Time:</strong> ${recipe.prepTime}</p>
+    //     <p><strong>Cook Time:</strong> ${recipe.cookTime}</p>
+    //     <h3>Ingredients</h3>
+    //     <ul>${recipe.ingredients.map(ing => `<li>${ing}</li>`).join("")}</ul>
+    //     <h3>Directions</h3>
+    //     <ol>${recipe.directions.map(step => `<li>${step}</li>`).join("")}</ol>
+    // `;
     modalContent.innerHTML = `
-        <h2>${recipe.name}</h2>
-        <img src="${recipe.image}" alt="Image of ${recipe.name}">
-        <div class="recipe-tags">${tagsTemplate(recipe.tags)}</div>
-        <p><strong>Servings:</strong> ${recipe.servings}</p>
-        <p><strong>Prep Time:</strong> ${recipe.prepTime}</p>
-        <p><strong>Cook Time:</strong> ${recipe.cookTime}</p>
-        <h3>Ingredients</h3>
-        <ul>${recipe.ingredients.map(ing => `<li>${ing}</li>`).join("")}</ul>
-        <h3>Directions</h3>
-        <ol>${recipe.directions.map(step => `<li>${step}</li>`).join("")}</ol>
-    `;
+    <button class="close-modal-button">&times;</button>
+    <h2>${recipe.name}</h2>
+    <img src="${recipe.image}" alt="Image of ${recipe.name}">
+    <div class="recipe-tags">${tagsTemplate(recipe.tags)}</div>
+    <p><strong>Servings:</strong> ${recipe.servings}</p>
+    <p><strong>Prep Time:</strong> ${recipe.prepTime}</p>
+    <p><strong>Cook Time:</strong> ${recipe.cookTime}</p>
+    <h3>Ingredients</h3>
+    <ul>${recipe.ingredients.map(ing => `<li>${ing}</li>`).join("")}</ul>
+    <h3>Directions</h3>
+    <ol>${recipe.directions.map(step => `<li>${step}</li>`).join("")}</ol>
+`;
 
     modal.classList.add("show");
+     // Add event to close button
+    const closeBtn = modalContent.querySelector(".close-modal-button");
+    if (closeBtn) {
+        closeBtn.addEventListener("click", () => {
+            modal.classList.remove("show");
+        });
+    }
+
 }
 
-// ✅ Close modal when clicking outside
 window.addEventListener("click", (event) => {
     const modal = document.getElementById("recipe-modal");
     if (event.target === modal) {
@@ -113,9 +195,8 @@ window.addEventListener("click", (event) => {
     }
 });
 
-// ✅ Initialize the app
 function init() {
-    console.log("✅ Initializing ChefsCorner...");
+    console.log("✅ Initializing Recipes Page...");
     fetchRecipes();
 
     const searchForm = document.querySelector("#search-form");
@@ -124,6 +205,11 @@ function init() {
     } else {
         console.error("❌ ERROR: search-form NOT FOUND in the DOM!");
     }
+    const resumeBtn = document.getElementById("resume-rotation");
+    if (resumeBtn) {
+        resumeBtn.addEventListener("click", resumeRotation);
+}
+
 }
 
 document.addEventListener("DOMContentLoaded", init);

@@ -1,135 +1,135 @@
 /* Contact Form Section */
 #contact-form-section {
-    padding: 20px;
-    width: 90%;
-    max-width: 380px;
-    /* margin: auto; */
-    background: #f9f9f9;
-    border: 3px solid var(--primary-color);
-    border-radius: 8px;
-    /* box-shadow: 0 4px 8px rgba(0,0,0,0.1); */
-  }
+  padding: 20px;
+  width: 90%;
+  max-width: 380px;
+  /* margin: auto; */
+  background: #f9f9f9;
+  border: 3px solid var(--primary-color);
+  border-radius: 8px;
+  /* box-shadow: 0 4px 8px rgba(0,0,0,0.1); */
+}
+
+#contact-form-section h1 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #273835;
+}
+
+#contact-form-section p {
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+#contact-form-section form {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers the form elements horizontally */
+}
+
+#contact-form-section label {
   
-  #contact-form-section h1 {
-    text-align: center;
-    margin-bottom: 10px;
-    color: #273835;
+  margin-bottom: 5px;
+  font-weight: 600;
+  align-self: flex-start; /* Ensures labels are aligned to the left */
+}
+
+#contact-form-section input,
+#contact-form-section textarea {
+  width: 100%; /* Inputs take full width of container */
+  max-width: 500px; /* Control maximum width to keep form neat */
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 2px solid #273835;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-family: 'Roboto', sans-serif;
+}
+
+#contact-form-section button {
+  padding: 10px 20px; 
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#contact-form-section button:hover {
+  background: var(--primary-color);
+}
+
+#contact-form-section button:focus {
+  outline: 2px solid black;
+  outline-offset: 2px;
+}
+
+/* Feedback Message */
+#feedback {
+  display: none;
+  color: green;
+  margin-top: 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+#feedback.visible {
+  display: block;
+  opacity: 1;
+}
+
+/* Move Down Effect */
+.moveDown {
+  margin-top: 20px;
+}
+
+/* Responsive Design */
+/* @media (max-width: 600px) {
+  #contact-form-section {
+    padding: 15px;
+    margin: 20px auto;
   }
-  
-  #contact-form-section p {
-    text-align: center;
-    margin-bottom: 20px;
-    font-weight: bold;
-  }
-  
-  #contact-form-section form {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centers the form elements horizontally */
-  }
-  
-  #contact-form-section label {
-    
-    margin-bottom: 5px;
-    font-weight: 600;
-    align-self: flex-start; /* Ensures labels are aligned to the left */
-  }
-  
+
   #contact-form-section input,
   #contact-form-section textarea {
-    width: 100%; /* Inputs take full width of container */
-    max-width: 500px; /* Control maximum width to keep form neat */
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 2px solid #273835;
-    border-radius: 5px;
-    font-size: 1rem;
-    font-family: 'Roboto', sans-serif;
+    font-size: 0.9rem;
   }
-  
+
   #contact-form-section button {
-    padding: 10px 20px; 
-    background: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background 0.3s;
+    font-size: 0.9rem;
+    padding: 8px;
   }
-  
-  #contact-form-section button:hover {
-    background: var(--primary-color);
+}
+ */
+/* Additional responsive adjustments if needed */
+/* @media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
   }
-  
-  #contact-form-section button:focus {
-    outline: 2px solid black;
-    outline-offset: 2px;
+
+  nav {
+    flex-direction: column;
+    margin-top: 10px;
   }
-  
-  /* Feedback Message */
-  #feedback {
-    display: none;
-    color: green;
-    margin-top: 20px;
-    font-size: 1rem;
-    font-weight: bold;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+
+  nav a {
+    margin-left: 0;
+    margin-bottom: 5px;
   }
-  
-  #feedback.visible {
-    display: block;
-    opacity: 1;
+
+  #author {
+    flex-direction: column;
+    align-items: center;
   }
-  
-  /* Move Down Effect */
-  .moveDown {
-    margin-top: 20px;
+
+  #author img {
+    max-width: 100px;
   }
-  
-  /* Responsive Design */
-  /* @media (max-width: 600px) {
-    #contact-form-section {
-      padding: 15px;
-      margin: 20px auto;
-    }
-  
-    #contact-form-section input,
-    #contact-form-section textarea {
-      font-size: 0.9rem;
-    }
-  
-    #contact-form-section button {
-      font-size: 0.9rem;
-      padding: 8px;
-    }
-  }
-   */
-  /* Additional responsive adjustments if needed */
-  /* @media (max-width: 768px) {
-    header {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  
-    nav {
-      flex-direction: column;
-      margin-top: 10px;
-    }
-  
-    nav a {
-      margin-left: 0;
-      margin-bottom: 5px;
-    }
-  
-    #author {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    #author img {
-      max-width: 100px;
-    }
-  }
-   */
+}
+ */
