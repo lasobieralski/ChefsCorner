@@ -591,8 +591,8 @@
         "servings": "4",
         "prepTime": "10 minutes",
         "cookTime": "10 minutes",
-        "ingredients": {
-            "bowl": [
+        "ingredients": [
+            "bowl",
             "1 lb ground beef",
             "1 tsp sea salt",
             "1/4 tsp black pepper",
@@ -600,17 +600,15 @@
             "1 cup cherry tomatoes (halved)",
             "1/4 cup red onions (sliced thinly)",
             "1/2 cup cheddar cheese (shredded)",
-            "1 medium avocado (sliced)"
-            ],
-            "sauce": [
+            "1 medium avocado (sliced)",
+            "sauce",
             "6 tbsp mayonnaise",
             "2 tbsp sugar-free ketchup",
             "2 tbsp dill pickle juice",
             "1 tsp dijon mustard",
             "1/8 tsp sea salt",
             "1/8 tsp black pepper"
-            ]
-        },
+        ],
         "note": "Store: if you have leftover hamburger bowl, they don't really last if they're already combined. But you can meal prep ahead. Meal Prep: Cook up the ground beef, make the sauce, and cut the vegetables. Store in separate containers in the fridge until ready to assemble. Reheat: Just zap the ground beef in the microwave until warm, then assemble your bowls.",
         "directions": [
             "In a large skillet over medium-high heat, season with sea salt and black pepper.", 
@@ -648,7 +646,7 @@
             "1 medium spaghetti squash (cook the whole thing, but the soup only needs half)"
         ],
         "note": "Store: keep the soup in an airtight container in the fridge up to 5 days. Meal Prep: Roast the spaghetti squash ahead or make the whole soup. Reheat: Warm it up on the stove or in the microwave until hot. Freeze: Freeze in zip-top bags to save space or use souper cubes for easy portions. Nutrition Info: Calories 100; Fat 3.5g; Protein 12.4g; Total Carbs 5.9g; Net Carbs 4.9g; Fiber 1g; Sugar 1.7g",
-        "instructions": [
+        "directions": [
             "In a large Dutch oven or pot, heat the olive oil over medium heat.", 
             "Add the carrots, celery, and onions. Saute for about 5 minutes, until the onions are translucent.",
             "Add the chicken breasts (you can use either raw or precooked), chicken broth, Italian seasoning, and bay leaf.", 
@@ -719,7 +717,7 @@
             "1 1/2 tsp pure vanilla extract"
         ],
         "note": "",
-        "instructions": [
+        "directions": [
             "Preheat oven to 350 F",
             "Grease an 8-inch pan and line with parchment",
             "Stir all ingredients together very well then spread into pan",
