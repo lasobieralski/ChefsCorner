@@ -9,8 +9,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-    console.log("✅ login.js is running!"); // Check if script runs
-
     // Get elements
     const signInButton = document.getElementById("signInButton");
     const signInDropdown = document.getElementById("signInDropdown");

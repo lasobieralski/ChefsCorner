@@ -72,11 +72,8 @@ function handleNavigationClick() {
 function checkUserLogin() {
   const loggedInUser = localStorage.getItem("loggedInUser");
   if (loggedInUser) {
-    console.log(`✅ Logged in as: ${loggedInUser}`);
     const signInButton = document.getElementById("signInButton");
     if (signInButton) signInButton.textContent = `Welcome, ${loggedInUser}`;
-  } else {
-    console.log("🔹 User is browsing as a guest.");
   }
 }
 
@@ -95,19 +92,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   const menuToggle = document.querySelector(".menu-toggle");
   const navLinks = document.querySelector(".nav-links");
 
-  // 👇 This prints out whether the elements were found or not
-  console.log("🧪 menuToggle found:", !!menuToggle);
-  console.log("🧪 navLinks found:", !!navLinks);
-
   // 👇 Only run the toggle if both are found
   if (menuToggle && navLinks) {
-    console.log("✅ Setting up mobile nav toggle");
     menuToggle.addEventListener("click", () => {
       navLinks.classList.toggle("active");
     });
   } else {
     console.warn("❌ Could not find menu toggle or nav links on this page.");
-  }
-
-  
+  } 
 });

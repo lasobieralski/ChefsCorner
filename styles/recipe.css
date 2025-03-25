@@ -108,13 +108,6 @@ main {
   gap: 15px;
 }
 
-/* Adjust Images */
-.recipe-image img {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-}
-
 /* Recipe Details (Initially Hidden) */
 .recipe-details {
   margin-top: 15px;
@@ -139,7 +132,7 @@ main {
   margin-top: 10px;
 }
 
-.modal { 
+.modal {
   display: none; /* Hide by default */
   position: fixed;
   z-index: 1000;
@@ -148,7 +141,7 @@ main {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  display: flex;/*✅ Ensure flex is applied when visible*/
+  display: flex; /*✅ Ensure flex is applied when visible*/
   justify-content: center;
   align-items: center;
   overflow-y: auto;
@@ -195,9 +188,9 @@ main {
   width: 100%; /* Make sure it fills the container */
   max-height: 300px; /* ✅ Restrict max height to prevent scrolling */
   object-fit: contain; /* ✅ Ensure the full image is visible without cropping */
-   border-radius: 8px;
+  border-radius: 8px;
   margin-bottom: 15px;
-} 
+}
 
 /* RECIPE DETAILS */
 .modal-content h2 {
@@ -257,13 +250,21 @@ main {
 }
 
 @keyframes fadeOut {
-  from { opacity: 1; }
-  to { opacity: 0; }
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 #resume-rotation.hidden {
   display: none;
@@ -369,11 +370,29 @@ main {
   height: 100px;
   object-fit: cover;
   border-radius: 50%;
-  margin-bottom: 0.5rem;;
+  margin-bottom: 0.5rem;
 }
 
 .category-card span {
   font-size: 1rem;
   font-weight: 600;
   color: #333;
+}
+
+/* Limit height for large screens */
+@media (min-width: 1025px) {
+  .recipe-image img {
+    max-height: 250px;
+  }
+}
+
+/* Smaller screens: reduce height */
+@media (max-width: 600px) {
+  .recipe-image img {
+    max-height: 180px;
+  }
+
+  .modal-content img {
+    min-height: 200px;
+  }
 }

@@ -9,12 +9,24 @@ async function fetchRecipes() {
         if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
         recipes = await response.json();
 
-        const randomRecipe = getRandomRecipe(recipes);
-        renderRecipes([randomRecipe]);
+        const params = new URLSearchParams(window.location.search);
+        const categoryFromURL = params.get("category");
+
+        if (categoryFromURL) {
+            const filtered = recipes.filter(recipe =>
+                recipe.tags.some(tag => tag.toLowerCase() === categoryFromURL.toLowerCase())
+            );
+            pauseRotation();
+            renderRecipes(filtered);
+        } else {
+            const randomRecipe = getRandomRecipe(recipes);
+            renderRecipes([randomRecipe]);
+        }
 
         setupCategoryFilters();
-        startRotation(); // ⏱ Start rotating random recipe
-    } catch (error) {
+        startRotation();
+
+    } catch(error) {
         console.error("Error fetching recipes:", error);
     }
 }
@@ -23,6 +35,7 @@ function getRandomRecipe(list) {
     const index = Math.floor(Math.random() * list.length);
     return list[index];
 }
+
 function pauseRotation() {
     rotationPaused = true;
     const resumeBtn = document.getElementById("resume-rotation");
@@ -63,18 +76,13 @@ function fadeSwapRecipe(recipe) {
 }
 
 function setupCategoryFilters() {
-    // const buttons = document.querySelectorAll('#category-buttons button');
     const buttons = document.querySelectorAll('#category-buttons .category-card');
 
     buttons.forEach(button => {
         button.addEventListener('click', () => {
             const category = button.dataset.category.toLowerCase();
-            const filtered = recipes.filter(recipe =>
-                recipe.tags.map(tag => tag.toLowerCase()).includes(category)
-            );
-            // rotationPaused = true;
-            pauseRotation();
-            renderRecipes(filtered);
+            // redirect to category-filtered page
+            window.location.href = `ccrecipes.html?category=${encodeURIComponent(category)}`;
         });
     });
 }
@@ -196,7 +204,6 @@ window.addEventListener("click", (event) => {
 });
 
 function init() {
-    console.log("✅ Initializing Recipes Page...");
     fetchRecipes();
 
     const searchForm = document.querySelector("#search-form");
@@ -205,11 +212,11 @@ function init() {
     } else {
         console.error("❌ ERROR: search-form NOT FOUND in the DOM!");
     }
+    
     const resumeBtn = document.getElementById("resume-rotation");
     if (resumeBtn) {
         resumeBtn.addEventListener("click", resumeRotation);
-}
-
+    }
 }
 
 document.addEventListener("DOMContentLoaded", init);
