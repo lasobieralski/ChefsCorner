@@ -1,14 +1,17 @@
 /*loginmodal.css*/
 /* Style the Sign In Button */
 #signInButton {
-  background-color: var(--primary-color);
+  background-color: var(--accent-color);
   color: white;
-  padding: 10px 15px;
-  border: 3px solid dark teal;
-  cursor: pointer;
+  border: none;
   border-radius: 8px;
-  font-size: 1.20rem;
+  padding: 8px 12px;
+  /* border: 3px solid dark teal; */
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-left: 10px;
   /* font-weight: bold; */
+
 }
 
 #signInButton:hover {

@@ -6,22 +6,25 @@
   --text-color: #2a3440;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Poppins", sans-serif;
   background-color: var(--background-color);
   /* color: var(--text-color); */
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   font-size: larger;
   color: var(--primary-color);
 }
 
 h1 {
-  font-family: 'Amatic SC';
-    font-size: 3rem;
-    color: var(--primary-color); /* Customize as needed */
-    margin: 0;
+  font-family: "Amatic SC";
+  font-size: 3rem;
+  color: var(--primary-color); /* Customize as needed */
+  margin: 0;
 }
 
 img {
@@ -32,5 +35,7 @@ img {
 }
 
 .content {
-  max-width: 90%;   /*set for small screen*/
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
 }

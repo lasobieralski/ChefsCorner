@@ -6,12 +6,13 @@
 }
 
 #hero-img {
-  width: 100%;
-  height: auto;
-  filter: brightness(100%);
-  border-radius: 10px;
-  border: 3px solid black;
-  margin-left: 20px;  
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1000px;
+    filter: brightness(100%);
+    border-radius: 10px;
+    border: 3px solid black;  
 }
 
 .hero-content {
@@ -23,6 +24,12 @@
     color: deep teal;
 }
 
+.hero, #purpose p {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
 #welcome {
     font-size: clamp(2rem, 5vw, 3rem); /* Dynamically scale based on viewport */
     margin: 40px 0; /* Smaller margin for mobile */
@@ -31,12 +38,3 @@
     font-weight: bold;
 
 }
-
-/*Main Content*/
-#purpose p {
-    text-align: justify;
-    width: 440px;
-    gap: 10px;
-    margin-left: 5px;
-}
-

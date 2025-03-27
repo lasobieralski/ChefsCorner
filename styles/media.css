@@ -31,21 +31,20 @@
   }
 }
 
-/* Medium screens: Tablets */  
+/* Medium screens: Tablets */
 @media (min-width: 600px) {
-    
   .navigation {
-      flex-direction: row; /* Display items horizontally */
-      justify-content: center; /* Center items across the width */
-      gap: 20px; /* Increase spacing between items */
+    flex-direction: row; /* Display items horizontally */
+    justify-content: center; /* Center items across the width */
+    gap: 20px; /* Increase spacing between items */
   }
-    
+
   .navigation li a {
-      font-size: 1.5rem; /* Slightly larger font size */
-      padding: 5px 10px; /* Adjust padding */
-      background-color: transparent; /* Remove background for larger screens */
+    font-size: 1.5rem; /* Slightly larger font size */
+    padding: 5px 10px; /* Adjust padding */
+    background-color: transparent; /* Remove background for larger screens */
   }
-  
+
   footer {
     flex-direction: row; /* Horizontal layout for medium screens */
     justify-content: space-evenly;
@@ -135,4 +134,3 @@
     max-width: 100px;
   }
 }
-    

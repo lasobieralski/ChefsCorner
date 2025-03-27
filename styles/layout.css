@@ -1,51 +1,72 @@
 /* layout.css page */
 
-header, main {
-  width: 100%;
-  text-align: center;
+
+header,
+main {
+  max-width: 1000px;
+  margin: 0 auto;
   padding: 20px;
 }
 
-header {
-  width: 100%;
-  justify-content: space-between;
-  flex-direction: column;
-  align-items: center;
+
+main {
+  margin: 0 auto;
+  padding: 20px;
 }
+
+main p {
+  text-align: left;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+header {
+  background-color: var(--primary-color);
+  padding: 20px 0;
+  text-align: left;
+}
+
 
 .logo-name {
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 10px;
+  gap: 15px;
+  margin: 0;
 }
+
 
 .logo-name h1 {
   color: var(--primary-color);
   font-family: "Amatic SC";
   font-size: 5.75rem;
   font-weight: bold;
-  margin: 0; 
+  margin: 0;
 }
 
 .logo {
-  width: 100px;
+  width: 50px;
   height: auto;
-  margin-right: 15px;
-  border-radius: 8px;
 }
 
-/* Footer (remember that you can add "!important" after css 
-for conflicting rules.*/
-#footer-container {
+header,
+footer {
   width: 100%;
-  max-width: 90%;
-  border: 3px solid black;
-  border-radius: 8px;
-  margin-left: 20px;
-  margin-right: 20px; 
-  /*margin: 0 auto; /*center it*/
+  background-color: var(--primary-color);
 }
+
+.header-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.header-footer-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  width: 100%;
+}
+
 footer {
   background-color: var(--primary-color);
   padding: 20px;
@@ -114,41 +135,35 @@ body {
   padding: 0;
 }
 
+
 .navbar {
-  /* background: #333; 
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
-  color: white; */
-  border: 3px solid black;
-  border-radius: 8px;
-  width: 440px;
-  /* width: 100%; */
-  height: auto;
-  /* padding: 10px 20px;
-  margin: 0 auto;
-  max-width: 1200px; */
+  flex-wrap: wrap;
+  width: 100%;
 }
 
-/* Header: Logo, Title, and Menu Button in One Row */
+
+.navbar,
+.nav-links,
+
 .nav-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 10px;
-  flex-wrap: wrap;
+  width: 100%;
 }
 
-.logo {
-  width: 20%;
-  height: auto;
-}
-.logo-name {
+
+/* Header: Logo, Title, and Menu Button in One Row */
+
+.nav-header {
   display: flex;
   align-items: center;
-  gap: 0;
+  width: 100%;
 }
+
+
 .logo-name h1 {
   font-size: 3.5em;
 }
@@ -156,6 +171,7 @@ body {
 .nav-buttons {
   display: flex;
   gap: 10px;
+  align-items: center;
 }
 
 .sign-in-btn,
@@ -169,17 +185,22 @@ body {
   cursor: pointer;
 }
 
+.menu-toggle {
+  background: none;
+  color: white;
+  font-size: 24px;
+  border: none;
+  cursor: pointer;
+  display: none;
+}
+
 /* Nav Links */
 .nav-links {
-  list-style: none;
   display: flex;
-  justify-content: center;
+  list-style: none;
   gap: 20px;
-  padding: 10px 0;
+  padding: 0;
   margin: 0;
-  border-top: 3px solid black;
-  border-radius: 8px;
-  background-color: var(--background-color);
 }
 
 .nav-links li a {
