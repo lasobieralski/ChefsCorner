@@ -16,42 +16,36 @@
   <link rel="stylesheet" href="../styles/global.css">
   <link rel="stylesheet" href="../styles/layout.css">
   <link rel="stylesheet" href="../styles/nav.css">
-  <link rel="stylesheet" href="../styles/footer.css">
-  <link rel="stylesheet" href="../styles/recipe.css">
-  <link rel="stylesheet" href="../styles/category.css">
   <link rel="stylesheet" href="../styles/modal.css">
   <link rel="stylesheet" href="../styles/loginmodal.css">
+  <link rel="stylesheet" href="../styles/footer.css">
   <link rel="stylesheet" href="../styles/animation.css">
-
+  <link rel="stylesheet" href="../styles/recipe.css">
+  <link rel="stylesheet" href="../styles/category.css">
 </head>
 
 <body>
   <div class="content">
-
-    <!-- Header and Nav (loaded dynamically) -->
+    <!-- Header/Nav loaded dynamically -->
     <header id="header-container"></header>
 
     <!-- Main content -->
     <main>
-      <!-- Search bar for recipes -->
-      <form id="search-form">
-        <div class="container">
-          <input
-            id="search-bar"
-            type="text"
-            name="search"
-            placeholder="Search for a recipe"
-            required
-          >
-          <button type="submit" class="search-button">Search</button>
-        </div>
-      </form>
-
-      <!-- Recipe Cards will be dynamically inserted here -->
-      <div id="recipe-list" class="recipe-list"></div>
+      
+        <!-- Recipe Search -->
+        <form id="search-form">
+          <div class="container">
+            <input id="search-bar" type="text" name="search" placeholder="Search for a recipe" required>
+            <button type="submit" class="search-button">Search</button>
+          </div>
+        </form>
+        <div class="recipe-content-box"></div>
+        <!-- Recipe Cards dynamically inserted here -->
+        <div id="recipe-list"></div>
+      </div>
     </main>
 
-    <!-- Recipe Category Buttons -->
+    <!-- Recipe Categories -->
     <div id="category-buttons" class="category-grid">
       <div class="category-card" data-category="breakfast">
         <img src="../images/icons/breakfast2.jpg" alt="Breakfast">
@@ -79,64 +73,32 @@
       </div>
     </div>
 
-    <!-- Resume rotation button (if carousel is paused) -->
+    <!-- Resume Rotation Button (if using a carousel) -->
     <div id="rotation-control">
       <button id="resume-rotation" class="hidden">Resume Rotation</button>
     </div>
 
-    <!-- Modal for Recipe Details -->
+    <!-- Modal for full recipe details -->
     <div id="recipe-modal" class="modal hidden">
       <div class="modal-content">
         <div id="modal-recipe-content"></div>
       </div>
     </div>
 
-    <!-- Footer (loaded dynamically) -->
+    <!-- Footer and Modal containers -->
     <div id="footer-placeholder"></div>
+    <div id="modal-container"></div>
   </div>
 
-  <!-- JavaScript to load partials and recipe logic -->
+  <!-- JavaScript -->
   <script type="module">
-    import { loadAllPartials } from "../javascript/loadPartials.js";
-    loadAllPartials();
+    import { setupNavForSubpage } from "../javascript/navManager.js";
+    setupNavForSubpage();
   </script>
   
 
-    // Load the sign-in modal only if container exists (from nav.html)
-    document.addEventListener("DOMContentLoaded", () => {
-      const modalContainer = document.getElementById("modal-container");
-      if (modalContainer) {
-        fetch("../partials/signInModal.html")
-          .then((res) => res.text())
-          .then((html) => (modalContainer.innerHTML = html));
-      }
-    });
-  </script>
-
-  <!-- Page-specific JavaScript -->
+  <!-- Page-specific modules -->
   <script type="module" src="../javascript/recipe.js"></script>
-<script type="module" src="../javascript/ccmain.js"></script>
-<script type="module" src="../javascript/loadPartials.js"></script>
-
-<script type="module">
-  import { renderRecipes, resetUI } from "../javascript/ui.js";
-
-  async function loadAndRenderRecipes() {
-    try {
-      const res = await fetch("../data/recipes.json");
-      const data = await res.json();
-      renderRecipes(data);
-    } catch (err) {
-      console.error("Error loading recipes:", err);
-      resetUI();
-    }
-  }
-
-  loadAndRenderRecipes();
-</script>
-
-  
+  <script type="module" src="../javascript/ccmain.js"></script>
 </body>
 </html>
-
-

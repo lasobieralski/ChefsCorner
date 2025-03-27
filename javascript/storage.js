@@ -69,9 +69,7 @@ function getCurrentUser() {
   export function getFavoriteRecipes() {
   return getUserRecipes().filter(r => r.isFavorite);
   }
-  /**
-  * 🗑️ Delete a recipe for a specific user
-  */
+  
   export function deleteUserRecipe(username, recipeId) {
   const data = JSON.parse(localStorage.getItem("savedRecipes")) || {};
   const userRecipes = data[username] || [];
