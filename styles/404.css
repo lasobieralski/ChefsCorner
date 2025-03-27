@@ -1,0 +1,37 @@
+/* new 404.css file */
+/* styles/404.css */
+/* Styling for the 404 Page Not Found */
+
+.error-container {
+    text-align: center;
+    padding: 5rem 2rem;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .error-container h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #d9534f;
+  }
+  
+  .error-container p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    color: #333;
+  }
+  
+  .error-container a {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: #ff6b6b;
+    color: white;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .error-container a:hover {
+    background-color: #e04e4e;
+  }
+  

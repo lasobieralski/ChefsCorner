@@ -1,22 +1,22 @@
 <!-- main index.html page -->
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta name="description" content="ChefsCorner - Your Recipe Manager" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
-    <title>ChefsCorner</title>
+    <title>ChefsCorner</title> -->
     <!-- Import Fonts -->
-    <link
+    <!-- <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@300;400&display=swap"
       rel="stylesheet"
     />
     <link
       href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap"
       rel="stylesheet"
-    />
+    /> -->
     <!-- CSS Files -->
-    <link rel="stylesheet" href="styles/global.css" />
+    <!-- <link rel="stylesheet" href="styles/global.css" />
     <link rel="stylesheet" href="styles/layout.css" />
     <link rel="stylesheet" href="styles/media.css" />
     <link rel="stylesheet" href="styles/modal.css" />
@@ -24,13 +24,13 @@
     <link rel="stylesheet" href="styles/loginmodal.css" />
   </head>
   <body>
-    <div class="content">
+    <div class="content"> -->
       <!-- Header -->
-      <header>
+      <!-- <header>
         <div class="header-footer-container">
-          <div class="header-container">
+          <div class="header-container"> -->
             <!-- Logo & Title -->
-            <nav class="navbar">
+            <!-- <nav class="navbar">
               <div class="nav-header">
                 <div class="logo-name">
                   <img
@@ -38,9 +38,9 @@
                     alt="ChefsCorner Logo"
                     class="logo"
                   />
-                  <h1>ChefsCorner</h1>
+                  <h1>ChefsCorner</h1> -->
                   <!-- Sign In Button (This stays in the header) -->
-                  <button id="signInButton">Sign In</button>
+                  <!-- <button id="signInButton">Sign In</button>
                 </div>
 
                 <div class="nav-buttons">
@@ -54,31 +54,31 @@
                 <li><a href="pages/ccrecipes.html">Recipes</a></li>
                 <li><a href="pages/sharerecipes.html">Share Recipes</a></li>
               </ul>
-            </nav>
+            </nav> -->
             <!-- Container for modal -->
-            <div id="modal-container"></div>
+            <!-- <div id="modal-container"></div>
           </div>
         </div>
-      </header>
+      </header> -->
 
       <!-- Welcome Banner -->
-      <div class="hero">
+      <!-- <div class="hero">
         <img
           id="hero-img"
           src="images/kitchen.jpg"
           alt="Kitchen scene of counters with a range between them prepared for cooking."
         />
         <div class="hero-content">
-          <h2 id="welcome">Welcome to ChefsCorner: Your Recipe Manager</h2>
+          <h2 id="welcome">Welcome to ChefsCorner: Your Recipe Manager</h2> -->
           <!-- <h2 id="guide">Your Recipe Manager</h2> -->
-        </div>
+        <!-- </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- Main Content -->
-    <main>
+    <!-- <main> -->
       <!-- Purpose Section -->
-      <div id="purpose">
+      <!-- <div id="purpose">
         <p>
           Our purpose is to create a supportive and empowering online resource
           for individuals who like to collect recipes. ChefsCorner is a place
@@ -90,10 +90,10 @@
           improve your cooking skills, and enjoy a more organized kitchen.
         </p>
       </div>
-    </main>
+    </main> -->
 
     <!-- Footer -->
-    <footer class="header-footer-container">
+    <!-- <footer class="header-footer-container">
       <p>&copy; 2025 ChefsCorner:</p>
       <p>Lisaann Sobieralski</p>
       <p>Tary-Denise Tupouata</p>
@@ -105,4 +105,71 @@
     <script type="module" src="javascript/login.js"></script>
     <script type="module" src="javascript/ccmain.js"></script>
   </body>
+</html> -->
+
+<!-- new index.html file -->
+<!-- index.html - Homepage of ChefsCorner -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="ChefsCorner - Your Recipe Manager">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChefsCorner</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="styles/global.css">
+  <link rel="stylesheet" href="styles/layout.css">
+  <link rel="stylesheet" href="styles/nav.css">
+  <link rel="stylesheet" href="styles/footer.css">
+  <link rel="stylesheet" href="styles/home.css">
+  <link rel="stylesheet" href="styles/loginmodal.css">
+  <link rel="stylesheet" href="styles/animation.css">
+</head>
+
+<body>
+  <div class="content">
+    <!-- Header (loaded dynamically) -->
+    <header id="header-container"></header>
+
+    <!-- Hero section: welcome banner with background image -->
+    <div class="hero">
+      <img id="hero-img" src="images/kitchen.jpg" alt="Kitchen scene of counters with a range between them prepared for cooking.">
+      <div class="hero-content">
+        <h2 id="welcome">Welcome to ChefsCorner: Your Recipe Manager</h2>
+      </div>
+    </div>
+
+    <!-- Main content -->
+    <main>
+      <section id="purpose">
+        <p>
+          Our purpose is to create a supportive and empowering online resource for individuals who like to collect
+          recipes. ChefsCorner is a place where you can eliminate clutter, have easy access from any device - phone, 
+          tablet, or computer - anytime and anywhere. Organize recipes by cuisine, ingredient, meal type, or any other 
+          criteria you choose. Quickly find specific recipes using keywords, ingredients, or tags. Share your favorite 
+          recipes. Save time and effort, reduce food waste, improve your cooking skills, and enjoy a more organized kitchen.
+        </p>
+      </section>
+    </main>
+
+    <!-- Footer and Modal containers -->
+    <div id="footer-placeholder"></div>
+    <div id="modal-container"></div>
+  </div>
+
+  <!-- ✅ Load nav, footer, and modal -->
+  <script type="module">
+    import { loadAllPartials } from "./javascript/loadPartials.js";
+    loadAllPartials();
+  </script>
+
+  <!-- Page-specific Scripts -->
+  <script type="module" src="javascript/login.js" defer></script>
+  <script type="module" src="javascript/ccmain.js"></script>
+</body>
 </html>

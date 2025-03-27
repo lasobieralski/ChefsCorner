@@ -1,36 +1,31 @@
-/*home page css*/
-/*hero section*/
-.hero {
+/* new home.css */
+
+   /* Hero Section - Base (Mobile First) */
+
+
+   .hero {
     position: relative;
     text-align: center;
-}
-
-#hero-img {
-    display: block;
-    margin: 0 auto;
+  }
+  
+  #hero-img {
     width: 100%;
-    max-width: 1000px;
+    height: auto;
     filter: brightness(100%);
     border-radius: 10px;
-    border: 3px solid black;  
-}
-
-.hero-content {
+    border: 3px solid black;
+    margin-left: 20px;
+    /* margin: 1rem auto; */
+  }
+  
+  .hero-content {
     position: absolute;
-    /* text-align: justify; */
     top: 30%;
     left: 10%;
     transform: translate(-5%, -50%);
-    color: deep teal;
-}
-
-.hero, #purpose p {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px 0;
-}
-
-#welcome {
+    color: deep teal; /* deep teal */
+  }
+  #welcome {
     font-size: clamp(2rem, 5vw, 3rem); /* Dynamically scale based on viewport */
     margin: 40px 0; /* Smaller margin for mobile */
     text-align: center;
@@ -38,3 +33,30 @@
     font-weight: bold;
 
 }
+/*Main Content*/
+#purpose p {
+  text-align: justify;
+  /* width: 440px; */
+  gap: 10px;
+  margin-left: 5px;
+}
+ 
+  /* Medium Screens */
+  
+  @media (min-width: 600px) {
+    .hero-content {
+      font-size: 1.5rem;
+      left: 15%;
+    }
+  }
+  
+ 
+   /* Large Screens */
+  
+  @media (min-width: 900px) {
+    .hero-content {
+      font-size: 2rem;
+      left: 20%;
+    }
+  }
+  

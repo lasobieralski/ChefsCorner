@@ -1,7 +1,7 @@
 /*media.css */
 
 /* Small screen nav dropdown */
-@media (max-width: 600px) {
+/* @media (max-width: 600px) {
   .nav-links {
     display: none;
     flex-direction: column;
@@ -29,49 +29,49 @@
     justify-content: space-between;
     align-items: center;
   }
-}
+} */
 
 /* Medium screens: Tablets */
-@media (min-width: 600px) {
+/* @media (min-width: 600px) {
   .navigation {
-    flex-direction: row; /* Display items horizontally */
-    justify-content: center; /* Center items across the width */
-    gap: 20px; /* Increase spacing between items */
-  }
+    flex-direction: row; Display items horizontally */
+    /*justify-content: center; /* Center items across the width */
+    /*gap: 20px; /* Increase spacing between items */
+  /*}
 
   .navigation li a {
     font-size: 1.5rem; /* Slightly larger font size */
-    padding: 5px 10px; /* Adjust padding */
-    background-color: transparent; /* Remove background for larger screens */
-  }
+    /*padding: 5px 10px; /* Adjust padding */
+   /* background-color: transparent; /* Remove background for larger screens */
+  /*}
 
   footer {
     flex-direction: row; /* Horizontal layout for medium screens */
-    justify-content: space-evenly;
+    /*justify-content: space-evenly;
     padding: 30px;
     font-size: 1.2rem; /* Slightly larger text */
-  }
+  /*}
 
   footer a {
     font-size: 1.2rem; /* Increase link size */
-  }
+  /*}
 
   .social img {
     width: 50px; /* Larger icons for medium screens */
-  }
+  /*}
 }
 /* Large screens: Desktops */
-@media (min-width: 1024px) {
-  .navigation {
+/* @media (min-width: 1024px) { */
+  /*.navigation {
     justify-content: space-around; /* Spread items evenly */
-    max-width: 1200px; /* Optional: constrain navigation width */
-    margin: 0 auto; /* Center navigation within the page */
-  }
+    /*max-width: 1200px; /* Optional: constrain navigation width */
+    /*margin: 0 auto; /* Center navigation within the page */
+  /*}
 
   .navigation li a {
     font-size: 1.8rem; /* Larger font size for better readability */
-    padding: 10px 20px; /* Add more padding */
-  }
+    /*padding: 10px 20px; /* Add more padding */
+  /*}
 }
 
 @media (min-width: 601px) {
@@ -91,7 +91,7 @@
   padding: 8px 16px;
 }
 /* Responsive Design */
-@media (max-width: 600px) {
+/*@media (max-width: 600px) {
   #contact-form-section {
     padding: 15px;
     margin: 20px auto;
@@ -109,7 +109,7 @@
 }
 
 /* Additional responsive adjustments if needed */
-@media (max-width: 768px) {
+/*@media (max-width: 768px) {
   header {
     flex-direction: column;
     align-items: flex-start;
@@ -133,4 +133,4 @@
   #author img {
     max-width: 100px;
   }
-}
+}*/

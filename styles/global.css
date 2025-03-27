@@ -1,3 +1,4 @@
+/* new global.css*/
 :root {
   --background-color: #e7f0f2;
   --primary-color: #0a92a6;
@@ -6,36 +7,78 @@
   --text-color: #2a3440;
 }
 
-* {
-  box-sizing: border-box;
-}
-
 body {
+  max-width:440px;
   font-family: "Poppins", sans-serif;
   background-color: var(--background-color);
-  /* color: var(--text-color); */
+  color: var(--primary-color);
+  font-size: 1rem;
   margin: 0;
   padding: 0;
-  font-size: larger;
-  color: var(--primary-color);
+  box-sizing: border-box;
+  line-height: 1.6;
 }
 
+/* Headings */
 h1 {
-  font-family: "Amatic SC";
-  font-size: 3rem;
-  color: var(--primary-color); /* Customize as needed */
-  margin: 0;
+  font-family: "Amatic SC", cursive;
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin: 0.5rem 0;
 }
 
+/* Images */
 img {
   max-width: 100%;
   height: auto;
   display: block;
-  object-fit: cover;
 }
 
+/* Container */
 .content {
-  max-width: 1000px;
+  max-width: 90%;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 0 1rem;
+}
+
+/* Utility Classes (optional for flexibility) */
+.text-center {
+  text-align: center;
+}
+
+.hidden {
+  display: none !important;
+}
+
+
+ /* Medium Screens */
+
+@media (min-width: 600px) {
+  body {
+    max-width: 899px;
+    font-size: 1.05rem;
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  .content {
+    max-width: 85%;
+  }
+}
+
+
+ /* Large Screens */
+
+@media (min-width: 900px) {
+  body {
+    max-width: 1200px;
+    font-size: 1.125rem;
+  }
+
+  .content {
+    max-width: 75%;
+  }
 }
