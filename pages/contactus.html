@@ -1,85 +1,71 @@
 <!-- new contactus.html -->
- <!-- pages/contactus.html - Contact Us Page -->
- <!DOCTYPE html>
- <html lang="en">
- <head>
-   <meta charset="utf-8" />
-   <meta name="description" content="ChefsCorner - Contact Us">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <title>Contact Us | ChefsCorner</title>
- 
-   <!-- Google Fonts -->
-   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
-   <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
- 
-   <!-- CSS Stylesheets -->
-   <link rel="stylesheet" href="../styles/global.css">
-   <link rel="stylesheet" href="../styles/layout.css">
-   <link rel="stylesheet" href="../styles/nav.css">
-   <link rel="stylesheet" href="../styles/footer.css">
-   <link rel="stylesheet" href="../styles/contact.css">
-   <link rel="stylesheet" href="../styles/loginmodal.css">
-   <link rel="stylesheet" href="../styles/animation.css">
- 
- </head>
- 
- <body>
-   <div class="content">
- 
-     <!-- Header/Nav (loaded dynamically) -->
-     <header id="header-container"></header>
- 
-     <!-- Main content -->
-     <main>
-       <section id="contact-form-section">
-         <h2>Contact Us</h2>
-         <p>We would love to hear from you! Use the form below to get in touch.</p>
- 
-         <!-- Contact Form -->
-         <form id="contact-form" method="POST">
-           <label for="name">Your Name:</label>
-           <input type="text" id="name" name="name" autocomplete="name" required />
- 
-           <label for="email">Your Email:</label>
-           <input type="email" id="email" name="email" autocomplete="email" required />
- 
-           <label for="subject">Subject:</label>
-           <input type="text" id="subject" name="subject" autocomplete="organization-title" required />
- 
-           <label for="message">Your Message:</label>
-           <textarea id="message" name="message" rows="5" autocomplete="off" required></textarea>
- 
-           <button type="submit">Send Message</button>
-         </form>
-       </section>
-     </main>
- 
-     <!-- Footer (loaded dynamically) -->
-     <div id="footer-placeholder"></div>
-   </div>
- 
-   <!-- JavaScript to load partials -->
-   <script type="module">
-     import { loadAllPartials } from "../javascript/loadPartials.js";
-     loadAllPartials();
-   </script>
-   
- 
-     // Load sign-in modal if modal container is present
-     document.addEventListener("DOMContentLoaded", () => {
-       const modalContainer = document.getElementById("modal-container");
-       if (modalContainer) {
-         fetch("../partials/signInModal.html")
-           .then((res) => res.text())
-           .then((html) => (modalContainer.innerHTML = html));
-       }
-     });
-   </script>
- 
-   <!-- Optional: Contact form logic (validation, confirmation, etc.) -->
-   <script type="module" src="../javascript/login.js"></script>
-   <script type="module" src="../javascript/ccmain.js"></script>
-   
- </body>
- </html>
- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="description" content="ChefsCorner - Contact Us">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | ChefsCorner</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="../styles/global.css">
+  <link rel="stylesheet" href="../styles/layout.css">
+  <link rel="stylesheet" href="../styles/nav.css">
+  <link rel="stylesheet" href="../styles/modal.css">
+  <link rel="stylesheet" href="../styles/loginmodal.css">
+  <link rel="stylesheet" href="../styles/footer.css">
+  <link rel="stylesheet" href="../styles/animation.css">
+  <link rel="stylesheet" href="../styles/contact.css">
+  <link rel="stylesheet" href="../styles/category.css">
+</head>
+
+<body>
+  <div class="content">
+
+    <!-- Header/Nav (loaded dynamically) -->
+    <header id="header-container"></header>
+
+    <!-- Main content -->
+    <main>
+      <section id="contact-form-section">
+        <h2>Contact Us</h2>
+        <p>We would love to hear from you! Use the form below to get in touch.</p>
+
+        <!-- Contact Form -->
+        <form id="contact-form" method="POST">
+          <label for="name">Your Name:</label>
+          <input type="text" id="name" name="name" autocomplete="name" required />
+
+          <label for="email">Your Email:</label>
+          <input type="email" id="email" name="email" autocomplete="email" required />
+
+          <label for="subject">Subject:</label>
+          <input type="text" id="subject" name="subject" autocomplete="organization-title" required />
+
+          <label for="message">Your Message:</label>
+          <textarea id="message" name="message" rows="5" autocomplete="off" required></textarea>
+
+          <button type="submit">Send Message</button>
+        </form>
+      </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+    <div id="modal-container"></div>
+  </div>
+
+  <!-- JavaScript -->
+  <script type="module">
+    import { setupNavForSubpage } from "../javascript/navManager.js";
+    setupNavForSubpage();
+  </script>
+  
+
+  <!-- Page-specific modules -->
+  <script type="module" src="../javascript/ccmain.js"></script>
+</body>
+</html>

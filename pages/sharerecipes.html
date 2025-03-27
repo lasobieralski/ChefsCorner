@@ -16,11 +16,12 @@
   <link rel="stylesheet" href="../styles/global.css">
   <link rel="stylesheet" href="../styles/layout.css">
   <link rel="stylesheet" href="../styles/nav.css">
-  <link rel="stylesheet" href="../styles/footer.css">
-  <link rel="stylesheet" href="../styles/share.css">
+  <link rel="stylesheet" href="../styles/modal.css">
   <link rel="stylesheet" href="../styles/loginmodal.css">
+  <link rel="stylesheet" href="../styles/footer.css">
   <link rel="stylesheet" href="../styles/animation.css">
-
+  <link rel="stylesheet" href="../styles/share.css">
+  <link rel="stylesheet" href="../styles/category.css">
 </head>
 
 <body>
@@ -68,31 +69,16 @@
       </section>
     </main>
 
-    <!-- Footer (loaded dynamically) -->
+    <!-- Footer and Modal containers -->
     <div id="footer-placeholder"></div>
+    <div id="modal-container"></div>
   </div>
 
-  <!-- JavaScript to load partials -->
-  
-  <!-- ✅ Load partials dynamically (navbar, footer, modal) -->
-<script type="module">
-  import { loadAllPartials } from "../javascript/loadPartials.js";
-  loadAllPartials();
-
-  // ✅ Load sign-in modal if modal-container exists
-  document.addEventListener("DOMContentLoaded", () => {
-    const modalContainer = document.getElementById("modal-container");
-    if (modalContainer) {
-      fetch("../partials/signInModal.html")
-        .then((res) => res.text())
-        .then((html) => (modalContainer.innerHTML = html));
-    }
-  });
-</script>
-
-  <!-- Page-specific scripts -->
- <!-- ✅ Other JavaScript Modules -->
-<script type="module" src="../javascript/login.js"></script>
-<script type="module" src="../javascript/ccmain.js"></script>
+  <!-- JavaScript: Load nav, footer, modal, adjust paths -->
+  <script type="module">
+    import { setupNavForSubpage } from "../javascript/navManager.js";
+    setupNavForSubpage();
+  </script>
+  <script type="module" src="../javascript/ccmain.js"></script>
 </body>
 </html>

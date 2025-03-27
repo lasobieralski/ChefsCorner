@@ -26,6 +26,7 @@ export async function setupNavForSubpage() {
   initLoginModal();
   initNavFeatures();
   adjustFooterIcons();
+  adjustFooterLinks();
 }
 
 // Adjust nav link paths based on page location
@@ -69,4 +70,12 @@ function adjustFooterIcons() {
 
   const fb = document.getElementById("facebook-icon");
   if (fb) fb.src = basePath + "images/facebook.png";
+}
+function adjustFooterLinks() {
+  const isInPages = window.location.pathname.includes("/pages/");
+  const contactLink = document.getElementById("footer-contact-link");
+
+  if (contactLink) {
+    contactLink.href = isInPages ? "../pages/contactus.html" : "pages/contactus.html";
+  }
 }
