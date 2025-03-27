@@ -1,0 +1,109 @@
+<!-- new myrecipes.html -->
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8" />
+  <meta name="description" content="My Recipes - ChefsCorner">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Recipes | ChefsCorner</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../styles/global.css">
+  <link rel="stylesheet" href="../styles/layout.css">
+  <link rel="stylesheet" href="../styles/nav.css">
+  <link rel="stylesheet" href="../styles/modal.css">
+  <link rel="stylesheet" href="../styles/loginmodal.css">
+  <link rel="stylesheet" href="../styles/footer.css">
+  <link rel="stylesheet" href="../styles/animation.css">
+  <link rel="stylesheet" href="../styles/recipe.css">
+  <link rel="stylesheet" href="../styles/category.css">
+  <link rel="stylesheet" href="../styles/myrecipe.css" />
+</head>
+
+<body>
+  <div class="content">
+    <header id="header-container"></header>
+
+    <main>
+      <section class="filter-controls">
+        <label for="filterCategory">Filter by Category:</label>
+        <select id="filterCategory">
+          <option value="all">All</option>
+          <option value="Breakfast">Breakfast</option>
+          <option value="Lunch">Lunch</option>
+          <option value="Dinner">Dinner</option>
+          <option value="Snacks">Snacks</option>
+          <option value="Dessert">Dessert</option>
+          <option value="Keto">Keto</option>
+        </select>
+
+        <label for="sortBy">Sort By:</label>
+        <select id="sortBy">
+          <option value="title">Title A–Z</option>
+          <option value="date">Newest First</option>
+        </select>
+
+        <div class="toggle-buttons">
+          <button id="showAll">All Recipes</button>
+          <button id="showFavorites">Favorites Only</button>
+        </div>
+      </section>
+
+      <div id="recipeContainer" class="recipe-list"></div>
+    </main>
+
+    <!-- View Modal -->
+    <div id="recipe-modal" class="modal hidden">
+      <div class="modal-content" id="modal-recipe-content"></div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="edit-recipe-modal" class="modal hidden">
+      <div class="modal-content">
+        <button class="close-modal-button">&times;</button>
+        <h2>Edit Recipe</h2>
+        <form id="edit-recipe-form">
+          <input type="hidden" id="edit-id">
+          <label for="edit-name" title="Recipe Name">Name:</label>
+          <input type="text" id="edit-name" required>
+
+          <label for="edit-servings" title="Number of servings">Servings:</label>
+          <input type="text" id="edit-servings" required>
+
+          <label for="edit-tags" title="Tags separated by commas">Tags (comma separated):</label>
+          <input type="text" id="edit-tags" required>
+
+          <label for="edit-prepTime" title="Preparation time in minutes">Prep Time:</label>
+          <input type="text" id="edit-prepTime" required>
+
+          <label for="edit-cookTime" title="Cooking time in minutes">Cook Time:</label>
+          <input type="text" id="edit-cookTime" required>
+
+          <label for="edit-ingredients" title="List of ingredients">Ingredients:</label>
+          <textarea id="edit-ingredients" rows="4" required></textarea>
+
+          <label for="edit-directions" title="Cooking directions">Directions:</label>
+          <textarea id="edit-directions" rows="4" required></textarea>
+
+          <button type="submit">Save Changes</button>
+        </form>
+      </div>
+    </div>
+    <!-- Footer and Modal containers -->
+    <div id="footer-placeholder"></div>
+    <div id="modal-container"></div>
+  </div>
+  <!-- Load partials -->
+  <script type="module" src="../javascript/myrecipes-init.js"></script>
+
+  <!-- Page-specific scripts -->
+  <script type="module" src="../javascript/myrecipes.js"></script>
+  <script type="module" src="../javascript/ccmain.js"></script>
+
+  
+</body>
+</html>

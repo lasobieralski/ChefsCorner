@@ -5,165 +5,190 @@ main {
     margin: 2rem auto;
     padding: 1rem;
   }
-  
   .recipe-list {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1.5rem;
-    margin-top: 1.5rem;
+    padding: 1rem;
   }
   
-/* 
-    Filter + Sort Controls */
- 
-  .filter-controls {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-    align-items: center;
-  }
-  
-  .filter-controls label {
-    font-weight: bold;
-    color: var(--text-color);
-  }
-  
-  .filter-controls select {
-    padding: 8px 12px;
-    border-radius: 6px;
-    border: 2px solid var(--primary-color);
-    font-size: 1rem;
-    font-family: "Poppins", sans-serif;
-    background-color: white;
-  }
-  
-  /* Toggle Buttons (All / Favorites) */
-  .toggle-buttons {
-    display: flex;
-    gap: 1rem;
-    margin-top: 1rem;
-  }
-  
-  .toggle-buttons button {
-    padding: 10px 20px;
-    font-weight: 600;
-    border-radius: 8px;
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-  }
-  
-  .toggle-buttons button:hover {
-    transform: scale(1.05);
-    background-color: var(--accent-color);
-  }
-  
-  /* ===============================
-     🍲 Saved Recipe Cards
-     =============================== */
-  
+  /* 📦 Recipe Card */
   .recipe-card {
     background-color: white;
+    border: 2px solid #ccc;
+    border-radius: 12px;
     padding: 1rem;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    transition: transform 0.2s ease;
-    position: relative;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
   }
   
   .recipe-card:hover {
-    transform: scale(1.02);
+    transform: translateY(-5px);
+  }
+  
+  /* 🖼️ Image */
+  .recipe-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  /* 📝 Title */
+  .recipe-card h2 {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+  }
+  
+  /* 🏷️ Tags */
+  .recipe-card .recipe-tags {
+    color: #555;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* 🔘 Buttons */
+  .recipe-card button {
+    margin: 0.3rem 0.25rem 0 0;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  
+  .fav-btn {
+    background-color: #fcefb4;
+  }
+  
+  .fav-btn:hover {
+    background-color: gold;
+  }
+  
+  .delete-btn {
+    background-color: #ffdddd;
+  }
+  
+  .delete-btn:hover {
+    background-color: #ff4f4f;
+    color: white;
+  }
+  .edit-btn {
+    background-color: #d6f8ff;
+  }
+  .edit-btn:hover {
+    background-color: #00bcd4;
+    color: white;
+  }
+  
+  .view-btn {
+    background-color: #e0e0ff;
+  }
+  .view-btn:hover {
+    background-color: #5c6bc0;
+    color: white;
+  }
+  
+  /* 📭 Empty Message */
+  .empty-message {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #666;
+    margin-top: 2rem;
+  }
+  
+  /* === Medium Screens (Tablets) === */
+  @media (min-width: 600px) {
+    .recipe-list {
+      grid-template-columns: repeat(2,1fr);
+      padding: 1.5rem;
+    }
+  
+    .recipe-card h2 {
+      font-size: 1.3rem;
+    }
+  
+    .recipe-card button {
+      font-size: 1rem;
+    }
+  }
+  
+  /* === Large Screens (Desktops) === */
+  @media (min-width: 900px) {
+    .recipe-list {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      padding: 2rem;
+    }
+  
+    .recipe-card {
+      padding: 1.25rem;
+    }
+  
+    .recipe-card h2 {
+      font-size: 1.4rem;
+    }
+    /* === 🧾 Recipe Card === */
+  .recipe-card {
+    background-color: white;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 1rem;
+    max-width: 100%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .recipe-card:hover {
+    transform: translateY(-5px);
   }
   
   .recipe-card img {
     width: 100%;
-    height: auto;
+    max-height: 180px;
     object-fit: cover;
     border-radius: 8px;
   }
   
-  .recipe-card h3 {
-    margin-top: 10px;
+  .recipe-card h2 {
     font-size: 1.2rem;
-    color: var(--text-color);
+    margin: 0.5rem 0;
   }
   
-  /* Meta Info */
-  .recipe-card p {
-    font-size: 0.95rem;
-    margin: 4px 0;
-    color: #555;
+  .recipe-tags {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 0.5rem;
   }
   
-  /* Favorite Button */
+  .recipe-card button {
+    padding: 0.4rem 0.8rem;
+    margin: 0.3rem 0.3rem 0 0;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  
   .fav-btn {
-    background-color: transparent;
-    border: none;
-    font-size: 1.3rem;
-    cursor: pointer;
-    color: #ff9800;
+    background-color: #fff2b4;
   }
   
-  /* Rating Select */
-  .rating-select {
-    margin-top: 0.5rem;
-    padding: 6px;
-    border-radius: 6px;
-    font-weight: bold;
-    font-size: 1rem;
+  .fav-btn:hover {
+    background-color: gold;
   }
   
-  /* Delete Button */
   .delete-btn {
-    background-color: crimson;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-weight: bold;
-    font-size: 0.9rem;
-    cursor: pointer;
-    margin-top: 0.5rem;
-    transition: background-color 0.3s ease;
+    background-color: #ffe0e0;
   }
   
   .delete-btn:hover {
-    background-color: darkred;
+    background-color: #ff4d4d;
+    color: white;
+  }
   }
   
-  
-  /* Medium Screens (Tablets) */
-
-  @media (min-width: 600px) {
-    .recipe-list {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  
-    .filter-controls {
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-  }
-  
-
-/* Large Screens (Desktops) */
-
-  @media (min-width: 900px) {
-    .recipe-list {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  
-    .toggle-buttons button {
-      padding: 10px 25px;
-      font-size: 1.05rem;
-    }
-  
-    .recipe-card h3 {
-      font-size: 1.3rem;
-    }
-  }
   
