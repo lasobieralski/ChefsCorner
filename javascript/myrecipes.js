@@ -1,178 +1,183 @@
-//new myrecipes.js
 import {
   getUserRecipes,
   updateUserRecipe,
   deleteUserRecipe,
-  toggleFavorite,
-  getFavoriteRecipes
+  toggleFavorite
 } from "./storage.js";
 
+let savedRecipes = [];
+let showFavoritesOnly = false;
+
 document.addEventListener("DOMContentLoaded", () => {
-  if (!localStorage.getItem("currentUser")) {
+  const user = localStorage.getItem("currentUser");
+  if (!user) {
     window.location.href = "../index.html";
     return;
   }
 
+  savedRecipes = getUserRecipes();
+  const recipeId = getRecipeIdFromURL();
+  if (recipeId) {
+    const recipe = savedRecipes.find(r => r.id == recipeId);
+    if (recipe) openRecipeModal(savedRecipes.indexOf(recipe), savedRecipes);
+  } else {
+    renderRecipes(savedRecipes);
+  }
+
   setupFilters();
   setupFavoritesToggle();
-  renderMyRecipes(getUserRecipes());
 });
 
-function renderMyRecipes(recipeList) {
+function getRecipeIdFromURL() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get("id");
+}
+
+function renderRecipes(recipes) {
   const container = document.getElementById("recipeContainer");
   if (!container) return;
 
-  if (recipeList.length === 0) {
-    container.innerHTML = `<p class="empty-message">No recipes saved yet.</p>`;
-    return;
-  }
+  const filtered = showFavoritesOnly
+    ? recipes.filter(r => r.isFavorite)
+    : recipes;
 
-  container.innerHTML = recipeList.map((r, i) => `
-    <div class="recipe-card" data-index="${i}">
-      <img src="${r.image}" alt="${r.name}">
-      <h2>${r.name}</h2>
-      <p><strong>Servings:</strong> ${r.servings}</p>
-      <p class="recipe-tags">${r.tags.join(", ")}</p>
+  container.innerHTML = filtered.map((recipe, index) => `
+    <div class="recipe-card" data-index="${index}">
+      <img src="${recipe.image}" alt="${recipe.name}">
+      <h3>${recipe.name}</h3>
+      <p>${recipe.tags.join(", ")}</p>
       <div class="button-row">
-        <button class="view-btn" data-index="${i}">👁 View</button>
-        <button class="edit-btn" data-id="${r.id}">✏️ Edit</button>
-        <button class="fav-btn" data-id="${r.id}">${r.isFavorite ? "★" : "☆"}</button>
-        <button class="delete-btn" data-id="${r.id}">🗑 Delete</button>
+        <button class="view-btn" data-id="${recipe.id}">View</button>
+        <button class="edit-btn" data-index="${index}">Edit</button>
+        <button class="delete-btn" data-id="${recipe.id}">Delete</button>
+        <button class="fav-btn" data-id="${recipe.id}">${recipe.isFavorite ? "★" : "☆"}</button>
       </div>
     </div>
   `).join("");
 
-  addCardListeners(recipeList);
+  setupRecipeActions(filtered);
 }
 
-function addCardListeners(recipes) {
-  document.querySelectorAll(".view-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const index = Number(btn.dataset.index);
-      openRecipeModal(recipes[index]);
+function setupRecipeActions(recipes) {
+  document.querySelectorAll(".view-btn").forEach(button => {
+    button.addEventListener("click", () => {
+      const id = button.dataset.id;
+      history.replaceState(null, "", `myrecipes.html?id=${id}`);
+      const index = recipes.findIndex(r => r.id == id);
+      openRecipeModal(index, recipes);
     });
   });
 
-  document.querySelectorAll(".edit-btn").forEach(btn => {
-    btn.addEventListener("click", (e) => {
-      const id = Number(btn.dataset.id);
-      const recipe = getUserRecipes().find(r => r.id === id);
-      openEditModal(recipe);
+  document.querySelectorAll(".edit-btn").forEach(button => {
+    button.addEventListener("click", () => {
+      const index = button.dataset.index;
+      openEditModal(savedRecipes[index]);
     });
   });
 
-  document.querySelectorAll(".fav-btn").forEach(btn => {
-    btn.addEventListener("click", (e) => {
-      toggleFavorite(Number(btn.dataset.id));
-      renderMyRecipes(getUserRecipes());
+  document.querySelectorAll(".delete-btn").forEach(button => {
+    button.addEventListener("click", () => {
+      const id = button.dataset.id;
+      deleteUserRecipe(id);
+      savedRecipes = getUserRecipes();
+      renderRecipes(savedRecipes);
     });
   });
 
-  document.querySelectorAll(".delete-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-      if (confirm("Delete this recipe?")) {
-        deleteUserRecipe(Number(btn.dataset.id));
-        renderMyRecipes(getUserRecipes());
-      }
+  document.querySelectorAll(".fav-btn").forEach(button => {
+    button.addEventListener("click", () => {
+      const id = button.dataset.id;
+      toggleFavorite(id);
+      savedRecipes = getUserRecipes();
+      renderRecipes(savedRecipes);
     });
   });
 }
 
-function openRecipeModal(recipe) {
+function openRecipeModal(index, list) {
+  const recipe = list[index];
   const modal = document.getElementById("recipe-modal");
   const content = document.getElementById("modal-recipe-content");
+
+  if (!modal || !content || !recipe) return;
 
   content.innerHTML = `
     <button class="close-modal-button">&times;</button>
     <h2>${recipe.name}</h2>
     <img src="${recipe.image}" alt="${recipe.name}">
+    <div class="recipe-tags">${recipe.tags.join(", ")}</div>
     <p><strong>Servings:</strong> ${recipe.servings}</p>
     <p><strong>Prep Time:</strong> ${recipe.prepTime}</p>
     <p><strong>Cook Time:</strong> ${recipe.cookTime}</p>
-    <p><strong>Tags:</strong> ${recipe.tags.join(", ")}</p>
     <h3>Ingredients</h3>
     <ul>${recipe.ingredients.map(i => `<li>${i}</li>`).join("")}</ul>
     <h3>Directions</h3>
-    <ol>${recipe.directions.map(s => `<li>${s}</li>`).join("")}</ol>
+    <ol>${recipe.directions.map(step => `<li>${step}</li>`).join("")}</ol>
   `;
+
   modal.classList.add("show");
 
   content.querySelector(".close-modal-button").addEventListener("click", () => {
     modal.classList.remove("show");
+    history.replaceState(null, "", "myrecipes.html");
   });
 }
 
-function openEditModal(recipe) {
-  const modal = document.getElementById("edit-recipe-modal");
-  document.getElementById("edit-id").value = recipe.id;
-  document.getElementById("edit-name").value = recipe.name;
-  document.getElementById("edit-servings").value = recipe.servings;
-  document.getElementById("edit-tags").value = recipe.tags.join(", ");
-  document.getElementById("edit-prepTime").value = recipe.prepTime;
-  document.getElementById("edit-cookTime").value = recipe.cookTime;
-  document.getElementById("edit-ingredients").value = recipe.ingredients.join("\n");
-  document.getElementById("edit-directions").value = recipe.directions.join("\n");
-  document.getElementById("edit-recipe-form").dataset.image = recipe.image;
-
-  modal.classList.add("show");
-}
-
-document.getElementById("edit-recipe-form").addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  const updated = {
-    id: Number(document.getElementById("edit-id").value),
-    name: document.getElementById("edit-name").value,
-    servings: document.getElementById("edit-servings").value,
-    prepTime: document.getElementById("edit-prepTime").value,
-    cookTime: document.getElementById("edit-cookTime").value,
-    tags: document.getElementById("edit-tags").value.split(",").map(t => t.trim()),
-    ingredients: document.getElementById("edit-ingredients").value.split("\n"),
-    directions: document.getElementById("edit-directions").value.split("\n"),
-    isFavorite: getUserRecipes().find(r => r.id === Number(document.getElementById("edit-id").value))?.isFavorite || false,
-  
-    // ✅ Keep original image
-    image: document.getElementById("edit-recipe-form").dataset.image
-  };
-  
-
-  updateUserRecipe(updated);
-  document.getElementById("edit-recipe-modal").classList.remove("show");
-  renderMyRecipes(getUserRecipes());
-});
-
-window.addEventListener("click", (e) => {
-  if (e.target.classList.contains("modal")) {
-    e.target.classList.remove("show");
-  }
-});
-
 function setupFilters() {
-  document.getElementById("filterCategory").addEventListener("change", applyFilters);
-  document.getElementById("sortBy").addEventListener("change", applyFilters);
+  const categorySelect = document.getElementById("filterCategory");
+  const sortBySelect = document.getElementById("sortBy");
+
+  if (categorySelect) {
+    categorySelect.addEventListener("change", applyFilters);
+  }
+
+  if (sortBySelect) {
+    sortBySelect.addEventListener("change", applyFilters);
+  }
 }
 
 function applyFilters() {
   const category = document.getElementById("filterCategory").value;
-  const sort = document.getElementById("sortBy").value;
-  let recipes = getUserRecipes();
+  const sortBy = document.getElementById("sortBy").value;
+
+  let filtered = [...savedRecipes];
 
   if (category !== "all") {
-    recipes = recipes.filter(r => r.tags.includes(category));
+    filtered = filtered.filter(r =>
+      r.tags.map(t => t.toLowerCase()).includes(category.toLowerCase())
+    );
   }
 
-  if (sort === "title") {
-    recipes.sort((a, b) => a.name.localeCompare(b.name));
+  if (sortBy === "title") {
+    filtered.sort((a, b) => a.name.localeCompare(b.name));
+  } else if (sortBy === "date") {
+    filtered.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
   }
 
-  renderMyRecipes(recipes);
+  renderRecipes(filtered);
 }
 
 function setupFavoritesToggle() {
-  document.getElementById("showAll").addEventListener("click", () => {
-    renderMyRecipes(getUserRecipes());
-  });
-  document.getElementById("showFavorites").addEventListener("click", () => {
-    renderMyRecipes(getFavoriteRecipes());
-  });
+  const showAllBtn = document.getElementById("showAll");
+  const showFavsBtn = document.getElementById("showFavorites");
+
+  if (showAllBtn && showFavsBtn) {
+    showAllBtn.addEventListener("click", () => {
+      showFavoritesOnly = false;
+      renderRecipes(savedRecipes);
+    });
+
+    showFavsBtn.addEventListener("click", () => {
+      showFavoritesOnly = true;
+      renderRecipes(savedRecipes);
+    });
+  }
 }
+
+window.addEventListener("click", (event) => {
+  const modal = document.getElementById("recipe-modal");
+  if (event.target === modal) {
+    modal.classList.remove("show");
+    history.replaceState(null, "", "myrecipes.html");
+  }
+});
