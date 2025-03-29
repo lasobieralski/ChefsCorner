@@ -1,114 +1,265 @@
-/* new modal.css */
-
-
+/* Modal Container */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    justify-content: center;
-    align-items: center;
-    overflow-y: auto;
-    padding: 20px;
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+  padding: 20px;
 }
-  
+
 .modal.show {
-    display: flex !important; /* Show when active */
+  display: flex !important;
 }
-  
-/* Modal Content Box */
+
+/* Modal Box */
 .modal-content {
-    background: white;
-    padding: 20px;
-    width: 90%;
-    max-width: 600px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    position: relative;
-    max-height: 90vh;
-    overflow-y: auto;
+  background: white;
+  padding: 20px;
+  width: 90%;
+  max-width: 600px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
 }
-  
+
+.modal-content form {
+  width: 100%;
+}
+
 /* Close Button */
 .close-button {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-    cursor: pointer;
-    transition: color 0.3s ease-in-out;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 30px;
+  font-weight: bold;
+  color: var(--primary-color);
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+  background: none;
+  border: none;
 }
-  
-.close-button:hover {
-    color: #d9534f;
+
+/* Back to Login Button */
+#backToLogin {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
 }
-  
+
+.close-button,
+#backToLogin {
+  padding: 5px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: all 0.3 ease;
+}
+
+.close-button:hover,
+#backToLogin:hover {
+  color: white;
+  background-color: var(--primary-color);
+  transform: scale(1.05);
+}
+
 /* Modal Image */
 .modal-content img {
-    width: 100%;
-    max-height: 300px;
-    object-fit: contain;
-    border-radius: 8px;
-    margin-bottom: 15px;
+  width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 15px;
 }
-  
-/* Modal Details */
+
+/* Modal Text Content */
 .modal-content h2 {
-    font-size: 1.8rem;
-    margin-bottom: 10px;
-    color: #006d77;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
 }
-  
+
 .modal-content p,
 .modal-content ul,
 .modal-content ol {
-    text-align: left;
-    font-size: 1rem;
-    line-height: 1.6;
-    margin-bottom: 10px;
-  }
-  
+  text-align: left;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
 .modal-content ul,
 .modal-content ol {
-    padding-left: 20px;
-  }
-  
-.modal-content li {
-    margin-bottom: 5px;
-  }
-  
-
-/* Medium Screens */
-
-@media (min-width: 600px) {
-    .modal-content h2 {
-        font-size: 2rem;
-    }
-
-    .modal-content p,
-    .modal-content ul,
-    .modal-content ol {
-        font-size: 1.05rem;
-    }
+  padding-left: 20px;
 }
-  
 
- /* Large Screens */
+.modal-content li {
+  margin-bottom: 5px;
+}
+
+/* Forms: Login & Signup */
+
+#signupFormContainer {
+  padding: 10px;
+}
+
+#loginForm,
+#signupForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 1rem;
+}
+
+#loginForm label,
+#signupForm label {
+  text-align: left;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 5px;
+  font-size: 1.3rem;
+}
+
+#loginForm input,
+#signupForm input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 2px solid black;
+  box-sizing: border-box;
+}
+
+#loginForm .form-buttons,
+#signupForm .form-buttons {
+  width: 100%;
+}
+
+#openSignupForm {
+  background-color: white;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  font-weight: bold;
+}
+
+#openSignupForm:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* Buttons (Login, Signup, Create Account) */
+
+.form-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-buttons button {
+  min-width: 160px;
+  padding: 12px 28px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--primary-color);
+  color: white;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.25s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+#loginForm button {
+  margin-bottom: 20px;
+}
+
+#loginForm button,
+#openSignupForm {
+  width: 160px;
+}
+
+#loginForm button,
+#signupForm button,
+#openSignupForm {
+  width: 160px;
+  border: none;
+  margin: 10px 0;
+  text-align: center;
+  padding: 10px 25px;
+  font-size: 1rem;
+  border-radius: 5px;
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+#loginForm button:hover,
+#signupForm button:hover,
+#openSignupForm:hover {
+  background-color: white;
+  color: var(--secondary-color);
+  transform: scale(1.05);
+  border: 2px solid var(--primary-color);
+}
+
+/* Signup Section */
+.signup-toggle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.signup-toggle p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--primary-color);
+}
+
+/* Hides Sign Up when Create Account is clicked */
+.hidden {
+  display: none;
+}
+
+/* Responsive Typography */
+@media (min-width: 600px) {
+  .modal-content h2 {
+    font-size: 2rem;
+  }
+
+  .modal-content p,
+  .modal-content ul,
+  .modal-content ol {
+    font-size: 1.05rem;
+  }
+}
 
 @media (min-width: 900px) {
-    .modal-content {
-      padding: 30px;
-    }
-  
-    .modal-content h2 {
-      font-size: 2.2rem;
-    }
+  .modal-content {
+    padding: 30px;
   }
-  
+
+  .modal-content h2 {
+    font-size: 2.2rem;
+  }
+}

@@ -52,12 +52,15 @@ async function fetchRecipes() {
       recipes = recipes.filter(r =>
         r.tags.map(tag => tag.toLowerCase()).includes(categoryFilter.toLowerCase())
       );
+      renderRecipes(recipes);
+      pauseRotation();
+    } else {
+      const random = getRandomRecipe(recipes);
+      renderRecipes([random]);
+      startRotation();
     }
 
-    const random = getRandomRecipe(recipes);
-    renderRecipes([random]);
     setupCategoryFilters();
-    startRotation();
   } catch (err) {
     console.error("❌ Error loading recipes:", err);
   }

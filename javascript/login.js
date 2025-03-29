@@ -10,22 +10,33 @@ export function initLoginModal() {
     const signupContainer = document.getElementById("signupFormContainer");
     const loginForm = document.getElementById("loginForm");
     const signupForm = document.getElementById("signupForm");
+    const signupToggle = document.getElementById("signupToggle");
+    const modalTitle = document.getElementById("modalTitle");
+    const backToLoginButton = document.getElementById("backToLogin");
 
-    
+    if (backToLoginButton) {
+      backToLoginButton.addEventListener("click", () => {
+        if (loginForm) loginForm.classList.remove("hidden");
+        if (signupToggle) signupToggle.classList.remove("hidden");
+        if (signupContainer) signupContainer.classList.add("hidden");
+        if (modalTitle) modalTitle.classList.remove("hidden");
+
+        loginForm.scrollIntoView({ behavior: "smooth" });
+      })
+    }
+
     if (signInButton && modal) {
       signInButton.addEventListener("click", () => {
         modal.classList.add("open");
       });
     }
 
-   
     if (closeButton && modal) {
       closeButton.addEventListener("click", () => {
         modal.classList.remove("open");
       });
     }
 
-   
     if (modal) {
       modal.addEventListener("click", (e) => {
         if (e.target === modal) {
@@ -34,15 +45,22 @@ export function initLoginModal() {
       });
     }
 
-    
-    if (openSignupBtn && signupContainer) {
+    if (openSignupBtn) {
       openSignupBtn.addEventListener("click", () => {
-        signupContainer.classList.remove("hidden");
-        openSignupBtn.style.display = "none"; // hide the Create Account button after click
+        const loginForm = document.getElementById("loginForm");
+        const signupToggle = document.getElementById("signupToggle");
+        const signupContainer = document.getElementById("signupFormContainer");
+        const modalTitle = document.getElementById("modalTitle");
+    
+        if (loginForm) loginForm.classList.add("hidden");
+        if (signupToggle) signupToggle.classList.add("hidden");
+        if (signupContainer) signupContainer.classList.remove("hidden");
+        if (modalTitle) modalTitle.classList.add("hidden"); // ✅ hide the old "Sign In" heading
+    
+        signupContainer.scrollIntoView({ behavior: "smooth" });
       });
     }
-
-    
+                
     if (loginForm) {
       loginForm.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -56,13 +74,16 @@ export function initLoginModal() {
       });
     }
 
-    
     if (signupForm) {
       signupForm.addEventListener("submit", (e) => {
         e.preventDefault();
-        const username = document.getElementById("signup-username").value.trim();
+        const username = document
+          .getElementById("signup-username")
+          .value.trim();
         const email = document.getElementById("signup-email").value.trim();
-        const password = document.getElementById("signup-password").value.trim();
+        const password = document
+          .getElementById("signup-password")
+          .value.trim();
 
         if (username && email && password) {
           localStorage.setItem("currentUser", username);
@@ -72,4 +93,3 @@ export function initLoginModal() {
     }
   });
 }
-
