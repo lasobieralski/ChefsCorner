@@ -7,8 +7,14 @@
   --text-color: #2a3440;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
-  max-width:440px;
+  /* max-width:440px; */
   font-family: "Poppins", sans-serif;
   background-color: var(--background-color);
   color: var(--primary-color);
@@ -36,8 +42,8 @@ img {
 
 /* Container */
 .content {
-  max-width: 90%;
   max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   padding: 0 1rem;
 }
@@ -56,7 +62,7 @@ img {
 
 @media (min-width: 600px) {
   body {
-    max-width: 899px;
+    /* max-width: 899px; */
     font-size: 1.05rem;
   }
 
@@ -74,7 +80,7 @@ img {
 
 @media (min-width: 900px) {
   body {
-    max-width: 1200px;
+    /* max-width: 1200px; */
     font-size: 1.125rem;
   }
 

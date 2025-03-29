@@ -1,146 +1,146 @@
 /* new nav.css */
 
-    /* Navigation - Mobile First (Default) */
-   
+/* Navigation - Mobile First (Default) */
 
-   .navbar {
-    border: 3px solid black;
-    border-radius: 8px;
-    width: 96%;
-    padding: 0.5rem;
-    background-color: var(--background-color);
-    color: var(--primary-color);
-  }
-  
+#header-container {
+  border: 3px solid black;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.navbar {
+  width: 96%;
+  /* padding: 0.5rem; */
+  background-color: var(--background-color);
+  color: var(--primary-color);
+}
+
+.nav-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo {
+  width: 60px;
+  height: auto;
+  border-radius: 8px;
+}
+
+.logo-name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.logo-name h1 {
+  font-size: 3.5rem;
+  color: var(--primary-color);
+  margin: 0;
+  font-family: "Amatic SC";
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.sign-in-btn,
+.menu-toggle {
+  font-size: 1rem;
+  padding: 8px 12px;
+  border: 3px solid black;
+  background-color: black;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Nav Links - Hidden by Default (Mobile) */
+.nav-links {
+  display: none;
+  flex-direction: column;
+  text-align: center;
+  background-color: var(--primary-color);
+  border-top: 3px solid black;
+  border-radius: 8px;
+  list-style: none;
+  margin: 0;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  padding: 0.5rem;
+  display: block;
+}
+
+/* When menu is toggled open */
+.nav-links.active {
+  display: flex;
+}
+
+/* Medium Screens (Tablet) */
+
+@media (min-width: 600px) {
   .nav-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    max-width: 900px;
+    flex-direction: row;
+    justify-content: space-between;
   }
-  
-  .logo {
-    width: 60px;
-    height: auto;
-    border-radius: 8px;
-  }
-  
-  .logo-name {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-  }
-  
-  .logo-name h1 {
-    font-size: 3.5rem;
-    color: var(--primary-color);
-    margin: 0;
-    font-family: "Amatic SC";
-  }
-  
-  .nav-buttons {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .sign-in-btn,
-  .menu-toggle {
-    font-size: 1rem;
-    padding: 8px 12px;
-    border: 3px solid black;
-    background-color: black;
-    color: white;
-    border-radius: 8px;
-    cursor: pointer;
-  }
-  
-  /* Nav Links - Hidden by Default (Mobile) */
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    text-align: center;
-    background-color: var(--primary-color);
-    border-top: 3px solid black;
-    border-radius: 8px;
-    list-style: none;
-    margin: 0;
-  }
-  
-  .nav-links li a {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    padding: 0.5rem;
-    display: block;
-  }
-  
-  /* When menu is toggled open */
-  .nav-links.active {
-    display: flex;
-  }
-  
- 
-    /* Medium Screens (Tablet) */
-  
-  @media (min-width: 600px) {
-    .nav-header {
-      max-width: 900px;
-      flex-direction: row;
-      justify-content: space-between;
-    }
-  
-    .logo {
-      width: 100px;
-    }
-  
-    .logo-name h1 {
-      font-size: 3rem;
-    }
-  
-    .nav-buttons {
-      justify-content: flex-end;
-      width: auto;
-      margin-top: 0;
-    }
-  
-    .menu-toggle {
-      display: none; /* Hide toggle button on medium+ screens */
-    }
-  
-    .nav-links {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      gap: 20px;
-      background-color: var(--primary-color);
-      border-top: none;
-    }
-  
-    .nav-links li a {
-      color: white;
-    }
-  }
-  
 
-  /* Large Screens (Desktop) */
-   
-  @media (min-width: 900px) {
-    .navbar {
-      max-width: 1200px;
-      padding: 1rem 2rem;
-    }
-  
-    .logo-name h1 {
-      font-size: 4rem;
-    }
-  
-    .nav-links {
-      justify-content: flex-end;
-      gap: 30px;
-    }
-  
-    .nav-buttons {
-      gap: 15px;
-    }
+  .logo {
+    width: 100px;
   }
-  
+
+  .logo-name h1 {
+    font-size: 3rem;
+  }
+
+  .nav-buttons {
+    justify-content: flex-end;
+    width: auto;
+    margin-top: 0;
+  }
+
+  .menu-toggle {
+    display: none; /* Hide toggle button on medium+ screens */
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    background-color: var(--primary-color);
+    border-top: none;
+  }
+
+  .nav-links li a {
+    color: white;
+  }
+}
+
+/* Large Screens (Desktop) */
+
+@media (min-width: 900px) {
+  .navbar {
+    max-width: 1200px;
+    /* padding: 1rem 2rem; */
+  }
+
+  .logo-name h1 {
+    font-size: 4rem;
+  }
+
+  .nav-links {
+    justify-content: flex-end;
+    gap: 30px;
+  }
+
+  .nav-buttons {
+    gap: 15px;
+  }
+}
