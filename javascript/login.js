@@ -51,7 +51,11 @@ export function initLoginModal() {
 
         if (username && password) {
           localStorage.setItem("currentUser", username);
-          window.location.href = "pages/myrecipes.html";
+          // window.location.href = "pages/myrecipes.html";
+          const inPages = window.location.pathname.includes("/pages/");
+          const redirectPath = inPages ? "myrecipes.html" : "pages/myrecipes.html";
+          window.location.href = redirectPath;
+
         }
       });
     }
