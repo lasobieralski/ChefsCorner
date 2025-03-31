@@ -21,16 +21,18 @@
   <link rel="stylesheet" href="../styles/animation.css">
   <link rel="stylesheet" href="../styles/recipe.css">
   <link rel="stylesheet" href="../styles/category.css">
-  <link rel="stylesheet" href="../styles/myrecipes.css" />
+  <link rel="stylesheet" href="../styles/myrecipes.css">
 </head>
 
 <body>
   <div class="content">
+    <!-- Nav loaded dynamically -->
     <header id="header-container"></header>
 
+    <!-- Main content -->
     <main>
       <section class="filter-controls">
-        <label for="filterCategory">Filter by Category:</label>
+        <label for="filterCategory" title="Filter by category">Filter by Category:</label>
         <select id="filterCategory">
           <option value="all">All</option>
           <option value="Breakfast">Breakfast</option>
@@ -41,7 +43,7 @@
           <option value="Keto">Keto</option>
         </select>
 
-        <label for="sortBy">Sort By:</label>
+        <label for="sortBy" title="Sort recipes">Sort By:</label>
         <select id="sortBy">
           <option value="title">Title A–Z</option>
           <option value="date">Newest First</option>
@@ -56,54 +58,55 @@
       <div id="recipeContainer" class="recipe-list"></div>
     </main>
 
-    <!-- View Modal -->
+    <!-- View Recipe Modal -->
     <div id="recipe-modal" class="modal hidden">
       <div class="modal-content" id="modal-recipe-content"></div>
     </div>
 
-    <!-- Edit Modal -->
+    <!-- Edit Recipe Modal -->
     <div id="edit-recipe-modal" class="modal hidden">
       <div class="modal-content">
-        <button class="close-modal-button">&times;</button>
+        <button class="close-modal-button" aria-label="Close">&times;</button>
         <h2>Edit Recipe</h2>
         <form id="edit-recipe-form">
           <input type="hidden" id="edit-id">
+
           <label for="edit-name" title="Recipe Name">Name:</label>
           <input type="text" id="edit-name" required>
 
-          <label for="edit-servings" title="Number of servings">Servings:</label>
+          <label for="edit-servings" title="Servings">Servings:</label>
           <input type="text" id="edit-servings" required>
 
-          <label for="edit-tags" title="Tags separated by commas">Tags (comma separated):</label>
+          <label for="edit-tags" title="Comma-separated tags">Tags:</label>
           <input type="text" id="edit-tags" required>
 
-          <label for="edit-prepTime" title="Preparation time in minutes">Prep Time:</label>
+          <label for="edit-prepTime" title="Prep time">Prep Time:</label>
           <input type="text" id="edit-prepTime" required>
 
-          <label for="edit-cookTime" title="Cooking time in minutes">Cook Time:</label>
+          <label for="edit-cookTime" title="Cook time">Cook Time:</label>
           <input type="text" id="edit-cookTime" required>
 
-          <label for="edit-ingredients" title="List of ingredients">Ingredients:</label>
+          <label for="edit-ingredients" title="List ingredients">Ingredients:</label>
           <textarea id="edit-ingredients" rows="4" required></textarea>
 
-          <label for="edit-directions" title="Cooking directions">Directions:</label>
+          <label for="edit-directions" title="Cooking steps">Directions:</label>
           <textarea id="edit-directions" rows="4" required></textarea>
 
           <button type="submit">Save Changes</button>
         </form>
       </div>
     </div>
-    <!-- Footer and Modal containers -->
+
+    <!-- Footer + modal -->
     <div id="footer-placeholder"></div>
     <div id="modal-container"></div>
   </div>
-  <!-- Load partials -->
+
+  <!-- Load header/footer/nav partials -->
   <script type="module" src="../javascript/myrecipes-init.js"></script>
 
-  <!-- Page-specific scripts -->
+  <!-- Main JS -->
   <script type="module" src="../javascript/myrecipes.js"></script>
   <script type="module" src="../javascript/ccmain.js"></script>
-
-  
 </body>
 </html>

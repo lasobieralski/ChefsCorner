@@ -1,3 +1,5 @@
+//new myrecipes.js
+import { waitForElement } from "./ui.js";
 import {
   getUserRecipes,
   updateUserRecipe,
@@ -16,16 +18,23 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   savedRecipes = getUserRecipes();
+
   const recipeId = getRecipeIdFromURL();
+  renderRecipes(savedRecipes);
+
   if (recipeId) {
-    const recipe = savedRecipes.find(r => r.id == recipeId);
-    if (recipe) openRecipeModal(savedRecipes.indexOf(recipe), savedRecipes);
-  } else {
-    renderRecipes(savedRecipes);
+    setTimeout(() => {
+      const recipe = savedRecipes.find(r => r.id == recipeId);
+      if (recipe) {
+        const index = savedRecipes.indexOf(recipe);
+        openRecipeModal(index, savedRecipes);
+      }
+    }, 100);
   }
 
   setupFilters();
   setupFavoritesToggle();
+  setupEditForm();
 });
 
 function getRecipeIdFromURL() {
@@ -71,6 +80,7 @@ function setupRecipeActions(recipes) {
   document.querySelectorAll(".edit-btn").forEach(button => {
     button.addEventListener("click", () => {
       const index = button.dataset.index;
+      console.log("Edit button clicked! Index:", index);
       openEditModal(savedRecipes[index]);
     });
   });
@@ -123,17 +133,61 @@ function openRecipeModal(index, list) {
   });
 }
 
+function openEditModal(recipe) {
+  document.getElementById("recipe-modal").classList.remove("show");
+
+  const modal = document.getElementById("edit-recipe-modal");
+  if (!modal || !recipe) return;
+
+  document.getElementById("edit-id").value = recipe.id;
+  document.getElementById("edit-name").value = recipe.name;
+  document.getElementById("edit-servings").value = recipe.servings;
+  document.getElementById("edit-tags").value = recipe.tags.join(", ");
+  document.getElementById("edit-prepTime").value = recipe.prepTime;
+  document.getElementById("edit-cookTime").value = recipe.cookTime;
+  document.getElementById("edit-ingredients").value = recipe.ingredients.join("\n");
+  document.getElementById("edit-directions").value = recipe.directions.join("\n");
+
+  modal.classList.add("show"); // ✅ fix here
+}
+
+function setupEditForm() {
+  waitForElement("#edit-recipe-form", () => {
+    const form = document.getElementById("edit-recipe-form");
+
+    document.querySelector("#edit-recipe-modal .close-modal-button").addEventListener("click", () => {
+      document.getElementById("edit-recipe-modal").classList.remove("show");
+    });
+    
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const updated = {
+        id: document.getElementById("edit-id").value,
+        name: document.getElementById("edit-name").value.trim(),
+        servings: document.getElementById("edit-servings").value.trim(),
+        tags: document.getElementById("edit-tags").value.split(",").map(t => t.trim()),
+        prepTime: document.getElementById("edit-prepTime").value.trim(),
+        cookTime: document.getElementById("edit-cookTime").value.trim(),
+        ingredients: document.getElementById("edit-ingredients").value.split("\n").map(i => i.trim()),
+        directions: document.getElementById("edit-directions").value.split("\n").map(d => d.trim()),
+        isFavorite: savedRecipes.find(r => String(r.id) === document.getElementById("edit-id").value)?.isFavorite || false
+      };
+
+      updateUserRecipe(updated);
+      savedRecipes = getUserRecipes();
+      renderRecipes(savedRecipes);
+      document.getElementById("edit-recipe-modal").classList.add("hidden");
+    });
+  });
+}
+
 function setupFilters() {
   const categorySelect = document.getElementById("filterCategory");
   const sortBySelect = document.getElementById("sortBy");
 
-  if (categorySelect) {
-    categorySelect.addEventListener("change", applyFilters);
-  }
-
-  if (sortBySelect) {
-    sortBySelect.addEventListener("change", applyFilters);
-  }
+  if (categorySelect) categorySelect.addEventListener("change", applyFilters);
+  if (sortBySelect) sortBySelect.addEventListener("change", applyFilters);
 }
 
 function applyFilters() {

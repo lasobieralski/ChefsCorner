@@ -34,7 +34,7 @@ export function updateUserRecipe(updatedRecipe) {
   if (!key) return;
 
   let recipes = getUserRecipes();
-  const index = recipes.findIndex(r => r.id === updatedRecipe.id);
+  const index = recipes.findIndex(r => String(r.id) === String(updatedRecipe.id));
   if (index !== -1) {
     recipes[index] = updatedRecipe;
     localStorage.setItem(key, JSON.stringify(recipes));
@@ -47,7 +47,7 @@ export function deleteUserRecipe(recipeId) {
   if (!key) return;
 
   let recipes = getUserRecipes();
-  recipes = recipes.filter(r => r.id !== recipeId);
+  recipes = recipes.filter(r => String(r.id) !== String(recipeId));
   localStorage.setItem(key, JSON.stringify(recipes));
 }
 
@@ -57,7 +57,7 @@ export function toggleFavorite(recipeId) {
   if (!key) return;
 
   let recipes = getUserRecipes();
-  const recipe = recipes.find(r => r.id === recipeId);
+  const recipe = recipes.find(r => String(r.id) === String(recipeId));
   if (recipe) {
     recipe.isFavorite = !recipe.isFavorite;
     localStorage.setItem(key, JSON.stringify(recipes));
