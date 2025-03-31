@@ -1,12 +1,12 @@
 /* new footer.css */
 
    #footer-container {
-    width: 100%;
-    max-width: 90%;
+    /* width: 100%; */
+    /* max-width: 90%; */
     border: 3px solid black;
     border-radius: 8px;
-    margin-left: 20px;
-    margin-right: 20px;
+    /* margin-left: 20px;
+    margin-right: 20px; */
   }
   
   footer {
@@ -31,7 +31,7 @@
   footer a {
     color: white;
     text-decoration: none;
-    margin-right: 15px;
+    /* margin-right: 15px; */
     font-weight: 600;
     transition: color 0.3s;
   }
@@ -61,6 +61,6 @@
   
   footer .social img:hover {
     transform: scale(1.1);
-    background-color: var(--accent-color);
+    /* background-color: var(--accent-color); */
   }
   

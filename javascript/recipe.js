@@ -45,10 +45,22 @@ async function fetchRecipes() {
     if (!res.ok) throw new Error(`Status: ${res.status}`);
     recipes = await res.json();
 
-    const random = getRandomRecipe(recipes);
-    renderRecipes([random]);
+    const params = new URLSearchParams(window.location.search);
+    const categoryFilter = params.get("category");
+
+    if (categoryFilter) {
+      recipes = recipes.filter(r =>
+        r.tags.map(tag => tag.toLowerCase()).includes(categoryFilter.toLowerCase())
+      );
+      renderRecipes(recipes);
+      pauseRotation();
+    } else {
+      const random = getRandomRecipe(recipes);
+      renderRecipes([random]);
+      startRotation();
+    }
+
     setupCategoryFilters();
-    startRotation();
   } catch (err) {
     console.error("❌ Error loading recipes:", err);
   }
@@ -121,12 +133,8 @@ function setupCategoryFilters() {
   buttons.forEach(button => {
     button.addEventListener('click', () => {
       const category = button.dataset.category.toLowerCase();
-      const filtered = recipes.filter(r =>
-        r.tags.map(tag => tag.toLowerCase()).includes(category)
-      );
-      pauseRotation();
-      renderRecipes(filtered);
-      history.replaceState(null, "", "ccrecipes.html");
+      const newUrl = `${window.location.pathname}?category=${encodeURIComponent(category)}`;
+      window.location.href = newUrl;
     });
   });
 }
