@@ -59,8 +59,16 @@ function renderRecipes(recipes) {
         <button class="view-btn" data-id="${recipe.id}">View</button>
         <button class="edit-btn" data-index="${index}">Edit</button>
         <button class="delete-btn" data-id="${recipe.id}">Delete</button>
-        <button class="fav-btn" data-id="${recipe.id}">${recipe.isFavorite ? "★" : "☆"}</button>
+        <button class="fav-btn" data-id="${recipe.id}">${recipe.isFavorite ? "❤️" : "🤍"}</button>
+
       </div>
+      <div class="rating" data-id="${recipe.id}">
+        ${[1, 2, 3, 4, 5].map(star => `
+          <span class="star" data-rating="${star}">
+            ${recipe.rating >= star ? "★" : "☆"}
+          </span>`).join("")}
+      </div>
+
     </div>
   `).join("");
 
@@ -102,6 +110,23 @@ function setupRecipeActions(recipes) {
       renderRecipes(savedRecipes);
     });
   });
+  document.querySelectorAll(".rating").forEach(ratingEl => {
+    ratingEl.addEventListener("click", (e) => {
+      if (e.target.classList.contains("star")) {
+        const recipeId = ratingEl.dataset.id;
+        const newRating = parseInt(e.target.dataset.rating);
+  
+        const recipe = savedRecipes.find(r => r.id == recipeId);
+        if (recipe) {
+          recipe.rating = newRating;
+          updateUserRecipe(recipe);
+          savedRecipes = getUserRecipes();
+          renderRecipes(savedRecipes);
+        }
+      }
+    });
+  });
+  
 }
 
 function openRecipeModal(index, list) {
