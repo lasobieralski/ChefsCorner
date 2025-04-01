@@ -13,8 +13,13 @@ let showFavoritesOnly = false;
 document.addEventListener("DOMContentLoaded", () => {
   const user = localStorage.getItem("currentUser");
   if (!user) {
-    window.location.href = "../index.html";
-    return;
+    const messageBox = document.getElementById("auth-message");
+    if (messageBox) {
+      messageBox.innerHTML = `
+        <p>⚠️ Please sign in to have access to this page!</p>`;
+      messageBox.classList.remove("hidden");
+    }
+    return; // ⛔ Stop loading recipes
   }
 
   savedRecipes = getUserRecipes();
