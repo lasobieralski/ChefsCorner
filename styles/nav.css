@@ -81,7 +81,7 @@
 .nav-links.active {
   display: flex;
 }
-#logOutButton {
+#logOutButton, #signInButton {
   background-color: var(--primary-color);
   color: white;
   font-weight: bold;
