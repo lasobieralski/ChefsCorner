@@ -265,3 +265,26 @@ window.addEventListener("click", (event) => {
     history.replaceState(null, "", "myrecipes.html");
   }
 });
+document.getElementById("loadUserRecipesTest").addEventListener("click", () => {
+  const user = localStorage.getItem("currentUser");
+  const key = `recipes_${user}`;
+  const recipes = JSON.parse(localStorage.getItem(key)) || [];
+  console.log("✅ Loaded Recipes for", user, ":", recipes);
+
+  if (recipes.length === 0) {
+    alert("No recipes found for " + user);
+  } else {
+    renderRecipes(recipes);
+  }
+});
+document.addEventListener("DOMContentLoaded", () => {
+  const user = localStorage.getItem("currentUser");
+  if (!user) {
+    document.getElementById("auth-message").classList.remove("hidden");
+    document.getElementById("auth-message").textContent = "⚠️ Please sign in.";
+    return;
+  }
+
+  savedRecipes = getUserRecipes(); // This must return from localStorage key `recipes_<username>`
+  renderRecipes(savedRecipes);
+});
