@@ -81,7 +81,13 @@
 .nav-links.active {
   display: flex;
 }
-
+#logOutButton {
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  border: 3px solid black;
+}
 /* Medium Screens (Tablet) */
 
 @media (min-width: 600px) {
