@@ -189,11 +189,32 @@ function setupEditForm() {
       document.getElementById("edit-recipe-modal").classList.remove("show");
     });
     
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
-
+    
+      const id = document.getElementById("edit-id").value;
+      const existingRecipe = savedRecipes.find(r => String(r.id) === id);
+    
+      const imageInput = document.getElementById("edit-image");
+    
+      // 👇 Helper function to convert image to base64
+      function toBase64(file) {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(reader.result);
+          reader.onerror = reject;
+          reader.readAsDataURL(file);
+        });
+      }
+    
+      // 🖼️ Determine new or existing image
+      let imageBase64 = existingRecipe?.image || "images/default-recipe.jpg";
+      if (imageInput.files.length > 0) {
+        imageBase64 = await toBase64(imageInput.files[0]);
+      }
+    
       const updated = {
-        id: document.getElementById("edit-id").value,
+        id: id,
         name: document.getElementById("edit-name").value.trim(),
         servings: document.getElementById("edit-servings").value.trim(),
         tags: document.getElementById("edit-tags").value.split(",").map(t => t.trim()),
@@ -201,14 +222,18 @@ function setupEditForm() {
         cookTime: document.getElementById("edit-cookTime").value.trim(),
         ingredients: document.getElementById("edit-ingredients").value.split("\n").map(i => i.trim()),
         directions: document.getElementById("edit-directions").value.split("\n").map(d => d.trim()),
-        isFavorite: savedRecipes.find(r => String(r.id) === document.getElementById("edit-id").value)?.isFavorite || false
+        isFavorite: existingRecipe?.isFavorite || false,
+        rating: existingRecipe?.rating || 0,
+        image: imageBase64, // ✅ save the image as base64
+        date: existingRecipe?.date || new Date().toISOString()
       };
-
+    
       updateUserRecipe(updated);
       savedRecipes = getUserRecipes();
       renderRecipes(savedRecipes);
       document.getElementById("edit-recipe-modal").classList.add("hidden");
     });
+    
   });
 }
 
