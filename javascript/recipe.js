@@ -150,7 +150,7 @@ function renderRecipes(recipeList) {
         <h2>${r.name}</h2>
         <div class="recipe-tags">${r.tags.join(", ")}</div>
         ${getCurrentUser() ? `<button class="save-recipe" data-id="${r.id}">Save Recipe</button>` : ""}
-        <a href="?id=${r.id}" class="view-link">View Details</a>
+        <a href="?id=${r.id}" class="view-link">View Recipe</a>
       </div>
     </div>
   `).join("");
