@@ -158,28 +158,37 @@
     {
         "id": 6,
         "Author": [
-            "The Mormon Diet by Earl F. Updike",
-            "A Word of Wisdom",
-            "14 Days to New Vigor and Health"
+            
+            "Lisaann Sobieralski"
         ],
-        "name": "Wheatena Whole Wheat Hot Cereal",
-        "tags": ["Cereal", "Whole Wheat", "Breakfast"],
-        "image":"../images/crackedwheatcereal.jpg",
-        "servings": "1",
-        "prepTime": "1 minute",
-        "cookTime": "3-5 minutes",
+        "name": "Butter Rolls",
+        "tags": ["Bread", "Dinner"],
+        "image":"../images/butter_rolls.jpg",
+        "servings": "36",
+        "prepTime": "15 minutes",
+        "cookTime": "20-30 minutes",
         "ingredients": [
-            "½ cup Wheatena",
-            "1 ½ cups water"
+            "2 yeast cakes or 2 tablespoons of dry yeast",
+            "2 cups lukewarm water",
+            "1 cup melted butter",
+            "6 beaten eggs",
+            "1 1/2 teaspoon salt",
+            "1 cup sugar",
+            "8-9 cups of flour"
         ],
-        "note": "Microwave instructions are on the box.",
+        "note": "For Best Results: Needs to refrigerate over night so plan ahead",
         "directions": [
-            "Place Wheatena and water into a saucepan and heat to a rapid boil, stirring occasionally.",
-            "Cook 4-5 minutes over moderate heat or to desire consistency, stirring occasionally.",
-            "Remove from heat; cover until ready to serve.",
-            "Stir before serving. ",
-            "Top off with an orange or banana. (optional)",
-            "(I like fresh raspberries.)"
+            "Mix yeast with 2 tablespoons of sugar with the 2 cups of lukewarm water.",
+            "Add sugar, eggs, and melted butter and mix well.",
+            "Add unsifted flour and salt. Mix in very well.",
+            "The dough should be sticky.",
+            "Cover with damp cloth and let rise until double in size about 2 hours.",
+            "Stir down and refrigerate overnight.",
+            "Divide the dough into two sections.",
+            "Roll each section into a round pie shape circle.",
+            "Bruch with butter that has been melted.",
+            "Cuthe the rolls in a pie shape and roll-up from the large end to small end.",
+            "Place on buttered cookie sheet and cover and let rise 3-4 hours. Bake at 375° until lightly browned."
         ]
     },
     {
@@ -724,6 +733,78 @@
             "If needed, use a second sheet of parchment to smooth down",
             "Bake 14 minutes on the center rack (some ovens require more baking time, so continue cooking until firm if needed).",
             "Let cool completely before frosting."
+        ]
+    },
+    {
+        "id": 23,
+        "Author": [
+            "Lisaann Sobieralski"
+        ],
+        "name": "Easy Bread",
+        "tags": ["Bread"],
+        "image": "../images/bread.jpg",
+        "servings": "12",
+        "prepTime": "15 minutes",
+        "cookTime": "25-30 minutes",
+        "ingredients": [
+            "5 cups bread flour",
+            "2 cups warm water",
+            "1 1.2 tbsp rapid rise yeast",
+            "3 tbsp butter melted",
+            "3 tbsp sugar",
+            "1 1/4 teaspoon salt",
+            "cooking spray"
+        ],
+        "note": "Bread needs to raise until double in size",
+        "directions": [
+            "In a large measuring cup mix yeast, water, butter, sugar, and salt. Set aside.",
+            "Pre-heat oven to 375°.",
+            "Spray 2 loaf pans with cooking spray",
+            "Measure the flour and add to large mixing bowl for a free-standing mixer.",
+            "Add in the yeast mixture. Mix with a dough hook until forms a ball around the hook.",
+            "Turn dough out onto lightly floured surface.",
+            "Knead 15-20 times. Let rest 10 minutes.",
+            "Punch dough down. Shape into two loaves.",
+            "Place seam side down in loaf pans.",
+            "Cover with damp cloth and let rise until double in size about 20-30 minutes.",
+            "Bake at 375° for 25-30 minutes or until done.",
+            "Remove from pans: cool on wire-racks."
+        ]
+    },
+    {
+        "id": 24,
+        "Author": [
+            "Laurie Lundgren"
+        ],
+        "name": "Eggplant Tuna Melt",
+        "tags": ["Eggplant", "Lunch", "Tuna", "Diabetic"],
+        "image": "../images/eggplant.jpg",
+        "servings": "3",
+        "prepTime": "15 minutes",
+        "cookTime": "15-20 minutes",
+        "ingredients": [
+            "3.5 oz Eggplant, 1/4-inch thick slices",
+            "cooking spray",
+            "sprinkle of pepper",
+            "2 oz canned tuna",
+            "1 oz. shredded cheddar cheese",
+            "1 oz. onions, diced",
+            "1.5 oz. red and green bell peppers, diced",
+            "1 oz. cream cheese",
+            "sprinkle of salt and pepper"
+        ],
+        "note": "Serve with 6oz. of fruit for a complete lunch.",
+        "directions": [
+            "Pre-heat oven to 450°.",
+            "Slice eggplant into 1/4 inch thick slices.",
+            "Spray both sides of eggplant with cooking spray and leason with pepper on both sides.",
+            "Place on mesh pizza pan and bake for 10 minutes.",
+            "While eggplant is baking make the topping:",
+            "Combine the tuna, cheese, onion, peppers, cream cheese mix them with a fork.",
+            "Top the eggplant slices with the tuna mixture in an even layer, completerly covering the surgace of the eggplant slices out to the edges.",
+            "Sprinkle with salt and pepper.",
+            "Bake at 450° for 6-7 minutes."
+            
         ]
     }
 ]
