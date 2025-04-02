@@ -162,7 +162,7 @@
             "Lisaann Sobieralski"
         ],
         "name": "Butter Rolls",
-        "tags": ["Bread", "Dinner"],
+        "tags": ["Breads", "Lunch", "Dinner"],
         "image":"../images/butter_rolls.jpg",
         "servings": "36",
         "prepTime": "15 minutes",
@@ -741,7 +741,7 @@
             "Lisaann Sobieralski"
         ],
         "name": "Easy Bread",
-        "tags": ["Bread"],
+        "tags": ["Breads", "Lunch", "Dinner"],
         "image": "../images/bread.jpg",
         "servings": "12",
         "prepTime": "15 minutes",
