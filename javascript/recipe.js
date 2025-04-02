@@ -1,4 +1,4 @@
-// new.recipe.js
+//new.recipe.js
 import { saveUserRecipe } from "./storage.js";
 
 let recipes = [];
@@ -18,7 +18,7 @@ function getRecipeIdFromURL() {
 document.addEventListener("DOMContentLoaded", init);
 
 async function init() {
-  // console.log("✅ Initializing Recipes Page...");
+  console.log("✅ Initializing Recipes Page...");
   await fetchRecipes();
 
   const recipeId = getRecipeIdFromURL();
@@ -45,22 +45,10 @@ async function fetchRecipes() {
     if (!res.ok) throw new Error(`Status: ${res.status}`);
     recipes = await res.json();
 
-    const params = new URLSearchParams(window.location.search);
-    const categoryFilter = params.get("category");
-
-    if (categoryFilter) {
-      recipes = recipes.filter(r =>
-        r.tags.map(tag => tag.toLowerCase()).includes(categoryFilter.toLowerCase())
-      );
-      renderRecipes(recipes);
-      pauseRotation();
-    } else {
-      const random = getRandomRecipe(recipes);
-      renderRecipes([random]);
-      startRotation();
-    }
-
+    const random = getRandomRecipe(recipes);
+    renderRecipes([random]);
     setupCategoryFilters();
+    startRotation();
   } catch (err) {
     console.error("❌ Error loading recipes:", err);
   }
@@ -133,8 +121,12 @@ function setupCategoryFilters() {
   buttons.forEach(button => {
     button.addEventListener('click', () => {
       const category = button.dataset.category.toLowerCase();
-      const newUrl = `${window.location.pathname}?category=${encodeURIComponent(category)}`;
-      window.location.href = newUrl;
+      const filtered = recipes.filter(r =>
+        r.tags.map(tag => tag.toLowerCase()).includes(category)
+      );
+      pauseRotation();
+      renderRecipes(filtered);
+      history.replaceState(null, "", "ccrecipes.html");
     });
   });
 }
@@ -146,11 +138,11 @@ function renderRecipes(recipeList) {
   output.innerHTML = recipeList.map((r, i) => `
     <div class="recipe-card" data-index="${i}">
       <div class="recipe-summary">
-        <img src="${r.image ? r.image : '../images/default-image.jpg'}" alt="Image of ${r.name}" onerror="this.onerror=null;this.src='../images/default-image.jpg';"/>
+        <img src="${r.image}" alt="Image of ${r.name}" />
         <h2>${r.name}</h2>
         <div class="recipe-tags">${r.tags.join(", ")}</div>
         ${getCurrentUser() ? `<button class="save-recipe" data-id="${r.id}">Save Recipe</button>` : ""}
-        <a href="?id=${r.id}" class="view-link">View Recipe</a>
+        <a href="?id=${r.id}" class="view-link">View Details</a>
       </div>
     </div>
   `).join("");
@@ -187,7 +179,7 @@ function openRecipeModal(index, list) {
 
   content.innerHTML = `
     <button class="close-modal-button">&times;</button>
-    <button class="print-button">Print Recipe</button>
+    <button class="print-button" title="Print Recipe">🖨️</button>
     <h2>${recipe.name}</h2>
     <img src="${recipe.image}" alt="Image of ${recipe.name}">
     <div class="recipe-tags">${recipe.tags.join(", ")}</div>
@@ -201,84 +193,49 @@ function openRecipeModal(index, list) {
   `;
 
   modal.classList.add("show");
-
+  content.querySelector(".print-button").addEventListener("click", () => printRecipe(recipe));
   content.querySelector(".close-modal-button").addEventListener("click", () => {
     modal.classList.remove("show");
   });
-
-  // content.querySelector(".print-button").addEventListener("click", () => {
-  //   window.print();
-  content.querySelector(".print-button").addEventListener("click", () => {
-    openPrintView(recipe); // ✅ Use a new full-page printable recipe
-  });
 }
-function openPrintView(recipe) {
-  const printWindow = window.open("", "_blank");
-
-  const html = `
-    <!DOCTYPE html>
+function printRecipe(recipe) {
+  const printWindow = window.open("", "_blank", "width=800,height=600");
+  printWindow.document.write(`
     <html>
-    <head>
-      <meta charset="UTF-8">
-      <title>Print: ${recipe.name}</title>
-      <style>
-        body {
-          font-family: 'Arial', sans-serif;
-          margin: 2rem;
-          color: #333;
-        }
-        img {
-          max-width: 100%;
-          height: auto;
-          margin-bottom: 1rem;
-        }
-        h1, h2, h3 {
-          margin-bottom: 0.5rem;
-        }
-        .tags {
-          font-style: italic;
-          margin-bottom: 1rem;
-        }
-        ul, ol {
-          padding-left: 1.5rem;
-        }
-        @media print {
-          body {
-            margin: 0;
-            padding: 1rem;
-          }
-        }
-      </style>
-    </head>
-    <body>
-      <h1>${recipe.name}</h1>
-      <img src="${recipe.image}" alt="${recipe.name}" />
-      <div class="tags"><strong>Tags:</strong> ${recipe.tags.join(", ")}</div>
-      <p><strong>Servings:</strong> ${recipe.servings}</p>
-      <p><strong>Prep Time:</strong> ${recipe.prepTime}</p>
-      <p><strong>Cook Time:</strong> ${recipe.cookTime}</p>
-
-      <h3>Ingredients</h3>
-      <ul>${(recipe.ingredients || []).map(i => `<li>${i}</li>`).join("")}</ul>
-
-      <h3>Directions</h3>
-      <ol>${(recipe.directions || []).map(d => `<li>${d}</li>`).join("")}</ol>
-
-      <script>
-        window.onload = () => setTimeout(() => window.print(), 300);
-      </script>
-    </body>
+      <head>
+        <title>${recipe.name}</title>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+        <style>
+          body { font-family: 'Poppins', sans-serif; padding: 2rem; max-width: 800px; margin: auto; }
+          .print-icon { text-align: right; margin-bottom: 1rem; }
+          .print-icon button { background: none; border: none; font-size: 1.5rem; cursor: pointer; }
+          @media print { .print-icon { display: none; } }
+        </style>
+      </head>
+      <body>
+        <div class="print-icon">
+          <button onclick="window.print()" title="Print Recipe">🖨️</button>
+        </div>
+        <h1>${recipe.name}</h1>
+        <img src="${recipe.image}" alt="${recipe.name}" style="max-width:100%; height:auto;" />
+        <p><strong>Servings:</strong> ${recipe.servings}</p>
+        <p><strong>Prep Time:</strong> ${recipe.prepTime}</p>
+        <p><strong>Cook Time:</strong> ${recipe.cookTime}</p>
+        <p><strong>Tags:</strong> ${recipe.tags.join(", ")}</p>
+        <h3>Ingredients</h3>
+        <ul>${recipe.ingredients.map(i => `<li>${i}</li>`).join("")}</ul>
+        <h3>Directions</h3>
+        <ol>${recipe.directions.map(step => `<li>${step}</li>`).join("")}</ol>
+      </body>
     </html>
-  `;
-
-  printWindow.document.open();
-  printWindow.document.write(html);
+  `);
   printWindow.document.close();
+  printWindow.focus();
 }
+
 window.addEventListener("click", e => {
   const modal = document.getElementById("recipe-modal");
   if (e.target === modal) {
     modal.classList.remove("show");
   }
 });
-
