@@ -187,6 +187,7 @@ function openRecipeModal(index, list) {
 
   content.innerHTML = `
     <button class="close-modal-button">&times;</button>
+    <button class="print-button">Print Recipe</button>
     <h2>${recipe.name}</h2>
     <img src="${recipe.image}" alt="Image of ${recipe.name}">
     <div class="recipe-tags">${recipe.tags.join(", ")}</div>
@@ -203,6 +204,10 @@ function openRecipeModal(index, list) {
 
   content.querySelector(".close-modal-button").addEventListener("click", () => {
     modal.classList.remove("show");
+  });
+
+  content.querySelector(".print-button").addEventListener("click", () => {
+    window.print();
   });
 }
 
