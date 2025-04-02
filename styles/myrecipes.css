@@ -192,11 +192,11 @@ main {
   }
 
   .fav-btn {
-    background-color: #fff2b4;
+    background-color: lightskyblue;
   }
-
+  
   .fav-btn:hover {
-    background-color: gold;
+    background-color: wheat;
   }
 
   .delete-btn {
