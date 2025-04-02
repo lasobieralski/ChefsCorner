@@ -146,7 +146,7 @@ function renderRecipes(recipeList) {
   output.innerHTML = recipeList.map((r, i) => `
     <div class="recipe-card" data-index="${i}">
       <div class="recipe-summary">
-        <img src="${r.image}" alt="Image of ${r.name}" />
+        <img src="${r.image ? r.image : '../images/default-image.jpg'}" alt="Image of ${r.name}" />
         <h2>${r.name}</h2>
         <div class="recipe-tags">${r.tags.join(", ")}</div>
         ${getCurrentUser() ? `<button class="save-recipe" data-id="${r.id}">Save Recipe</button>` : ""}
