@@ -58,7 +58,7 @@
 
 /* Nav Links - Hidden by Default (Mobile) */
 .nav-links {
-  display: flex;
+  display: none;
   gap: 1rem;
   padding: 0.5rem 1rem;
   flex-direction: column;
