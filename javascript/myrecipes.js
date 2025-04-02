@@ -156,13 +156,77 @@ function openRecipeModal(index, list) {
   `;
 
   modal.classList.add("show");
-
+  content.querySelector(".print-button").addEventListener("click", () => {
+    openPrintView(recipe); // ✅ Use a new full-page printable recipe
+  }); 
   content.querySelector(".close-modal-button").addEventListener("click", () => {
     modal.classList.remove("show");
     history.replaceState(null, "", "myrecipes.html");
   });
 }
+function openPrintView(recipe) {
+  const printWindow = window.open("", "_blank");
 
+  const html = `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="UTF-8">
+      <title>Print: ${recipe.name}</title>
+      <style>
+        body {
+          font-family: 'Arial', sans-serif;
+          margin: 2rem;
+          color: #333;
+        }
+        img {
+          max-width: 100%;
+          height: auto;
+          margin-bottom: 1rem;
+        }
+        h1, h2, h3 {
+          margin-bottom: 0.5rem;
+        }
+        .tags {
+          font-style: italic;
+          margin-bottom: 1rem;
+        }
+        ul, ol {
+          padding-left: 1.5rem;
+        }
+        @media print {
+          body {
+            margin: 0;
+            padding: 1rem;
+          }
+        }
+      </style>
+    </head>
+    <body>
+      <h1>${recipe.name}</h1>
+      <img src="${recipe.image}" alt="${recipe.name}" />
+      <div class="tags"><strong>Tags:</strong> ${recipe.tags.join(", ")}</div>
+      <p><strong>Servings:</strong> ${recipe.servings}</p>
+      <p><strong>Prep Time:</strong> ${recipe.prepTime}</p>
+      <p><strong>Cook Time:</strong> ${recipe.cookTime}</p>
+
+      <h3>Ingredients</h3>
+      <ul>${(recipe.ingredients || []).map(i => `<li>${i}</li>`).join("")}</ul>
+
+      <h3>Directions</h3>
+      <ol>${(recipe.directions || []).map(d => `<li>${d}</li>`).join("")}</ol>
+
+      <script>
+        window.onload = () => setTimeout(() => window.print(), 300);
+      </script>
+    </body>
+    </html>
+  `;
+
+  printWindow.document.open();
+  printWindow.document.write(html);
+  printWindow.document.close();
+}
 function openEditModal(recipe) {
   document.getElementById("recipe-modal").classList.remove("show");
 
