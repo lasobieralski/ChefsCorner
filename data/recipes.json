@@ -806,5 +806,42 @@
             "Bake at 450° for 6-7 minutes."
             
         ]
-    }
+    },
+    {
+        "id": 25,
+        "Author": [
+            "Laurie Lundgren"
+        ],
+        "name": "Southwest Soup",
+        "tags": ["Soup", "Lunch", "Diabetic"],
+        "image": "../images/southwest_soup.jpg",
+        "servings": "2",
+        "prepTime": "15 minutes",
+        "cookTime": "15-20 minutes",
+        "ingredients": [
+            "1 1/2 cups chicken broth",
+            "1/2 teaspoon salt",
+            "1/2 teaspoon ground cumin",
+            "1/4 teaspoon black pepper",
+            "1/4 teaspoon chili powder",
+            "pinch of red pepper flakes (optional)",
+            "2.5 oz. onions, diced",
+            "4 oz. celery, diced",
+            "7 oz. corn",
+            "1 can (15 oz.) Fire-Roasted Diced Tomatoes (don't drain)",
+            "2 ox. Quinoa, pre-cooked",
+            "1 can black beans, drained"
+        ],
+        "note": "Top with plain yogurt and fresh cilantro.",
+        "directions": [
+            "In a large pot combine all ingredients.",
+            "Stir.",
+            "Cover. Over high heat, on the stovetop, bring to a boil.",
+            "When boiling is reached, immediately reduce heat to medium-low.",
+            "Leave lid off and let simmer for 15 minutes, uncovered.",
+            "Divide soup into two equal servings.",
+            "Top with 4oz. Greek yourt and fresh cilantro."
+            
+        ]
+    } 
 ]
