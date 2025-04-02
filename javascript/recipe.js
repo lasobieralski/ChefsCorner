@@ -18,7 +18,7 @@ function getRecipeIdFromURL() {
 document.addEventListener("DOMContentLoaded", init);
 
 async function init() {
-  console.log("✅ Initializing Recipes Page...");
+  // console.log("✅ Initializing Recipes Page...");
   await fetchRecipes();
 
   const recipeId = getRecipeIdFromURL();
