@@ -15,24 +15,21 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!user) {
     const messageBox = document.getElementById("auth-message");
     if (messageBox) {
-      messageBox.innerHTML = `
-        <p>⚠️ Please sign in to have access to this page!</p>`;
+      messageBox.innerHTML = `<p>⚠️ Please sign in to have access to this page!</p>`;
       messageBox.classList.remove("hidden");
     }
-    return; // ⛔ Stop loading recipes
+    return;
   }
 
   savedRecipes = getUserRecipes();
-
-  const recipeId = getRecipeIdFromURL();
   renderRecipes(savedRecipes);
 
+  const recipeId = getRecipeIdFromURL();
   if (recipeId) {
     setTimeout(() => {
       const recipe = savedRecipes.find(r => r.id == recipeId);
       if (recipe) {
-        const index = savedRecipes.indexOf(recipe);
-        openRecipeModal(index, savedRecipes);
+        openRecipeModal(savedRecipes.indexOf(recipe), savedRecipes);
       }
     }, 100);
   }
@@ -40,6 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupFilters();
   setupFavoritesToggle();
   setupEditForm();
+  setupTestLoader();
 });
 
 function getRecipeIdFromURL() {
@@ -51,9 +49,7 @@ function renderRecipes(recipes) {
   const container = document.getElementById("recipeContainer");
   if (!container) return;
 
-  const filtered = showFavoritesOnly
-    ? recipes.filter(r => r.isFavorite)
-    : recipes;
+  const filtered = showFavoritesOnly ? recipes.filter(r => r.isFavorite) : recipes;
 
   container.innerHTML = filtered.map((recipe, index) => `
     <div class="recipe-card" data-index="${index}">
@@ -65,7 +61,6 @@ function renderRecipes(recipes) {
         <button class="edit-btn" data-index="${index}">Edit</button>
         <button class="delete-btn" data-id="${recipe.id}">Delete</button>
         <button class="fav-btn" data-id="${recipe.id}">${recipe.isFavorite ? "❤️" : "🤍"}</button>
-
       </div>
       <div class="rating" data-id="${recipe.id}">
         ${[1, 2, 3, 4, 5].map(star => `
@@ -73,7 +68,6 @@ function renderRecipes(recipes) {
             ${recipe.rating >= star ? "★" : "☆"}
           </span>`).join("")}
       </div>
-
     </div>
   `).join("");
 
@@ -81,68 +75,63 @@ function renderRecipes(recipes) {
 }
 
 function setupRecipeActions(recipes) {
-  document.querySelectorAll(".view-btn").forEach(button => {
+  document.querySelectorAll(".view-btn").forEach(button =>
     button.addEventListener("click", () => {
       const id = button.dataset.id;
       history.replaceState(null, "", `myrecipes.html?id=${id}`);
-      const index = recipes.findIndex(r => r.id == id);
-      openRecipeModal(index, recipes);
-    });
-  });
+      openRecipeModal(recipes.findIndex(r => r.id == id), recipes);
+    })
+  );
 
-  document.querySelectorAll(".edit-btn").forEach(button => {
+  document.querySelectorAll(".edit-btn").forEach(button =>
     button.addEventListener("click", () => {
-      const index = button.dataset.index;
-      console.log("Edit button clicked! Index:", index);
-      openEditModal(savedRecipes[index]);
-    });
-  });
+      openEditModal(savedRecipes[button.dataset.index]);
+    })
+  );
 
-  document.querySelectorAll(".delete-btn").forEach(button => {
+  document.querySelectorAll(".delete-btn").forEach(button =>
     button.addEventListener("click", () => {
-      const id = button.dataset.id;
-      deleteUserRecipe(id);
+      deleteUserRecipe(button.dataset.id);
       savedRecipes = getUserRecipes();
       renderRecipes(savedRecipes);
-    });
-  });
+    })
+  );
 
-  document.querySelectorAll(".fav-btn").forEach(button => {
+  document.querySelectorAll(".fav-btn").forEach(button =>
     button.addEventListener("click", () => {
-      const id = button.dataset.id;
-      toggleFavorite(id);
+      toggleFavorite(button.dataset.id);
       savedRecipes = getUserRecipes();
       renderRecipes(savedRecipes);
-    });
-  });
-  document.querySelectorAll(".rating").forEach(ratingEl => {
+    })
+  );
+
+  document.querySelectorAll(".rating").forEach(ratingEl =>
     ratingEl.addEventListener("click", (e) => {
-      if (e.target.classList.contains("star")) {
-        const recipeId = ratingEl.dataset.id;
-        const newRating = parseInt(e.target.dataset.rating);
-  
-        const recipe = savedRecipes.find(r => r.id == recipeId);
-        if (recipe) {
-          recipe.rating = newRating;
-          updateUserRecipe(recipe);
-          savedRecipes = getUserRecipes();
-          renderRecipes(savedRecipes);
-        }
+      if (!e.target.classList.contains("star")) return;
+      const recipeId = ratingEl.dataset.id;
+      const newRating = parseInt(e.target.dataset.rating);
+      if (isNaN(newRating)) return;
+
+      const recipe = savedRecipes.find(r => r.id == recipeId);
+      if (recipe) {
+        recipe.rating = newRating;
+        updateUserRecipe(recipe);
+        savedRecipes = getUserRecipes();
+        renderRecipes(savedRecipes);
       }
-    });
-  });
-  
+    })
+  );
 }
 
 function openRecipeModal(index, list) {
   const recipe = list[index];
   const modal = document.getElementById("recipe-modal");
   const content = document.getElementById("modal-recipe-content");
-
   if (!modal || !content || !recipe) return;
 
   content.innerHTML = `
     <button class="close-modal-button">&times;</button>
+    <button class="print-button" title="Print Recipe">🖨️</button>
     <h2>${recipe.name}</h2>
     <img src="${recipe.image}" alt="${recipe.name}">
     <div class="recipe-tags">${recipe.tags.join(", ")}</div>
@@ -155,84 +144,55 @@ function openRecipeModal(index, list) {
     <ol>${recipe.directions.map(step => `<li>${step}</li>`).join("")}</ol>
   `;
 
-  modal.classList.add("show");
-  content.querySelector(".print-button").addEventListener("click", () => {
-    openPrintView(recipe); // ✅ Use a new full-page printable recipe
-  }); 
+  content.querySelector(".print-button").addEventListener("click", () => printRecipe(recipe));
   content.querySelector(".close-modal-button").addEventListener("click", () => {
     modal.classList.remove("show");
     history.replaceState(null, "", "myrecipes.html");
   });
-}
-function openPrintView(recipe) {
-  const printWindow = window.open("", "_blank");
 
-  const html = `
-    <!DOCTYPE html>
+  modal.classList.add("show");
+}
+
+function printRecipe(recipe) {
+  const printWindow = window.open("", "_blank", "width=800,height=600");
+  printWindow.document.write(`
     <html>
-    <head>
-      <meta charset="UTF-8">
-      <title>Print: ${recipe.name}</title>
-      <style>
-        body {
-          font-family: 'Arial', sans-serif;
-          margin: 2rem;
-          color: #333;
-        }
-        img {
-          max-width: 100%;
-          height: auto;
-          margin-bottom: 1rem;
-        }
-        h1, h2, h3 {
-          margin-bottom: 0.5rem;
-        }
-        .tags {
-          font-style: italic;
-          margin-bottom: 1rem;
-        }
-        ul, ol {
-          padding-left: 1.5rem;
-        }
-        @media print {
-          body {
-            margin: 0;
-            padding: 1rem;
-          }
-        }
-      </style>
-    </head>
-    <body>
-      <h1>${recipe.name}</h1>
-      <img src="${recipe.image}" alt="${recipe.name}" />
-      <div class="tags"><strong>Tags:</strong> ${recipe.tags.join(", ")}</div>
-      <p><strong>Servings:</strong> ${recipe.servings}</p>
-      <p><strong>Prep Time:</strong> ${recipe.prepTime}</p>
-      <p><strong>Cook Time:</strong> ${recipe.cookTime}</p>
-
-      <h3>Ingredients</h3>
-      <ul>${(recipe.ingredients || []).map(i => `<li>${i}</li>`).join("")}</ul>
-
-      <h3>Directions</h3>
-      <ol>${(recipe.directions || []).map(d => `<li>${d}</li>`).join("")}</ol>
-
-      <script>
-        window.onload = () => setTimeout(() => window.print(), 300);
-      </script>
-    </body>
+      <head>
+        <title>${recipe.name}</title>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+        <style>
+          body { font-family: 'Poppins', sans-serif; padding: 2rem; max-width: 800px; margin: auto; }
+          .print-icon { text-align: right; margin-bottom: 1rem; }
+          .print-icon button { background: none; border: none; font-size: 1.5rem; cursor: pointer; }
+          @media print { .print-icon { display: none; } }
+        </style>
+      </head>
+      <body>
+        <div class="print-icon">
+          <button onclick="window.print()" title="Print Recipe">🖨️</button>
+        </div>
+        <h1>${recipe.name}</h1>
+        <img src="${recipe.image}" alt="${recipe.name}" style="max-width:100%; height:auto;" />
+        <p><strong>Servings:</strong> ${recipe.servings}</p>
+        <p><strong>Prep Time:</strong> ${recipe.prepTime}</p>
+        <p><strong>Cook Time:</strong> ${recipe.cookTime}</p>
+        <p><strong>Tags:</strong> ${recipe.tags.join(", ")}</p>
+        <h3>Ingredients</h3>
+        <ul>${recipe.ingredients.map(i => `<li>${i}</li>`).join("")}</ul>
+        <h3>Directions</h3>
+        <ol>${recipe.directions.map(step => `<li>${step}</li>`).join("")}</ol>
+      </body>
     </html>
-  `;
-
-  printWindow.document.open();
-  printWindow.document.write(html);
+  `);
   printWindow.document.close();
+  printWindow.focus();
 }
-function openEditModal(recipe) {
-  document.getElementById("recipe-modal").classList.remove("show");
 
+function openEditModal(recipe) {
   const modal = document.getElementById("edit-recipe-modal");
   if (!modal || !recipe) return;
 
+  document.getElementById("recipe-modal").classList.remove("show");
   document.getElementById("edit-id").value = recipe.id;
   document.getElementById("edit-name").value = recipe.name;
   document.getElementById("edit-servings").value = recipe.servings;
@@ -242,43 +202,38 @@ function openEditModal(recipe) {
   document.getElementById("edit-ingredients").value = recipe.ingredients.join("\n");
   document.getElementById("edit-directions").value = recipe.directions.join("\n");
 
-  modal.classList.add("show"); // ✅ fix here
+  modal.classList.add("show");
 }
 
 function setupEditForm() {
   waitForElement("#edit-recipe-form", () => {
     const form = document.getElementById("edit-recipe-form");
-
-    document.querySelector("#edit-recipe-modal .close-modal-button").addEventListener("click", () => {
+    const closeBtn = document.querySelector("#edit-recipe-modal .close-modal-button");
+    closeBtn.addEventListener("click", () => {
       document.getElementById("edit-recipe-modal").classList.remove("show");
     });
-    
+
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
-    
       const id = document.getElementById("edit-id").value;
-      const existingRecipe = savedRecipes.find(r => String(r.id) === id);
-    
+      const existing = savedRecipes.find(r => String(r.id) === id);
       const imageInput = document.getElementById("edit-image");
-    
-      // 👇 Helper function to convert image to base64
-      function toBase64(file) {
-        return new Promise((resolve, reject) => {
-          const reader = new FileReader();
-          reader.onload = () => resolve(reader.result);
-          reader.onerror = reject;
-          reader.readAsDataURL(file);
-        });
-      }
-    
-      // 🖼️ Determine new or existing image
-      let imageBase64 = existingRecipe?.image || "images/default-recipe.jpg";
+
+      const toBase64 = file => new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+
+      let imageBase64 = existing?.image || "images/default-recipe.jpg";
       if (imageInput.files.length > 0) {
         imageBase64 = await toBase64(imageInput.files[0]);
       }
-    
+
       const updated = {
-        id: id,
+        ...existing,
+        id,
         name: document.getElementById("edit-name").value.trim(),
         servings: document.getElementById("edit-servings").value.trim(),
         tags: document.getElementById("edit-tags").value.split(",").map(t => t.trim()),
@@ -286,33 +241,26 @@ function setupEditForm() {
         cookTime: document.getElementById("edit-cookTime").value.trim(),
         ingredients: document.getElementById("edit-ingredients").value.split("\n").map(i => i.trim()),
         directions: document.getElementById("edit-directions").value.split("\n").map(d => d.trim()),
-        isFavorite: existingRecipe?.isFavorite || false,
-        rating: existingRecipe?.rating || 0,
-        image: imageBase64, // ✅ save the image as base64
-        date: existingRecipe?.date || new Date().toISOString()
+        image: imageBase64,
+        date: existing?.date || new Date().toISOString()
       };
-    
+
       updateUserRecipe(updated);
       savedRecipes = getUserRecipes();
       renderRecipes(savedRecipes);
-      document.getElementById("edit-recipe-modal").classList.add("hidden");
+      document.getElementById("edit-recipe-modal").classList.remove("show");
     });
-    
   });
 }
 
 function setupFilters() {
-  const categorySelect = document.getElementById("filterCategory");
-  const sortBySelect = document.getElementById("sortBy");
-
-  if (categorySelect) categorySelect.addEventListener("change", applyFilters);
-  if (sortBySelect) sortBySelect.addEventListener("change", applyFilters);
+  document.getElementById("filterCategory")?.addEventListener("change", applyFilters);
+  document.getElementById("sortBy")?.addEventListener("change", applyFilters);
 }
 
 function applyFilters() {
   const category = document.getElementById("filterCategory").value;
   const sortBy = document.getElementById("sortBy").value;
-
   let filtered = [...savedRecipes];
 
   if (category !== "all") {
@@ -331,52 +279,39 @@ function applyFilters() {
 }
 
 function setupFavoritesToggle() {
-  const showAllBtn = document.getElementById("showAll");
-  const showFavsBtn = document.getElementById("showFavorites");
+  document.getElementById("showAll")?.addEventListener("click", () => {
+    showFavoritesOnly = false;
+    renderRecipes(savedRecipes);
+  });
 
-  if (showAllBtn && showFavsBtn) {
-    showAllBtn.addEventListener("click", () => {
-      showFavoritesOnly = false;
-      renderRecipes(savedRecipes);
-    });
+  document.getElementById("showFavorites")?.addEventListener("click", () => {
+    showFavoritesOnly = true;
+    renderRecipes(savedRecipes);
+  });
+}
 
-    showFavsBtn.addEventListener("click", () => {
-      showFavoritesOnly = true;
-      renderRecipes(savedRecipes);
+function setupTestLoader() {
+  const loadBtn = document.getElementById("loadUserRecipesTest");
+  if (loadBtn) {
+    loadBtn.addEventListener("click", () => {
+      const user = localStorage.getItem("currentUser");
+      const key = `recipes_${user}`;
+      const recipes = JSON.parse(localStorage.getItem(key)) || [];
+      console.log("✅ Loaded Recipes for", user, ":", recipes);
+      if (recipes.length === 0) {
+        alert("No recipes found for " + user);
+      } else {
+        renderRecipes(recipes);
+      }
     });
   }
 }
 
+// Close modal on outside click
 window.addEventListener("click", (event) => {
   const modal = document.getElementById("recipe-modal");
   if (event.target === modal) {
     modal.classList.remove("show");
     history.replaceState(null, "", "myrecipes.html");
   }
-});
-const loadBtn = document.getElementById("loadUserRecipesTest");
-if (loadBtn) {
-  loadBtn.addEventListener("click", () => {
-    const user = localStorage.getItem("currentUser");
-    const key = `recipes_${user}`;
-    const recipes = JSON.parse(localStorage.getItem(key)) || [];
-    console.log("✅ Loaded Recipes for", user, ":", recipes);
-
-    if (recipes.length === 0) {
-      alert("No recipes found for " + user);
-    } else {
-      renderRecipes(recipes);
-    }
-  });
-}
-document.addEventListener("DOMContentLoaded", () => {
-  const user = localStorage.getItem("currentUser");
-  if (!user) {
-    document.getElementById("auth-message").classList.remove("hidden");
-    document.getElementById("auth-message").textContent = "⚠️ Please sign in.";
-    return;
-  }
-
-  savedRecipes = getUserRecipes(); // This must return from localStorage key `recipes_<username>`
-  renderRecipes(savedRecipes);
 });
