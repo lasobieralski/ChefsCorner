@@ -3,13 +3,12 @@
 /* Navigation - Mobile First (Default) */
 
 #header-container {
-  border: 3px solid black;
+  border: 3px solid var(--text-color);
   border-radius: 8px;
   margin: 20px 0;
 }
 
 .navbar {
-  width: 96%;
   /* padding: 0.5rem; */
   background-color: var(--background-color);
   color: var(--primary-color);
@@ -50,8 +49,8 @@
 .menu-toggle {
   font-size: 1rem;
   padding: 8px 12px;
-  border: 3px solid black;
-  background-color: black;
+  border: 3px solid var(--text-color);
+  background-color: var(--text-color);
   color: white;
   border-radius: 8px;
   cursor: pointer;
@@ -59,14 +58,16 @@
 
 /* Nav Links - Hidden by Default (Mobile) */
 .nav-links {
-  display: none;
+  display: flex;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
   flex-direction: column;
   text-align: center;
   background-color: var(--primary-color);
-  border-top: 3px solid black;
-  border-radius: 8px;
+  border-radius: 12px;
   list-style: none;
   margin: 10 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
 }
 
 .nav-links li a {
@@ -75,24 +76,37 @@
   font-weight: bold;
   padding: 0.5rem;
   display: block;
+  font-size: 1.3rem;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
 }
 
 /* When menu is toggled open */
 .nav-links.active {
   display: flex;
 }
-#logOutButton, #signInButton {
+
+#logOutButton,
+#signInButton {
   background-color: var(--primary-color);
   color: white;
   font-weight: bold;
-  border-radius: 8px;
+  border-radius: 12px;
   border: 3px solid var(--primary-color);
 }
+
+#logOutButton:hover {
+  color: var(--primary-color);
+  background-color: var(--background-color);
+  border: solid 2px var(--primary-color);
+}
+
 /* Medium Screens (Tablet) */
 
 @media (min-width: 600px) {
   .nav-header {
-    max-width: 900px;
     flex-direction: row;
     justify-content: space-between;
   }
@@ -132,11 +146,6 @@
 /* Large Screens (Desktop) */
 
 @media (min-width: 900px) {
-  .navbar {
-    max-width: 1200px;
-    /* padding: 1rem 2rem; */
-  }
-
   .logo-name h1 {
     font-size: 4rem;
   }

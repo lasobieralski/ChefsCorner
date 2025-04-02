@@ -14,8 +14,9 @@
   }
   
   #signInButton:hover {
-    background-color: white;
-    color: black;
+    background-color: var(--background-color);
+    border: solid 2px var(--primary-color);
+    color: var(--primary-color);
     font-weight: bold;
   }
   
@@ -92,7 +93,7 @@
   }
   
   .modal-content {
-    background: white;
+    background: var(--background-color);
     padding: 20px;
     border-radius: 8px;
     text-align: center;

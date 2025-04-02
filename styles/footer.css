@@ -1,66 +1,65 @@
 /* new footer.css */
 
-   #footer-container {
-    /* width: 100%; */
-    /* max-width: 90%; */
-    border: 3px solid black;
-    border-radius: 8px;
-    /* margin-left: 20px;
+#footer-container {
+  /* width: 100%; */
+  /* max-width: 90%; */
+  border: 3px solid var(--text-color);
+  border-radius: 8px;
+  /* margin-left: 20px;
     margin-right: 20px; */
-  }
-  
-  footer {
-    background-color: var(--primary-color);
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 1.25rem;
-    color: var(--background-color);
-    font-weight: 500;
-    text-align: center;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  footer p {
-    color: var(--background-color);
-    margin: 0;
-  }
-  
-  footer a {
-    color: white;
-    text-decoration: none;
-    /* margin-right: 15px; */
-    font-weight: 600;
-    transition: color 0.3s;
-  }
-  
-  footer a:hover {
-    color: var(--background-color);
-    text-decoration: underline;
-    border-radius: 5px;
-    padding: 8px;
-    font-size: 25px;
-  }
-  
-  footer .social {
-    display: flex;
-    gap: 10px;
-  }
-  
-  footer .social img {
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-    background-color: var(--background-color);
-    padding: 5px;
-    transition: transform 0.3s, background-color 0.3s;
-    cursor: pointer;
-  }
-  
-  footer .social img:hover {
-    transform: scale(1.1);
-    /* background-color: var(--accent-color); */
-  }
-  
+}
+
+footer {
+  background-color: var(--primary-color);
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.25rem;
+  color: var(--background-color);
+  font-weight: 500;
+  text-align: center;
+  flex-direction: column;
+  gap: 15px;
+}
+
+footer p {
+  color: var(--background-color);
+  margin: 0;
+}
+
+footer a {
+  color: white;
+  text-decoration: none;
+  /* margin-right: 15px; */
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+footer a:hover {
+  color: var(--background-color);
+  text-decoration: underline;
+  border-radius: 5px;
+  padding: 8px;
+  font-size: 25px;
+}
+
+footer .social {
+  display: flex;
+  gap: 10px;
+}
+
+footer .social img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: var(--background-color);
+  padding: 5px;
+  transition: transform 0.3s, background-color 0.3s;
+  cursor: pointer;
+}
+
+footer .social img:hover {
+  transform: scale(1.1);
+  /* background-color: var(--accent-color); */
+}

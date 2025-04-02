@@ -12,7 +12,7 @@
   height: auto;
   filter: brightness(100%);
   border-radius: 10px;
-  border: 3px solid black;
+  border: 3px solid var(--text-color);
   /* margin-left: 20px; */
   /* margin: 1rem auto; */
 }

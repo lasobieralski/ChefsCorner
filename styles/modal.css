@@ -141,7 +141,7 @@
   padding: 10px;
   font-size: 1rem;
   border-radius: 5px;
-  border: 2px solid black;
+  border: 2px solid var(--text-color);
   box-sizing: border-box;
 }
 
@@ -215,7 +215,7 @@
 #loginForm button:hover,
 #signupForm button:hover,
 #openSignupForm:hover {
-  background-color: white;
+  background-color: var(--background-color);
   color: var(--secondary-color);
   transform: scale(1.05);
   border: 2px solid var(--primary-color);
