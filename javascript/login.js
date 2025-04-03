@@ -1,6 +1,6 @@
 // new login.js
 import { waitForElement } from "./ui.js";
-
+import { redirectToMyRecipes } from "./auth.js";
 export function initLoginModal() {
   waitForElement("#signInButton", () => {
     const modal = document.getElementById("signInModal");
@@ -66,32 +66,23 @@ export function initLoginModal() {
         e.preventDefault();
         const username = document.getElementById("login-username").value.trim();
         const password = document.getElementById("login-password").value.trim();
-
+    
         if (username && password) {
           localStorage.setItem("currentUser", username);
-          // window.location.href = "pages/myrecipes.html";
-          const inPages = window.location.pathname.includes("/pages/");
-          const redirectPath = inPages ? "myrecipes.html" : "pages/myrecipes.html";
-          window.location.href = redirectPath;
-
+          redirectToMyRecipes(); 
         }
       });
     }
-
     if (signupForm) {
       signupForm.addEventListener("submit", (e) => {
         e.preventDefault();
-        const username = document
-          .getElementById("signup-username")
-          .value.trim();
+        const username = document.getElementById("signup-username").value.trim();
         const email = document.getElementById("signup-email").value.trim();
-        const password = document
-          .getElementById("signup-password")
-          .value.trim();
-
+        const password = document.getElementById("signup-password").value.trim();
+    
         if (username && email && password) {
           localStorage.setItem("currentUser", username);
-          window.location.href = "pages/myrecipes.html";
+          redirectToMyRecipes(); 
         }
       });
     }

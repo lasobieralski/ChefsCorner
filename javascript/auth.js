@@ -32,3 +32,8 @@ export function requireAuth(redirectTo = "index.html") {
     window.location.href = redirectPath;
   }
 }
+export function redirectToMyRecipes() {
+  const inPages = window.location.pathname.includes("/pages/");
+  const redirectPath = inPages ? "myrecipes.html" : "pages/myrecipes.html";
+  window.location.href = redirectPath;
+}
