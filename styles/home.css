@@ -9,10 +9,13 @@
 
 #hero-img {
   width: 100%;
+  aspect-ratio: 790 / 306;
+  object-fit: cover;
   height: auto;
   filter: brightness(100%);
   border-radius: 10px;
   border: 3px solid var(--text-color);
+  min-height: 80px;
   /* margin-left: 20px; */
   /* margin: 1rem auto; */
 }
