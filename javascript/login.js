@@ -49,7 +49,7 @@ export function initLoginModal() {
     if (modal) {
       modal.addEventListener("click", (e) => {
         if (e.target === modal) {
-          modal.classList.remove("open");
+          // modal.classList.remove("open");
           loginForm?.reset();
           signupForm?.reset();
           signupContainer?.classList.add("hidden");
