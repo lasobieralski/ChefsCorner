@@ -15,9 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const formData = new FormData(form);
     const file = formData.get("image");
-    const reader = new FileReader();
 
-    reader.onload = function () {
+    const buildAndSaveRecipe = (imageData = "") => {
       const newRecipe = {
         id: Date.now().toString(),
         author: formData.get("author"),
@@ -28,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
         cookTime: formData.get("cooktime"),
         ingredients: formData.get("ingredients").split("\n").map(i => i.trim()),
         directions: formData.get("directions").split("\n").map(d => d.trim()),
-        image: reader.result, // Base64 image data
+        image: imageData, // Base64 or empty string
         isFavorite: false,
         rating: 0,
         date: new Date().toISOString()
@@ -40,10 +39,16 @@ document.addEventListener("DOMContentLoaded", () => {
       window.location.href = "myrecipes.html";
     };
 
+    // ✅ If user uploaded an image, read it
     if (file && file.type.startsWith("image/")) {
+      const reader = new FileReader();
+      reader.onload = function () {
+        buildAndSaveRecipe(reader.result); // save with image
+      };
       reader.readAsDataURL(file);
     } else {
-      alert("⚠️ Please upload a valid image file.");
+      // ✅ No image? Still save the recipe with an empty string
+      buildAndSaveRecipe();
     }
   });
 });
