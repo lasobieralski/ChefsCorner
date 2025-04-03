@@ -79,28 +79,39 @@ export function initLoginModal() {
     if (loginForm) {
       loginForm.addEventListener("submit", (e) => {
         e.preventDefault();
+    
         const username = document.getElementById("login-username").value.trim();
         const password = document.getElementById("login-password").value.trim();
     
         if (username && password) {
+          // ✅ No need to store password — only username for session use
           localStorage.setItem("currentUser", username);
-          redirectToMyRecipes(); 
+    
+          loginForm.reset();
+          redirectToMyRecipes();
         }
       });
     }
+    
     if (signupForm) {
       signupForm.addEventListener("submit", (e) => {
         e.preventDefault();
+    
         const username = document.getElementById("signup-username").value.trim();
         const email = document.getElementById("signup-email").value.trim();
         const password = document.getElementById("signup-password").value.trim();
     
         if (username && email && password) {
-          localStorage.setItem("currentUser", username);
-          signupForm.reset();
-          redirectToMyRecipes(); 
+          // ✅ DO NOT store email or password in localStorage
+          // Optionally validate or display message, then redirect
+    
+          localStorage.setItem("currentUser", username); // only store display name
+    
+          signupForm.reset(); // clear inputs
+          redirectToMyRecipes();
         }
       });
     }
+    
   });
 }
