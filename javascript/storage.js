@@ -1,5 +1,4 @@
 // new storage.js
-// Handles saving and retrieving recipes from localStorage
 // Get the currently signed-in user
 function getCurrentUser() {
   return localStorage.getItem("currentUser");
