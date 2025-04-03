@@ -6,8 +6,9 @@ Project Goals & Features Achieved
    Users can add, view, edit, and delete their own recipes.
    A validated form ensures all input fields are filled properly.
 
-2. Save Favorites
-   Users can favorite recipes with a ⭐ toggle.
+2. Save Favorites / Ratings
+   Users can favorite recipes with a heart toggle.
+   Users can Rate recipes with a star toggle.
    Favorite recipes are stored in localStorage for persistent access.
 
 3. Search & Filter

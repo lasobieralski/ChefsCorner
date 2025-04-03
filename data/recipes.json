@@ -742,7 +742,7 @@
         ],
         "name": "Easy Bread",
         "tags": ["Breads", "Lunch", "Dinner"],
-        "image": "../images/bread.jpg",
+        "image": "../images/easy_white_bread.jpg",
         "servings": "12",
         "prepTime": "15 minutes",
         "cookTime": "25-30 minutes",
