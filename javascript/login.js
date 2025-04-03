@@ -34,13 +34,28 @@ export function initLoginModal() {
     if (closeButton && modal) {
       closeButton.addEventListener("click", () => {
         modal.classList.remove("open");
+    
+        // ✅ Reset all forms and views inside the modal
+        loginForm?.reset();
+        signupForm?.reset();
+        
+        // Optionally go back to the sign-in view if someone closes from sign-up
+        signupContainer?.classList.add("hidden");
+        signupToggle?.classList.remove("hidden");
+        loginForm?.classList.remove("hidden");
+        modalTitle?.classList.remove("hidden");
       });
     }
-
     if (modal) {
       modal.addEventListener("click", (e) => {
         if (e.target === modal) {
           modal.classList.remove("open");
+          loginForm?.reset();
+          signupForm?.reset();
+          signupContainer?.classList.add("hidden");
+          signupToggle?.classList.remove("hidden");
+          loginForm?.classList.remove("hidden");
+          modalTitle?.classList.remove("hidden");
         }
       });
     }
@@ -82,6 +97,7 @@ export function initLoginModal() {
     
         if (username && email && password) {
           localStorage.setItem("currentUser", username);
+          signupForm.reset();
           redirectToMyRecipes(); 
         }
       });
