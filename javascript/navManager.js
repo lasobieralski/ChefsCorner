@@ -11,9 +11,17 @@ async function loadPartial(id, path) {
 
 // Load nav, footer, and modal
 export async function setupNavForSubpage() {
-  await loadPartial("header-container", "../partials/nav.html");
-  await loadPartial("footer-placeholder", "../partials/footer.html");
+  const headerExists = document.getElementById("header-container");
+  if (headerExists) {
+    await loadPartial("header-container", "../partials/nav.html");
+  }
 
+  const footerExists = document.getElementById("footer-placeholder");
+  if (footerExists) {
+    await loadPartial("footer-placeholder", "../partials/footer.html");
+  }
+
+  // Continue setting up modal and other dynamic content
   const modalContainer = document.getElementById("modal-container");
   if (modalContainer) {
     const res = await fetch("../partials/signInModal.html");
@@ -28,6 +36,7 @@ export async function setupNavForSubpage() {
   adjustFooterIcons();
   adjustFooterLinks();
 }
+
 
 // Adjust nav link paths based on page location
 function adjustNavLinks() {
@@ -65,12 +74,17 @@ function adjustLogoPath() {
   }
 }
 function adjustFooterIcons() {
-  const isInPages = window.location.pathname.includes("/pages/");
-  const basePath = isInPages ? "../" : "";
-
   const fb = document.getElementById("facebook-icon");
-  if (fb) fb.src = basePath + "images/facebook.png";
+  if (!fb) return;
+
+  const currentSrc = fb.getAttribute("src");
+  if (!currentSrc || currentSrc.includes("facebook.png") || currentSrc.endsWith("/")) {
+    const isInPages = window.location.pathname.includes("/pages/");
+    const basePath = isInPages ? "../" : "";
+    fb.src = basePath + "images/facebook.png";
+  }
 }
+
 function adjustFooterLinks() {
   const isInPages = window.location.pathname.includes("/pages/");
   const contactLink = document.getElementById("footer-contact-link");
