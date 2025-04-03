@@ -843,5 +843,41 @@
             "Top with 4oz. Greek yourt and fresh cilantro."
             
         ]
-    } 
+    },
+    {
+        "id": 26,
+        "Author": [
+            "Lisaann Sobieralski"
+        ],
+        "name": "Pecan Toffee",
+        "tags": ["Toffee", "Dessert", "Candy"],
+        "image": "../images/toffee.jpg",
+        "servings": "12",
+        "prepTime": "15-20 minutes",
+        "cookTime": "30-40 minutes",
+        "ingredients": [
+            "1 1/2 cups pecans, chopped",
+            "1 cup sugar",
+            "1 cup butter",
+            "1/2 teaspoon salt",
+            "1/4 cup water",
+            "1 teaspoon vanilla extract",
+            "1-2 pkgs of chocolate chips"
+        ],
+        "note": "Optional use any type of nuts you like, also can use different flavoring (almond extract).",
+        "directions": [
+            "Line a 9x9 pan with parchment paper or aluminum foil.",
+            "Spread 1 cup of pecans evenly in the 9x9 pan.",
+            "In a pot, combine sugar, butter, salt and water.",
+            "Cook over medium heat, stirring frequently until it begins a full boil that you cannot stir down.",
+            "Attach a candy thermometer and cook to hard crack stage at 300°F.",
+            "Remove from heat. Carefully stir in the vanilla extract.",
+            "Mix thoroughly. Carefully pour mixture over the pecans in the 9x9 pan.",
+            "Allow it to cool a few minutes. While still hot add chocolate chips.",
+            "As they start to melt, use a spatula and spread evenly (can swirl to create a design).",
+            "Sprinkle on the rest of the chopped pecans.Slightly pressing them into the chocolate.",
+            "Cool completely. Remove from pan and using a sharp knife cut into pieces."
+            
+        ]
+    }  
 ]
