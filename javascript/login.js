@@ -79,11 +79,17 @@ export function initLoginModal() {
           .then((data) => {
             if (data.error) {
               alert(data.error);
-            } else {
-              localStorage.setItem("currentUser", username);
-              redirectToMyRecipes();
+              return;
             }
+          
+            loginForm?.reset(); // ✅ clear login inputs
+            modal?.classList.remove("open"); // ✅ close the modal
+          
+            localStorage.setItem("currentUser", username);
+            redirectToMyRecipes();
           })
+          
+          
           .catch((err) => {
             console.error("Login error:", err);
             alert("Something went wrong. Try again.");
@@ -107,11 +113,14 @@ export function initLoginModal() {
           .then((data) => {
             if (data.error) {
               alert(data.error);
-            } else {
-              localStorage.setItem("currentUser", username);
-              redirectToMyRecipes();
+              return; // 👈 this is the missing part!
             }
+            loginForm?.reset(); // ✅ clears input fields
+            modal?.classList.remove("open"); // ✅ closes the modal
+            localStorage.setItem("currentUser", username);
+            redirectToMyRecipes();
           })
+          
           .catch((err) => {
             console.error("Signup error:", err);
             alert("Something went wrong. Try again.");
@@ -121,3 +130,4 @@ export function initLoginModal() {
   });
 }
 
+initLoginModal();
