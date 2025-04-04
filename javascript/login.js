@@ -109,24 +109,27 @@ export function initLoginModal() {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ username, password }),
         })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.error) {
-              alert(data.error);
-              return; // 👈 this is the missing part!
-            }
-            loginForm?.reset(); // ✅ clears input fields
-            modal?.classList.remove("open"); // ✅ closes the modal
-            localStorage.setItem("currentUser", username);
-            redirectToMyRecipes();
-          })
-          
-          .catch((err) => {
-            console.error("Signup error:", err);
-            alert("Something went wrong. Try again.");
-          });
-      }
-    });
+        .then(async (res) => {
+          const data = await res.json();
+  
+          if (!res.ok) {
+            // Server returned 409 or other error
+            alert(data.error || "Signup failed.");
+            return;
+          }
+  
+          // Success!
+          loginForm?.reset();
+          modal?.classList.remove("open");
+          localStorage.setItem("currentUser", username);
+          redirectToMyRecipes();
+        })
+        .catch((err) => {
+          console.error("Signup error:", err);
+          alert("Something went wrong. Try again.");
+        });
+    }
+  });
   });
 }
 

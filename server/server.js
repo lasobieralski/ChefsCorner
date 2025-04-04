@@ -38,6 +38,7 @@ app.post("/signup", (req, res) => {
   const users = loadUsers();
 
   if (users[username]) {
+    console.log("❌ Signup failed: username already exists");
     return res.status(409).json({ error: "Username already exists" });
   }
 
