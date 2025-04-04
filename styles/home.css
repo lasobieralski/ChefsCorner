@@ -1,0 +1,61 @@
+/* new home.css */
+
+/* Hero Section - Base (Mobile First) */
+
+.hero {
+  position: relative;
+  text-align: center;
+}
+
+#hero-img {
+  width: 100%;
+  aspect-ratio: 790 / 306;
+  object-fit: cover;
+  height: auto;
+  filter: brightness(100%);
+  border-radius: 10px;
+  border: 3px solid var(--text-color);
+  min-height: 80px;
+  /* margin-left: 20px; */
+  /* margin: 1rem auto; */
+}
+
+.hero-content {
+  position: absolute;
+  top: 30%;
+  left: 10%;
+  transform: translate(-5%, -50%);
+  color: deep teal; /* deep teal */
+}
+#welcome {
+  font-size: clamp(2rem, 5vw, 3rem); /* Dynamically scale based on viewport */
+  margin: 40px 0; /* Smaller margin for mobile */
+  text-align: center;
+  font-family: "Amatic SC";
+  font-weight: bold;
+}
+/*Main Content*/
+#purpose p {
+  text-align: justify;
+  /* width: 440px; */
+  gap: 10px;
+  margin-left: 5px;
+}
+
+/* Medium Screens */
+
+@media (min-width: 600px) {
+  .hero-content {
+    font-size: 1.5rem;
+    left: 15%;
+  }
+}
+
+/* Large Screens */
+
+@media (min-width: 900px) {
+  .hero-content {
+    font-size: 2rem;
+    left: 20%;
+  }
+}

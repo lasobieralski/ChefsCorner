@@ -1,0 +1,116 @@
+<!-- new myrecipes.html -->
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8" />
+  <meta name="description" content="My Recipes - ChefsCorner">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Recipes | ChefsCorner</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../styles/global.css">
+  <link rel="stylesheet" href="../styles/layout.css">
+  <link rel="stylesheet" href="../styles/nav.css">
+  <link rel="stylesheet" href="../styles/modal.css">
+  <link rel="stylesheet" href="../styles/loginmodal.css">
+  <link rel="stylesheet" href="../styles/footer.css">
+  <link rel="stylesheet" href="../styles/animation.css">
+  <link rel="stylesheet" href="../styles/recipe.css">
+  <link rel="stylesheet" href="../styles/category.css">
+  <link rel="stylesheet" href="../styles/myrecipes.css">
+</head>
+
+<body>
+  <div class="content">
+    <!-- Nav loaded dynamically -->
+    <header id="header-container"></header>
+
+    <!-- Main content -->
+    <main>
+      <section class="filter-controls">
+        <label for="filterCategory" title="Filter by category">Filter by Category:</label>
+        <select id="filterCategory">
+          <option value="all">All</option>
+          <option value="Breakfast">Breakfast</option>
+          <option value="Lunch">Lunch</option>
+          <option value="Dinner">Dinner</option>
+          <option value="Snacks">Snacks</option>
+          <option value="Dessert">Dessert</option>
+          <option value="Keto">Keto</option>
+        </select>
+
+        <label for="sortBy" title="Sort recipes">Sort By:</label>
+        <select id="sortBy">
+          <option value="title">Title A–Z</option>
+          <option value="date">Newest First</option>
+        </select>
+
+        <div class="toggle-buttons">
+          <button id="showAll">All Recipes</button>
+          <button id="showFavorites">Favorites Only</button>
+        </div>
+      </section>
+      <div id="auth-message" class="hidden"></div>
+      <div id="recipeContainer" class="recipe-list"></div>
+    </main>
+
+    <!-- View Recipe Modal -->
+    <div id="recipe-modal" class="modal hidden">
+      <div class="modal-content" id="modal-recipe-content"></div>
+    </div>
+
+    <!-- Edit Recipe Modal -->
+    <div id="edit-recipe-modal" class="modal hidden">
+      <div class="modal-content">
+        <button class="close-modal-button" aria-label="Close">&times;</button>
+        <h2>Edit Recipe</h2>
+        <form id="edit-recipe-form">
+          <input type="hidden" id="edit-id">
+
+          <label for="edit-name" title="Recipe Name">Name:</label>
+          <input type="text" id="edit-name" required>
+
+          <label for="edit-servings" title="Servings">Servings:</label>
+          <input type="text" id="edit-servings" required>
+
+          <label for="edit-tags" title="Comma-separated tags">Tags:</label>
+          <input type="text" id="edit-tags" required>
+
+          <label for="edit-prepTime" title="Prep time">Prep Time:</label>
+          <input type="text" id="edit-prepTime" required>
+
+          <label for="edit-cookTime" title="Cook time">Cook Time:</label>
+          <input type="text" id="edit-cookTime" required>
+
+          <label for="edit-ingredients" title="List ingredients">Ingredients:</label>
+          <textarea id="edit-ingredients" rows="4" required></textarea>
+
+          <label for="edit-directions" title="Cooking steps">Directions:</label>
+          <textarea id="edit-directions" rows="4" required></textarea>
+
+          <label for="edit-image">Upload Image:</label>
+          <input type="file" id="edit-image" accept="image/*">
+
+          <button type="submit">Save Changes</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Footer + modal -->
+    <div id="footer-placeholder"></div>
+    <div id="modal-container"></div>
+    <div id="my-recipe-list"></div>
+  </div>
+
+  <!-- Load header/footer/nav partials -->
+  <script type="module" src="../javascript/myrecipes-init.js"></script>
+
+  <!-- Main JS -->
+  <script type="module" src="../javascript/myrecipes.js"></script>
+  <script type="module" src="../javascript/ccmain.js"></script>
+</body>
+</html>

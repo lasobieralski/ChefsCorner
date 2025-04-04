@@ -1,0 +1,154 @@
+<!-- new ccrecipes.html file -->
+<!-- pages/ccrecipes.html - Browse Recipes Page -->
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="ChefsCorner - Your Recipe Manager">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChefsCorner - Recipes</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS Stylesheets -->
+  <!-- <link rel="stylesheet" href="../styles/global.css">
+  <link rel="stylesheet" href="../styles/layout.css">
+  <link rel="stylesheet" href="../styles/nav.css"> -->
+  <link rel="stylesheet" href="../styles/modal.css">
+  <link rel="stylesheet" href="../styles/loginmodal.css">
+  <link rel="stylesheet" href="../styles/trial.css">
+  <link rel="stylesheet" href="../styles/animation.css">
+  <!-- <link rel="stylesheet" href="../styles/recipe.css"> -->
+  <link rel="stylesheet" href="../styles/category.css">
+  <link rel="stylesheet" href="../styles/myrecipes.css">
+
+</head>
+
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="nav-header">
+        <div class="logo-name">
+          <img id="site-logo" src="/ChefsCorner/images/logo.jpg" alt="ChefsCorner Logo" class="logo">
+          <h1>ChefsCorner</h1>
+        </div>
+    
+        <div class="nav-buttons">
+          <!-- Sign In / Welcome Button -->
+          <button id="signInButton">Sign In</button>
+    
+          <!-- Log Out Button (hidden by default) -->
+          <button id="logOutButton" class="hidden">Log Out</button>
+    
+          <!-- Hamburger icon for mobile menu -->
+          <button class="menu-toggle" aria-label="Toggle navigation">&#9776;</button>
+        </div>
+      </div>
+    
+      <ul class="nav-links">
+        <li><a data-link="home" href="#">Home</a></li>
+        <li><a data-link="recipes" href="#">Recipes</a></li>
+        <li><a data-link="share" href="#">Share Recipes</a></li>
+        <li><a data-link="my" href="#">My Recipes</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- <div class="content"> -->
+    <!-- Header/Nav loaded dynamically -->
+    <!-- <header id="header-container"></header> -->
+
+    <!-- Main content -->
+    <main>
+      
+        <!-- Recipe Search -->
+        <form id="search-form">
+          <div class="container">
+            <input id="search-bar" type="text" name="search" placeholder="Search for a recipe" required>
+            <button type="submit" class="search-button">Search</button>
+          </div>
+        </form>
+        <div class="recipe-content-box"></div>
+        <!-- Recipe Cards dynamically inserted here -->
+        <div id="recipe-list" class="recipe-list"></div>
+      </div>
+    </main>
+
+    <!-- Recipe Categories -->
+    <div id="category-buttons" class="category-grid">
+      <div class="category-card" data-category="breakfast">
+        <img src="../images/icons/breakfast2.jpg" alt="Breakfast">
+        <span>Breakfast</span>
+      </div>
+      <div class="category-card" data-category="lunch">
+        <img src="../images/icons/lunch.jpg" alt="Lunch">
+        <span>Lunch</span>
+      </div>
+      <div class="category-card" data-category="dinner">
+        <img src="../images/icons/dinner2.jpg" alt="Dinner">
+        <span>Dinner</span>
+      </div>
+      <div class="category-card" data-category="snacks">
+        <img src="../images/icons/snack.jpg" alt="Snacks">
+        <span>Snacks</span>
+      </div>
+      <div class="category-card" data-category="breads">
+        <img src="../images/icons/butter_rolls1.jpg" alt="Breads">
+        <span>Breads</span>
+      </div>
+      <div class="category-card" data-category="candy">
+        <img src="../images/icons/toffee1.jpg" alt="Candy">
+        <span>Candy</span>
+      </div>
+      <div class="category-card" data-category="diabetic">
+        <img src="../images/icons/eggplant1.jpg" alt="Diabetic">
+        <span>Diabetic</span>
+      </div>
+      <div class="category-card" data-category="dessert">
+        <img src="../images/icons/dessert.jpg" alt="Desserts">
+        <span>Desserts</span>
+      </div>
+      <div class="category-card" data-category="keto">
+        <img src="../images/icons/keto.jpg" alt="Keto">
+        <span>Keto</span>
+      </div>
+    </div>
+
+    <!-- Resume Rotation Button (if using a carousel) -->
+    <div id="rotation-control">
+      <button id="resume-rotation" class="hidden">Resume Rotation</button>
+    </div>
+
+    <!-- Modal for full recipe details -->
+    <div id="recipe-modal" class="modal hidden">
+      <div class="modal-content">
+        <div id="modal-recipe-content"></div>
+      </div>
+    </div>
+
+    <!-- Footer and Modal containers -->
+    <div id="footer-placeholder"></div>
+    <div id="modal-container"></div>
+  </div>
+
+  <!-- JavaScript -->
+  <script type="module">
+    import { setupNavForSubpage } from "../javascript/navManager.js";
+    setupNavForSubpage();
+  </script>
+  
+
+  <!-- Page-specific modules -->
+  <script type="module" src="../javascript/recipe.js"></script>
+  <script type="module" src="../javascript/ccmain.js"></script>
+  <!-- <footer id="footer-container">
+    <p>&copy; 2025 ChefsCorner:</p> 
+    <p>Lisaann Sobieralski</p>  
+    <p>Tary-Denise Tupouata</p>
+    <div class="social">
+      <img id="facebook-icon" src="../images/facebook1.png" alt="Facebook Icon">
+    </div>
+  </footer> -->
+</body>
+</html>

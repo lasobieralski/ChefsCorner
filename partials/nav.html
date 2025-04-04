@@ -1,0 +1,31 @@
+<!-- new nav.html file -->
+<!-- partials/nav.html -->
+<nav class="navbar">
+  <div class="nav-header">
+    <div class="logo-name">
+      <img id="site-logo" src="/ChefsCorner/images/logo.jpg" alt="ChefsCorner Logo" class="logo">
+      <h1>ChefsCorner</h1>
+    </div>
+
+    <div class="nav-buttons">
+      <!-- Sign In / Welcome Button -->
+      <button id="signInButton">Sign In</button>
+
+      <!-- Log Out Button (hidden by default) -->
+      <button id="logOutButton" class="hidden">Log Out</button>
+
+      <!-- Hamburger icon for mobile menu -->
+      <button class="menu-toggle" aria-label="Toggle navigation">&#9776;</button>
+    </div>
+  </div>
+
+  <ul class="nav-links">
+    <li><a data-link="home" href="#">Home</a></li>
+    <li><a data-link="recipes" href="#">Recipes</a></li>
+    <li><a data-link="share" href="#">Share Recipes</a></li>
+    <li><a data-link="my" href="#">My Recipes</a></li>
+  </ul>
+</nav>
+
+<!-- Modal container for login/signup -->
+<div id="modal-container"></div>

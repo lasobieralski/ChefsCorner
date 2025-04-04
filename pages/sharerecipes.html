@@ -1,0 +1,85 @@
+<!-- new sharerecipes.html file -->
+<!-- pages/sharerecipes.html - Share Your Recipe Page -->
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8" />
+  <meta name="description" content="ChefsCorner - Your Recipe Manager">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Share a Recipe | ChefsCorner</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="../styles/global.css">
+  <link rel="stylesheet" href="../styles/layout.css">
+  <link rel="stylesheet" href="../styles/nav.css">
+  <link rel="stylesheet" href="../styles/modal.css">
+  <link rel="stylesheet" href="../styles/loginmodal.css">
+  <link rel="stylesheet" href="../styles/footer.css">
+  <link rel="stylesheet" href="../styles/animation.css">
+  <link rel="stylesheet" href="../styles/share.css">
+  <link rel="stylesheet" href="../styles/category.css">
+</head>
+
+<body>
+  <div class="content">
+
+    <!-- Header/Nav (loaded dynamically) -->
+    <header id="header-container"></header>
+
+    <!-- Main content -->
+    <main id="main-share">
+      <section id="sharerecipes-form">
+        <p>We would love to feature your recipe! Please fill out the form below.</p>
+
+        <!-- Share Recipe Form -->
+        <form id="share-form">
+          <label for="author">Author Name:</label>
+          <input type="text" id="author" name="author" placeholder="Your Name" required />
+
+          <label for="recipe">Recipe Name:</label>
+          <input type="text" id="recipe" name="recipe" placeholder="Recipe Title" required />
+
+          <label for="tags">Tags:</label>
+          <input type="text" id="tags" name="tags" placeholder="Comma-separated tags" required />
+
+          <label for="servings">Servings:</label>
+          <input type="number" id="servings" name="servings" placeholder="Number of servings" required />
+
+          <label for="preptime">Preparation Time:</label>
+          <input type="number" id="preptime" name="preptime" placeholder="Time in minutes" required />
+
+          <label for="cooktime">Cooking Time:</label>
+          <input type="number" id="cooktime" name="cooktime" placeholder="Time in minutes" required />
+
+          <label for="ingredients">Ingredients:</label>
+          <textarea id="ingredients" name="ingredients" placeholder="List ingredients" rows="10" required></textarea>
+
+          <label for="directions">Directions:</label>
+          <textarea id="directions" name="directions" placeholder="Step-by-step instructions" rows="10" required></textarea>
+
+          <label for="image">Upload an Image:</label>
+          <input type="file" id="image" name="image" accept="image/*" />
+
+          <button type="submit">Share Recipe</button>
+        </form>
+      </section>
+    </main>
+
+    <!-- Footer and Modal containers -->
+    <div id="footer-placeholder"></div>
+    <div id="modal-container"></div>
+  </div>
+
+  <!-- JavaScript: Load nav, footer, modal, adjust paths -->
+  <script type="module">
+    import { setupNavForSubpage } from "../javascript/navManager.js";
+    setupNavForSubpage();
+  </script>
+  <script type="module" src="../javascript/ccmain.js"></script>
+  <script type="module" src="../javascript/sharerecipe.js"></script>
+</body>
+</html>
