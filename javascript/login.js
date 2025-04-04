@@ -1,6 +1,7 @@
-// new login.js
+// login.js
 import { waitForElement } from "./ui.js";
-import { redirectToMyRecipes } from "./auth.js";
+import { redirectToMyRecipes, createAccount, loginWithPassword } from "./auth.js";
+
 export function initLoginModal() {
   waitForElement("#signInButton", () => {
     const modal = document.getElementById("signInModal");
@@ -14,104 +15,77 @@ export function initLoginModal() {
     const modalTitle = document.getElementById("modalTitle");
     const backToLoginButton = document.getElementById("backToLogin");
 
-    if (backToLoginButton) {
-      backToLoginButton.addEventListener("click", () => {
-        if (loginForm) loginForm.classList.remove("hidden");
-        if (signupToggle) signupToggle.classList.remove("hidden");
-        if (signupContainer) signupContainer.classList.add("hidden");
-        if (modalTitle) modalTitle.classList.remove("hidden");
+    backToLoginButton?.addEventListener("click", () => {
+      loginForm?.classList.remove("hidden");
+      signupToggle?.classList.remove("hidden");
+      signupContainer?.classList.add("hidden");
+      modalTitle?.classList.remove("hidden");
 
-        loginForm.scrollIntoView({ behavior: "smooth" });
-      })
-    }
+      loginForm?.scrollIntoView({ behavior: "smooth" });
+    });
 
-    if (signInButton && modal) {
-      signInButton.addEventListener("click", () => {
-        modal.classList.add("open");
-      });
-    }
+    signInButton?.addEventListener("click", () => {
+      modal?.classList.add("open");
+    });
 
-    if (closeButton && modal) {
-      closeButton.addEventListener("click", () => {
+    closeButton?.addEventListener("click", () => {
+      modal?.classList.remove("open");
+      loginForm?.reset();
+      signupForm?.reset();
+      signupContainer?.classList.add("hidden");
+      signupToggle?.classList.remove("hidden");
+      loginForm?.classList.remove("hidden");
+      modalTitle?.classList.remove("hidden");
+    });
+
+    modal?.addEventListener("click", (e) => {
+      if (e.target === modal) {
         modal.classList.remove("open");
-    
-        // ✅ Reset all forms and views inside the modal
         loginForm?.reset();
         signupForm?.reset();
-        
-        // Optionally go back to the sign-in view if someone closes from sign-up
         signupContainer?.classList.add("hidden");
         signupToggle?.classList.remove("hidden");
         loginForm?.classList.remove("hidden");
         modalTitle?.classList.remove("hidden");
-      });
-    }
-    if (modal) {
-      modal.addEventListener("click", (e) => {
-        if (e.target === modal) {
-          // modal.classList.remove("open");
-          loginForm?.reset();
-          signupForm?.reset();
-          signupContainer?.classList.add("hidden");
-          signupToggle?.classList.remove("hidden");
-          loginForm?.classList.remove("hidden");
-          modalTitle?.classList.remove("hidden");
-        }
-      });
-    }
+      }
+    });
 
-    if (openSignupBtn) {
-      openSignupBtn.addEventListener("click", () => {
-        const loginForm = document.getElementById("loginForm");
-        const signupToggle = document.getElementById("signupToggle");
-        const signupContainer = document.getElementById("signupFormContainer");
-        const modalTitle = document.getElementById("modalTitle");
-    
-        if (loginForm) loginForm.classList.add("hidden");
-        if (signupToggle) signupToggle.classList.add("hidden");
-        if (signupContainer) signupContainer.classList.remove("hidden");
-        if (modalTitle) modalTitle.classList.add("hidden"); // ✅ hide the old "Sign In" heading
-    
-        signupContainer.scrollIntoView({ behavior: "smooth" });
-      });
-    }
-                
-    if (loginForm) {
-      loginForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-    
-        const username = document.getElementById("login-username").value.trim();
-        const password = document.getElementById("login-password").value.trim();
-    
-        if (username && password) {
-          // ✅ No need to store password — only username for session use
-          localStorage.setItem("currentUser", username);
-    
-          loginForm.reset();
-          redirectToMyRecipes();
-        }
-      });
-    }
-    
-    if (signupForm) {
-      signupForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-    
-        const username = document.getElementById("signup-username").value.trim();
-        const email = document.getElementById("signup-email").value.trim();
-        const password = document.getElementById("signup-password").value.trim();
-    
-        if (username && email && password) {
-          // ✅ DO NOT store email or password in localStorage
-          // Optionally validate or display message, then redirect
-    
-          localStorage.setItem("currentUser", username); // only store display name
-    
-          signupForm.reset(); // clear inputs
-          redirectToMyRecipes();
-        }
-      });
-    }
-    
+    openSignupBtn?.addEventListener("click", () => {
+      loginForm?.classList.add("hidden");
+      signupToggle?.classList.add("hidden");
+      signupContainer?.classList.remove("hidden");
+      modalTitle?.classList.add("hidden");
+      signupContainer?.scrollIntoView({ behavior: "smooth" });
+    });
+
+    loginForm?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const username = document.getElementById("login-username").value.trim();
+      const password = document.getElementById("login-password").value.trim();
+
+      try {
+        await loginWithPassword(username, password);
+        console.log("Stored users:", localStorage.getItem("users"));
+        loginForm.reset();
+        redirectToMyRecipes();
+      } catch (err) {
+        alert(err.message);
+      }
+    });
+
+    signupForm?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const username = document.getElementById("signup-username").value.trim();
+      const email = document.getElementById("signup-email").value.trim(); // not stored
+      const password = document.getElementById("signup-password").value.trim();
+
+      try {
+        await createAccount(username, password);
+        signupForm.reset();
+        redirectToMyRecipes();
+      } catch (err) {
+        alert(err.message);
+      }
+    });
   });
 }

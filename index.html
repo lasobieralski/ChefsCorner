@@ -2,122 +2,137 @@
 <!-- index.html - Homepage of ChefsCorner -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="description" content="ChefsCorner - Your Recipe Manager">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ChefsCorner</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="description" content="ChefsCorner - Your Recipe Manager" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ChefsCorner</title>
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;400&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- CSS Stylesheets -->
-  <link rel="stylesheet" href="styles/global.css">
-  <link rel="stylesheet" href="styles/layout.css">
-  <link rel="stylesheet" href="styles/nav.css">
-  <link rel="stylesheet" href="styles/modal.css">
-  <link rel="stylesheet" href="styles/loginmodal.css">
-  <link rel="stylesheet" href="styles/footer.css">
-  <link rel="stylesheet" href="styles/animation.css">
-  <link rel="stylesheet" href="styles/home.css">
+    <!-- CSS Stylesheets -->
+    <link rel="stylesheet" href="styles/global.css" />
+    <link rel="stylesheet" href="styles/layout.css" />
+    <link rel="stylesheet" href="styles/nav.css" />
+    <link rel="stylesheet" href="styles/modal.css" />
+    <link rel="stylesheet" href="styles/loginmodal.css" />
+    <link rel="stylesheet" href="styles/footer.css" />
+    <link rel="stylesheet" href="styles/animation.css" />
+    <link rel="stylesheet" href="styles/home.css" />
 
-  <link rel="icon" href="/images/logo.jpg" type="image/jpeg">
-</head>
+    <link rel="icon" href="/images/logo.jpg" type="image/jpeg" />
+  </head>
 
-<body>
-  <div class="content">
-    <!-- Header/Nav (loaded dynamically) -->
-    <header id="header-container"></header>
+  <body>
+    <div class="content">
+      <!-- Header/Nav (loaded dynamically) -->
+      <header id="header-container"></header>
 
-    <!-- Hero section -->
-    <div class="hero">
-      <img id="hero-img" src="images/kitchen.jpg" alt="Kitchen scene of counters with a range between them prepared for cooking.">
-      <div class="hero-content">
-        <h2 id="welcome">Welcome to ChefsCorner: Your Recipe Manager</h2>
+      <!-- Hero section -->
+      <div class="hero">
+        <img
+          id="hero-img"
+          src="images/kitchen.jpg"
+          alt="Kitchen scene of counters with a range between them prepared for cooking."
+        />
+        <div class="hero-content">
+          <h2 id="welcome">Welcome to ChefsCorner: Your Recipe Manager</h2>
+        </div>
       </div>
+
+      <!-- Purpose / Mission -->
+      <main>
+        <section id="purpose">
+          <p>
+            Our purpose is to create a supportive and empowering online resource
+            for individuals who like to collect recipes. ChefsCorner is a place
+            where you can eliminate clutter, have easy access from any device -
+            phone, tablet, or computer - anytime and anywhere. Organize recipes
+            by cuisine, ingredient, meal type, or any other criteria you choose.
+            Quickly find specific recipes using keywords, ingredients, or tags.
+            Share your favorite recipes. Save time and effort, reduce food
+            waste, improve your cooking skills, and enjoy a more organized
+            kitchen.
+          </p>
+        </section>
+      </main>
+
+      <!-- Footer and Modal containers -->
+      <div id="footer-placeholder"></div>
+      <div id="modal-container"></div>
     </div>
 
-    <!-- Purpose / Mission -->
-    <main>
-      <section id="purpose">
-        <p>
-          Our purpose is to create a supportive and empowering online resource for individuals who like to collect
-          recipes. ChefsCorner is a place where you can eliminate clutter, have easy access from any device - phone, 
-          tablet, or computer - anytime and anywhere. Organize recipes by cuisine, ingredient, meal type, or any other 
-          criteria you choose. Quickly find specific recipes using keywords, ingredients, or tags. Share your favorite 
-          recipes. Save time and effort, reduce food waste, improve your cooking skills, and enjoy a more organized kitchen.
-        </p>
-      </section>
-    </main>
+    <!-- JavaScript -->
+    <script type="module">
+      import { initLoginModal } from "./javascript/login.js";
+      import { initNavFeatures } from "./javascript/ccmain.js";
 
-    <!-- Footer and Modal containers -->
-    <div id="footer-placeholder"></div>
-    <div id="modal-container"></div>
-  </div>
-
-  <!-- JavaScript -->
-  <script type="module">
-    import { initLoginModal } from "./javascript/login.js";
-    import { initNavFeatures } from "./javascript/ccmain.js";
-  
-    async function loadPartial(id, file) {
-      const res = await fetch(file);
-      const html = await res.text();
-      document.getElementById(id).innerHTML = html;
-    }
-  
-    async function loadAllPartials() {
-      await loadPartial("header-container", "partials/nav.html");
-      await loadPartial("footer-placeholder", "partials/footer.html");
-  
-      const modalContainer = document.getElementById("modal-container");
-      if (modalContainer) {
-        const res = await fetch("partials/signInModal.html");
+      async function loadPartial(id, file) {
+        const res = await fetch(file);
         const html = await res.text();
-        modalContainer.innerHTML = html;
+        document.getElementById(id).innerHTML = html;
       }
-    }
-  
-    // Adjust nav links depending on page location
-    function adjustNavLinks() {
-      const isInPages = window.location.pathname.includes("/pages/");
-      const basePath = isInPages ? "../" : "";
-  
-      document.querySelectorAll("a[data-link]").forEach((link) => {
-        const type = link.getAttribute("data-link");
-        let path = "";
-  
-        switch (type) {
-          case "home":
-            path = "index.html";
-            break;
-          case "recipes":
-            path = "pages/ccrecipes.html";
-            break;
-          case "share":
-            path = "pages/sharerecipes.html";
-            break;
-          case "my":
-            path = "pages/myrecipes.html";
-            break;
-        }
-  
-        link.setAttribute("href", basePath + path);
-      });
-    }
-  
-    // Wait for partials to load, then run features
-    loadAllPartials().then(() => {
-      adjustNavLinks();
-      initLoginModal();
-      initNavFeatures();
-    });
-  </script>
-  
 
-  <!-- Site-wide JavaScript -->
-  <script type="module" src="javascript/login.js"></script>
-  <script type="module" src="javascript/ccmain.js"></script>
-</body>
+      async function loadAllPartials() {
+        await loadPartial("header-container", "partials/nav.html");
+        await loadPartial("footer-placeholder", "partials/footer.html");
+
+        const modalContainer = document.getElementById("modal-container");
+        if (modalContainer) {
+          const res = await fetch("partials/signInModal.html");
+          const html = await res.text();
+          modalContainer.innerHTML = html;
+        }
+      }
+
+      // Adjust nav links depending on page location
+      function adjustNavLinks() {
+        const isInPages = window.location.pathname.includes("/pages/");
+        const basePath = isInPages ? "../" : "";
+
+        document.querySelectorAll("a[data-link]").forEach((link) => {
+          const type = link.getAttribute("data-link");
+          let path = "";
+
+          switch (type) {
+            case "home":
+              path = "index.html";
+              break;
+            case "recipes":
+              path = "pages/ccrecipes.html";
+              break;
+            case "share":
+              path = "pages/sharerecipes.html";
+              break;
+            case "my":
+              path = "pages/myrecipes.html";
+              break;
+          }
+
+          link.setAttribute("href", basePath + path);
+        });
+      }
+
+      // Wait for partials to load, then run features
+      loadAllPartials().then(() => {
+        adjustNavLinks();
+        initLoginModal();
+        initNavFeatures();
+      });
+    </script>
+
+    <!-- Site-wide JavaScript -->
+    <script type="module" src="javascript/auth.js"></script>
+    <script type="module" src="javascript/login.js"></script>
+    <script type="module" src="javascript/ccmain.js"></script>
+  </body>
 </html>
