@@ -102,34 +102,36 @@ export function initLoginModal() {
       e.preventDefault();
       const username = document.getElementById("signup-username").value.trim();
       const password = document.getElementById("signup-password").value.trim();
-
+    
       if (username && password) {
         fetch("http://localhost:3000/signup", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ username, password }),
         })
-        .then(async (res) => {
-          const data = await res.json();
-  
-          if (!res.ok) {
-            // Server returned 409 or other error
-            alert(data.error || "Signup failed.");
-            return;
-          }
-  
-          // Success!
-          loginForm?.reset();
-          modal?.classList.remove("open");
-          localStorage.setItem("currentUser", username);
-          redirectToMyRecipes();
-        })
-        .catch((err) => {
-          console.error("Signup error:", err);
-          alert("Something went wrong. Try again.");
-        });
-    }
-  });
+          .then(async (res) => {
+            const data = await res.json();
+    
+            if (!res.ok) {
+              // ✅ Show the error and STOP here
+              alert(data.error || "Username already exists.");
+              return;
+            }
+    
+            // ✅ Only run this part if signup was successful
+            loginForm?.reset();
+            signupForm?.reset();
+            modal?.classList.remove("open");
+            localStorage.setItem("currentUser", username);
+            redirectToMyRecipes();
+          })
+          .catch((err) => {
+            console.error("Signup error:", err);
+            alert("Something went wrong. Try again.");
+          });
+      }
+    });
+    
   });
 }
 
