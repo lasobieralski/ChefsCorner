@@ -14,6 +14,13 @@ function getRecipeIdFromURL() {
   const params = new URLSearchParams(window.location.search);
   return params.get("id");
 }
+function attachResumeButtonListener() {
+  const resumeBtn = document.getElementById("resume-rotation");
+  if (resumeBtn) {
+    resumeBtn.removeEventListener("click", resumeRotation); // Prevent duplicates
+    resumeBtn.addEventListener("click", resumeRotation);
+  }
+}
 
 document.addEventListener("DOMContentLoaded", init);
 
@@ -33,10 +40,8 @@ async function init() {
     searchForm.addEventListener("submit", searchHandler);
   }
 
-  const resumeBtn = document.getElementById("resume-rotation");
-  if (resumeBtn) {
-    resumeBtn.addEventListener("click", resumeRotation);
-  }
+  attachResumeButtonListener();
+
 }
 
 async function fetchRecipes() {
@@ -155,6 +160,8 @@ function renderRecipes(recipeList) {
   });
 
   document.querySelectorAll(".save-recipe").forEach(button => {
+      // ✅ Reattach resume button listener after rendering
+    attachResumeButtonListener();
     button.addEventListener("click", (e) => {
       e.stopPropagation();
       const id = button.dataset.id;
@@ -196,6 +203,9 @@ function openRecipeModal(index, list) {
   content.querySelector(".print-button").addEventListener("click", () => printRecipe(recipe));
   content.querySelector(".close-modal-button").addEventListener("click", () => {
     modal.classList.remove("show");
+      // ✅ Reattach resume button listener after rendering
+    attachResumeButtonListener();
+
   });
 }
 function printRecipe(recipe) {
