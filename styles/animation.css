@@ -13,6 +13,20 @@
     from { opacity: 1; }
     to { opacity: 0; }
   }
+  #rotation-control {
+    position: relative;
+    text-align: center;
+    margin-top: 1rem;
+  }
+  
+  #resume-rotation {
+    padding: 0.75rem 1.25rem;
+    background-color: #efefef;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    cursor: pointer;
+    z-index: 10;
+  }
   
   /* Fade In Animation */
   .fade-in {
