@@ -160,8 +160,6 @@ function renderRecipes(recipeList) {
   });
 
   document.querySelectorAll(".save-recipe").forEach(button => {
-      // ✅ Reattach resume button listener after rendering
-    attachResumeButtonListener();
     button.addEventListener("click", (e) => {
       e.stopPropagation();
       const id = button.dataset.id;
@@ -173,6 +171,8 @@ function renderRecipes(recipeList) {
     });
   });
 }
+// ✅ Reattach resume button listener after rendering — just once
+attachResumeButtonListener();
 
 function openRecipeModal(index, list) {
   index = Number(index);
